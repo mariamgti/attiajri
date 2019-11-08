@@ -1,0 +1,31 @@
+<div [@slide] *ngIf="slide" id="menu" class="slide-in" style="left: 0px;">
+    <ul>
+        <li class="menu-header">
+            <div class="pull-left padding-left-20">
+                <img src="assets/images/mob_logo_lite.png" height="30" width="30" alt="logo"></div>
+            <div class="pull-right">
+                <a class="menu-icon" (click)="close()" type="submit">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </a>
+            </div>
+        </li>
+        <li>
+            <a href="/index" id="ident">
+                <i class="fa fa-unlock"></i>&nbsp;&nbsp;Identification</a>
+        </li>
+        <li>
+            <a href="/index.ebk?%2Ffn4dv78t1Km6lb%2F3uY2EA%3D%3D=GIeds0c%2BtYI%3D&amp;98a5SO548e8%3D=jLBrO1TZN44%3D"
+                id="lng"><i class="fa fa-globe"></i>&nbsp;&nbsp;Langue</a>
+        </li>
+    </ul>
+</div>
+<div *ngIf="slide" class="modal-backdrop fade in" style="display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1002;
+    background-color: rgba(0,0,0,0.2);"></div>

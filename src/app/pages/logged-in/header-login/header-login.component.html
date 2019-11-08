@@ -1,0 +1,22 @@
+<header class="bg-header-auth clearfix">
+    <div class="pull-left">
+        <a class="menu-icon" (click)="slideIn()" type="submit">
+            <div class="bar"> </div>
+            <div class="bar"> </div>
+            <div class="bar"> </div>
+        </a>
+    </div>
+    <div class="pull-right">
+        <div class="header-icons">
+            <a (click)="redirectHome()" type="submit" id="l" style="font-size: 17px">
+                <i class="fa fa-home ico-header ico-color-header" style="font-size:2em"></i></a>
+            &nbsp;&nbsp;
+            <a style="font-size: 17px" (click)="deconnection()" type="submit">
+                <i class="fa fa-power-off ico-header ico-color-header" style="font-size:2em"></i>
+            </a>
+        </div>
+    </div>
+</header>
+<app-confirm-deconnection *ngIf="deconnect" [(show)]="show"></app-confirm-deconnection>
+<app-load-page *ngIf="load"></app-load-page>
+<app-slide-in *ngIf="slide" [(slide)]="slide"></app-slide-in>

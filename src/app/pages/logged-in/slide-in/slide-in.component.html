@@ -1,0 +1,42 @@
+<div [@slide] *ngIf="slide" id="menu" class="slide-in" style="left: 0px;">
+    <ul>
+        <li class="menu-header">
+            <div class="pull-left  padding-left-20">
+                <img src="assets/images/mob_logo_lite.png" height="30" width="30" alt="logo"></div>
+            <div class="pull-right">
+                <a class="menu-icon" (click)="close()" type="submit">
+                    <div class="bar"> </div>
+                    <div class="bar"> </div>
+                    <div class="bar"> </div>
+                </a>
+            </div>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-user fa-lg" style="margin-bottom: 5px !important "></i>&nbsp;
+                SOCA SARL<br>
+                <small>{{"lastConnection" |translate}}&nbsp;:&nbsp;21/10/2019 15:53</small>
+            </a>
+        </li>
+        <li>
+            <a href="/ebanking/listeComptes.ebk?uIUULbmhim4%3D=nsia17WbJsxWQ6cPtGjQbQ%3D%3D" id="authbtn0"><i
+                    class="fa fa-copy fa-user pointer"></i>&nbsp;
+                {{"myAccounts" |translate}}</a></li>
+        <li>
+            <a href="/ebanking/listeServicesCheques.ebk?uIUULbmhim4%3D=nsia17WbJsxWQ6cPtGjQbQ%3D%3D&amp;uIUULbmhim4%3D=nsia17WbJsxWQ6cPtGjQbQ%3D%3D"
+                id="authbtn1"><i class="fa fa-list-alt fa-user pointer"></i>&nbsp;
+                {{"chequeBook" |translate}}</a></li>
+        <li>
+            <a href="/ebanking/listeServices.ebk?uIUULbmhim4%3D=nsia17WbJsxWQ6cPtGjQbQ%3D%3D&amp;uIUULbmhim4%3D=nsia17WbJsxWQ6cPtGjQbQ%3D%3D&amp;uIUULbmhim4%3D=nsia17WbJsxWQ6cPtGjQbQ%3D%3D"
+                id="authbtn2"><i class="fa fa-tasks fa-user pointer"></i>&nbsp;
+                {{"otherServices" |translate}}</a></li>
+    </ul>
+</div>
+<div *ngIf="slide" class="modal-backdrop fade in" style="display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1002;
+    background-color: rgba(0,0,0,0.2);"></div>

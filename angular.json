@@ -7,7 +7,26 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:class": {
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:guard": {
+          "skipTests": true
+        },
+        "@schematics/angular:module": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -19,18 +38,30 @@
           "options": {
             "outputPath": "dist/Attijari-Mobile",
             "index": "src/index.html",
+            
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": false,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/web.config"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": []
+              "node_modules/font-awesome/scss/font-awesome.scss",
+            
+              
+               "src/styles.scss"
+          
+               
+
+
+             ],
+            "scripts": [
+
+      
+            ]
           },
           "configurations": {
             "production": {
@@ -95,7 +126,10 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+
+
+            ]
           }
         },
         "lint": {
@@ -127,3 +161,4 @@
     }},
   "defaultProject": "Attijari-Mobile"
 }
+  

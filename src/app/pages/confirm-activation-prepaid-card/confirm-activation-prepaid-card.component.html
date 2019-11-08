@@ -1,0 +1,80 @@
+<app-slide-in></app-slide-in>
+
+
+<div id="page-container" styles="min-height: 100%;">
+    <app-header-login></app-header-login>
+    <div id="page-body">
+        <div *ngIf="isDesactivated" id="page-title">{{"confirmActivation" |translate}}</div>
+        <div *ngIf="isActivated" id="page-title">{{"confirmDesactivation" |translate}}</div>
+        <div class="container-fluid">
+            <div *ngIf="showIncorrectPwd" style="    background-color: #E6CECE;    text-align: center;
+                background-image: none !important;
+                border: none !important;
+                border-radius: 0px !important;
+                padding: 9px;
+                margin: 3px -6px 13px -5px;    line-height: 20px;" class="alert alert-danger alert-block">
+                {{"incorrect" |translate}}.
+            </div>
+            <div class=" ts2">
+                <div class="tc2">{{"clientName" |translate}}</div>
+                <div>{{clients?.nom}} <span>{{clients?.prenom}}</span></div>
+                <div class="tc2">{{"cardNumber" |translate}}</div>
+                <div>{{carte.numCarteP}}</div>
+                <div class="tc2">{{"cardType" |translate}}</div>
+                <div>{{carte.type}}</div>
+                <div class="tc2">{{"password" |translate}}</div>
+            </div>
+            <form [formGroup]="confirmForm" (ngSubmit)="onSubmit()">
+                <div class="well mb5 mt0 back-col-fff">
+                    <div class="clearfix" style="margin: 3px 0 10px 3px;">
+                        <div class="pull-left">
+                            <div class="input-group width195p">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                <input class="form-control" formControlName="password" type="password" id="mdpAffiche"
+                                    disabled="disabled" name="mdpAffiche" [(ngModel)]="password" required="true"
+                                    style=" height: 42px ;">
+                            </div>
+                        </div>
+                        <div class="pull-left">
+
+                            <div class="btn btn-default btn-cl-virt" (click)="rem()" style="margin-left: 0px;
+                            height: 42px;
+                            padding: 2px 1px !important;
+                            background-color: #ffffff;"><img src="assets/images/mob_backspace.gif" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="well ts2">
+                        <table class="tableauChiffres">
+                            <tbody class="tbody">
+                                <tr>
+                                    <td *ngFor="let tableauChiffre1 of tableauChiffres2; let i = index" class="chiffre"
+                                        (click)="onchange(tableauChiffre1.item)">
+                                        <div class="btn btn-default btn-lg chiffre-cv" id="c5">{{tableauChiffre1.item}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td *ngFor="let tableauChiffre2 of tableauChiffres1; let i = index" class="chiffre"
+                                        (click)="onchange(tableauChiffre2.item)">
+                                        <div class="btn btn-default btn-lg chiffre-cv" id="c5">{{tableauChiffre2.item}}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="text-center primary-padding mb10">
+                    <button type="submit" class="btn btn-default btn-lg btnvalider">{{"submit" |translate}}</button>
+                </div>
+                <div class="text-center primary-padding mb10">
+                    <button type="submit" (click)="annulerActivation()" class="btn btn-default btn-lg btnvalider">
+                        {{"discard" |translate}}</button>
+                </div>
+            </form>
+            <app-load-page *ngIf="load"></app-load-page>
+        </div>
+    </div>
+    <app-page-footer></app-page-footer>
+</div>
+<app-password-required [(show)]="showRequiredPwd"></app-password-required>

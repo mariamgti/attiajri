@@ -1,0 +1,62 @@
+<div id="page-body">
+    <div id="page-title">Identification</div>
+    <div class="container-fluid">
+        <div class="text-center mt5 mb10">{{"welcome" |translate}}</div>
+        <div class="contentCenter">
+            <form id="loginForm">
+                <input type="hidden" name="codeLangueSelected" value="fr"><input type="hidden" name="typeLogin"
+                    value="1"><input type="hidden" name="mdp" value="" id="mdp">
+                <div class="form-group">
+                    <div class="ml13">Login :</div>
+                    <div class="input-group ml14 width195p">
+                        <span class="input-group-addon"><i class="fa fa-user"></i></span><input class="form-control"
+                            style=" height: 42px ;" type="text" name="login" value="" id="inputUserSaisieLogin"
+                            autocomplete="off">
+                    </div>
+                </div>
+                <div class="ml13">{{"password" |translate}}</div>
+                <div class="well mb5 mt0 back-col-fff">
+                    <div class="clearfix" style="margin: 3px 0 10px 3px;">
+                        <div class="pull-left">
+                            <div class="input-group width195p">
+                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                <input class="form-control" type="password" id="mdpAffiche" name="mdpAffiche"
+                                    [(ngModel)]="password" autocomplete="off" disabled="disabled"
+                                    style=" height: 42px ;">
+                            </div>
+                        </div>
+                        <div class="pull-left">
+                            <div class="btn btn-default btn-cl-virt" (click)="rem()" style="margin-left: 0px;
+                            height: 42px;
+                            padding: 2px 1px !important;
+                            background-color: #ffffff;"><img src="assets/images/mob_backspace.gif" alt=""></div>
+                        </div>
+                    </div>
+                    <table class="tableauChiffres">
+                        <tbody class="tbody">
+                            <tr>
+                                <td *ngFor="let tableauChiffre1 of tableauChiffres2; let i = index" class="chiffre"
+                                    (click)="onchange(tableauChiffre1.item)">
+                                    <div class="btn btn-default btn-lg chiffre-cv" id="c5">{{tableauChiffre1.item}}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td *ngFor="let tableauChiffre2 of tableauChiffres1; let i = index" class="chiffre"
+                                    (click)="onchange(tableauChiffre2.item)">
+                                    <div class="btn btn-default btn-lg chiffre-cv" id="c5">{{tableauChiffre2.item}}
+                                    </div>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center primary-padding mb10">
+                    <button type="submit" (click)="login()" class="btn btn-default btn-lg btnvalider"> {{"submit" |translate}}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-load-page *ngIf="load"></app-load-page>

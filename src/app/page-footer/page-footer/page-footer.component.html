@@ -1,0 +1,14 @@
+<app-info-pratique *ngIf="infop" [(show)]="show"></app-info-pratique>
+
+<footer id="page-footer">
+    <div id="footer-content">
+        <div class="clearfix">
+            <div class="pull-left">
+                <a (click)="infopratique()" type="submit"><small>{{"practicalInfo" |translate}}</small>
+                </a>
+            </div>
+            <div class="pull-right"><small>© Attijari bank</small></div>
+        </div>
+    </div>
+
+</footer>

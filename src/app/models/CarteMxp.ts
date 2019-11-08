@@ -1,0 +1,25 @@
+
+export interface CarteMxp {
+    age: number,
+    ncp: number,
+    numCarte: string,
+    libAge: string,
+    typeIdem: string,
+    codeIdem: number,
+    inti: string,
+    codeTypeCarte: string,
+    libTypeCarte: string,
+    codeStatut: number,
+    libStatut: string,
+    plafRetrait: number,
+    plafAchat: number,
+    plafTotal: number,
+    plafRetraitDispo: number,
+    plafAchatDispo: number,
+    plafTotalDispo: number,
+    dateCre: Date,
+    dateExp: Date,
+    dateDerTrans: Date,
+    dateDerStatut: Date,
+    isEligOppos: string
+}

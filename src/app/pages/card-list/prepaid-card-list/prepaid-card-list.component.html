@@ -1,0 +1,39 @@
+<app-slide-in></app-slide-in>
+<div id="page-container" styles="min-height: 100%;">
+    <app-header-login></app-header-login>
+    <div id="page-body">
+        <div id="page-title"> {{"prepaidCardList" |translate}}</div>
+        <div class="container-fluid">
+            <div class="tc2"> {{clients?.nom}} <span>{{clients?.prenom}}</span></div>
+            <div class="gras">NumDoc: <span>{{clients?.numDoc}}</span> </div>
+            <br>
+            <hr class="hr-mob gradient-horizontal-primary">
+            <div>
+            </div>
+            <div *ngFor="let card of cards">
+                <div (click)="toggleGroup(card)" [ngClass]="{active: isGroupShown(card)}" id="l0"
+                    class="btn btn-default btn-all active">
+                    <div class="clearfix">
+                        <div class="col-xs-10 text-left padding-zero">
+                            <div class="ts2 gras ellipsed">{{card.type}}</div>
+                            <div class="ts2 ellipsed">N° &nbsp; {{card.numCarteP}}<br>
+                            </div>
+                        </div>
+                        <div class="col-xs-2 padding-zero">
+                            <div class="text-right" style="padding-top:7px;">
+                                <i class="fa fa-chevron-down ico-size-min ico-color pointer"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right ts1 padding-zero">
+                        <span class="gras">&nbsp;{{card.soldeDispo}}</span>
+                    </div>
+                </div>
+                <app-prepaid-card-detail class="c_branch_details_ordres" *ngIf="isGroupShown(card)" [carte]="card">
+                </app-prepaid-card-detail>
+            </div>
+            <app-load-page *ngIf="load"></app-load-page>
+        </div>
+    </div>
+    <app-page-footer></app-page-footer>
+</div>

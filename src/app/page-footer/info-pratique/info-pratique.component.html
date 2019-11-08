@@ -1,0 +1,105 @@
+<body class="modal-open" style="line-height: 20px;font-size: 16px;">
+
+
+    <div [@dialog] *ngIf="show">
+
+        <div id="modalML" class=" modal fade in" tabindex="-1" role="dialog" aria-hidden="false"
+            style="display: block;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="    padding: 15px;
+        border-bottom: 1px solid #e5e5e5;
+        min-height: 16.42857143px;">
+                        <h4 class="modal-title">{{"practicalInfo" |translate}}</h4>
+                    </div>
+                    <div class="modal-body" style="position: relative;
+padding: 20px;">
+                        <p><span
+                                style="font-family: tahoma, arial, helvetica, sans-serif; font-size: x-small; background-color: #ffffff;"><span
+                                    style="font-size: x-small; font-family: tahoma, arial, helvetica, sans-serif;"
+                                    lang="fr"><span style="font-size: 11pt;"><span
+                                            style="font-size:10pt;"><strong><strong>
+                                                    {{"customerRelationCenterNumber" |translate}}
+                                                    Attijari bank :</strong></strong></span></span></span></span><span
+                                style="font-size:10pt;"><strong>&nbsp;</strong></span><span
+                                style="font-family: tahoma, arial, helvetica, sans-serif;"><span
+                                    style="color: #339966;"><strong>81 100 004</strong></span><span
+                                    style="font-size: 13.3333px;">&nbsp;({{"nonSurchargedCall" |translate}}).
+                                    {{"fromForeignCountries" |translate}} &nbsp;<span
+                                        style="color: #339966;"><strong>+216 71 111
+                                            300</strong></span></span></span></p>
+                        <div style="background-color:white;margin:0;"><span style="font-size: x-small;"><span
+                                    style="font-size:11pt;background-color:white;"><span
+                                        style="font-family: tahoma, arial, helvetica, sans-serif; color: #ff0000; font-size: x-small;"><span
+                                            style="font-size:10pt;"><strong>{{"workingHours" |translate}}:
+                                            </strong></span></span></span></span></div>
+                        <div style="background-color:white;margin:0;">
+                            <ul>
+                                <li><span
+                                        style="font-family: tahoma, arial, helvetica, sans-serif; font-size: small; text-indent: -18pt;">{{"doubleSessionHours" |translate}}:
+                                       </span>
+                                        <span
+                                        style="font-family: tahoma, arial, helvetica, sans-serif; font-size: small; text-indent: -18pt;">{{"fromMondayToSaturday" |translate}}:
+                                    </span><strong>{{"from08amto8pm" |translate}}
+
+                                    </strong></li>
+                                <li><span
+                                        style="font-family: tahoma, arial, helvetica, sans-serif; font-size: small; text-indent: -18pt;">{{"onlySessionHours" |translate}}:     
+                                       </span><span
+                                        style="font-family: tahoma, arial, helvetica, sans-serif; font-size: small; text-indent: -18pt;">{{"fromMondayToSaturday" |translate}}:
+                                    </span>  <strong>From 07 am to 3 pm</strong></li>
+                                
+                                <li>
+                                                     
+                                             <span style="font-family: Arial, sans-serif; font-size: x-small;"><span style="font-size: 10pt;"
+                                               >{{"DuringRamadan" |translate}}
+                                               </span></span>  
+                                             <span
+                                      
+                                        style="font-family: tahoma, arial, helvetica, sans-serif; font-size: small; text-indent: -18pt;">
+                                        :&nbsp;</span><span
+                                        style="font-family: tahoma, arial, helvetica, sans-serif; font-size: small; text-indent: -18pt;">{{"fromMondayToSaturday" |translate}}:
+                                    </span><strong>{{"from08amto4pm" |translate}}
+                                  </strong></li>
+                            </ul>
+                        </div>
+                        <div style="background-color:white;margin:0;"><span
+                                style="font-family: tahoma, arial, helvetica, sans-serif; font-size: small; text-indent: -18pt;"><strong><span
+                                        style="color: #ff0000;">
+                                        {{"inCaseLossTheft" |translate}}:
+                            </span></strong></span></div>
+                        <div style="background-color:white;margin:0;">
+                            <ul>
+                                <li style="background-color: white;"><span
+                                        style="font-family: tahoma, arial, helvetica, sans-serif; font-size: small; text-indent: -18pt;">
+                                        {{"reportLoss" |translate}}</span></li>
+                                
+                                <li><span style="font-size:9pt;">{{"contact" |translate}}</span><span
+                                        style="font-size:10pt;"><strong>
+                                                {{"customerRelationCenterAt" |translate}} 
+                                          &nbsp;</strong></span><span
+                                        style="font-family: tahoma, arial, helvetica, sans-serif;"><span
+                                            style="color: #339966;"><strong>81 100 004</strong></span><span
+                                            style="font-size: 13.3333px;">&nbsp;({{"nonSurchargedCall" |translate}}). 
+                                            {{"fromForeignCountries" |translate}}&nbsp;<span style="color: #339966;"><strong>+216 71 111
+                                                    300</strong></span></span></span></li>
+                                <li style="background-color: white;"><span
+                                        style="text-indent: -18pt; font-family: tahoma, arial, helvetica, sans-serif; font-size: small;">
+                                        {{"contactMonetique" |translate}}   71 155 840,  {{"duringWeekend" |translate}}</span></li>
+                            </ul>
+                        </div>
+                        <div style="text-indent:-18pt;background-color:white;margin:0;"><span
+                                style="background-color: #ffffff;" lang="fr"><span
+                                    style="font-family: tahoma, arial, helvetica, sans-serif; font-size: x-small;">
+                                </span></span></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btn-lg btnvalider" style="margin-bottom: 12px;"
+                            (click)="close()" data-dismiss="modal">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop fade in"></div>
+    </div>
+</body>

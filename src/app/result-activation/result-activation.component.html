@@ -1,0 +1,51 @@
+<div id="page-container" styles="min-height: 100%;">
+    <app-header-login></app-header-login>
+    <div id="page-body">
+        <div *ngIf="isRefresh" id="page-title">{{"operationResult"|translate}}</div>
+        <div *ngIf="isFailedActivation" id="page-title">{{"cardFailedActivation" |translate}} </div>
+        <div *ngIf="isDesactivated" id="page-title">{{"cardSuccessActivation" |translate}} </div>
+        <div *ngIf="isActivated" id="page-title">{{"cardSuccessDesactivation" |translate}} </div>
+        <div *ngIf="isFailedActivation" id="page-title">{{"cardFailedActivation" |translate}} </div>
+        <div *ngIf="isFailedDisactivation" id="page-title">{{"cardFailedDesactivation" |translate}} </div>
+        <div style="position: relative; bottom:-30px;">
+            <div *ngIf="isRefresh" style="    background-color: #E6CECE;    text-align: center;
+                background-image: none !important;
+                border: none !important;
+                border-radius: 0px !important;
+                padding: 9px;
+                margin: 3px -6px 13px -5px;    line-height: 20px;" class="alert alert-danger alert-block">
+                {{"expData" |translate}}
+            </div>
+            <div *ngIf="resultCode != '0000' && !isRefresh" style="    background-color: #E6CECE;    text-align: center;
+            background-image: none !important;
+            border: none !important;
+            border-radius: 0px !important;
+            padding: 9px;
+            margin: 3px -6px 13px -5px;    line-height: 20px;" class="alert alert-danger alert-block">
+                {{"failedOperation" |translate}}
+            </div>
+            <div *ngIf="resultCode === '0000' && !isRefresh" style="   background-color:#dff0d8;border-color:#d6e9c6;color:#3c763d;   text-align: center;
+                background-image: none !important;
+                border: none !important;
+                border-radius: 0px !important;
+                padding: 9px;
+                margin: 3px -6px 13px -5px;    line-height: 20px;" class="alert alert-success alert-block">
+                {{"successOperation" |translate}}
+            </div>
+        </div>
+        <div class="container-fluid" style="position: relative; bottom:-30px !important" *ngIf="resultCode === '0000'">
+            <div *ngIf="!isRefresh">
+                <div class=" ts2">
+                    <div class="tc2">{{"clientName" |translate}}</div>
+                    <div>{{nomClient}} </div>
+                    <div class="tc2">{{"cardNumber" |translate}}</div>
+                    <div>{{carte.numCarte}}</div>
+                    <div>{{carte.numCarteD}}</div>
+                    <div class="tc2">{{"cardType" |translate}}</div>
+                    <div>{{carte.libTypeCarte}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-page-footer></app-page-footer>

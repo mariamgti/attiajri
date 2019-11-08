@@ -1,0 +1,19 @@
+<div id="page-container" styles="min-height: 100%;">
+    <app-header-login></app-header-login>
+    <div id="page-body">
+        <div id="page-title">{{"cardList" |translate}}</div>
+        <div class="container-fluid">
+            <div class="clearfix row-liste">
+                <a id="debitCard" class="btn btn-default btn-nav" (click)="redirectDebitCardList()" type="submit">
+                    <i class="fa fa-credit-card fa-3x pointer"></i>
+                    <br> {{"myDebitCards" |translate}}
+                </a></div>
+            <div class="clearfix row-liste">
+                <a id="prepaidCard" class="btn btn-default btn-nav" (click)="redirectPrepaidCardList()" type="submit">
+                    <i class="fa fa-credit-card fa-3x pointer"></i><br>{{"myPrepaidCards" |translate}}</a>
+            </div>
+        </div>
+    </div>
+    <app-load-page *ngIf="load"></app-load-page>
+</div>
+<app-page-footer></app-page-footer>
