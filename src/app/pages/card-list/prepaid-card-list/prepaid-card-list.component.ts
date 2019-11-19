@@ -17,7 +17,7 @@ export class PrepaidCardListComponent implements OnInit {
   availableBalance: string;
   constructor(private clientWsService: ClientWsService, private authService: AuthService) { }
   ngOnInit() {
-    //this.authService.checkCredentials();
+    this.authService.checkCredentials();
     this.clientWsService.findClientByCodeClient(1).subscribe((data: {}) => {
       this.clients = data;
     });

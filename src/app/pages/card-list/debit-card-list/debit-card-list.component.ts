@@ -43,7 +43,7 @@ export class DebitCardListComponent implements OnInit {
     private attijariBankApiWsService: AttijariBankApiWsService, private router: Router) {
   }
   ngOnInit() {
-    //this.authService.checkCredentials();
+    this.authService.checkCredentials();
     this.uuid = Cookie.get('uuid');
     this.attijariBankApiWsService.getAccounts(this.uuid).subscribe(data => {
       this.accountsApiBank = data;

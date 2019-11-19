@@ -17,7 +17,7 @@ export class CardListComponent implements OnInit {
   }
   ngOnInit() {
     this.uuid = Cookie.get('uuid');
-    //this.authService.checkCredentials();
+    this.authService.checkCredentials();
   }
   redirectDebitCardList() {
     this.load = true;

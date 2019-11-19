@@ -8,6 +8,8 @@ import { PageLoginComponent } from './pages/login/page-login/page-login.componen
 import { ConfirmDeconnectionComponent } from './pages/modal-pages/confirm-deconnection/confirm-deconnection.component';
 import { ConfirmActivationDebitCardComponent } from './pages/confirm-activation-debit-card/confirm-activation-debit-card.component';
 import { ResultActivationComponent } from './result-activation/result-activation.component';
+import { SicavValueComponent } from './sicavValue-list/sicav-value/sicav-value.component';
+import { ComplaintListComponent } from './pages/complaint/complaint-list/complaint-list.component';
 
 const appRoutes: Routes = [
   { path: '', component: PageLoginComponent },
@@ -19,6 +21,9 @@ const appRoutes: Routes = [
   { path: 'confirmerDéconnexion', component: ConfirmDeconnectionComponent },
   { path: 'confirm-activation-carte-debit', component: ConfirmActivationDebitCardComponent },
   { path: 'resultActivation', component: ResultActivationComponent },
+  { path: 'sicavValue', component: SicavValueComponent },
+  { path: 'complaintsList', component: ComplaintListComponent },
+ 
 ]
 @NgModule({
   imports: [RouterModule.forRoot(appRoutes)],

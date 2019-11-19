@@ -19,7 +19,7 @@ export class PageLoginComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) {
   }
   ngOnInit() {
-    /*
+    
        // intercepter uuid  and page
        this.activatedRoute.queryParams.subscribe(params => {
          this.uuid = params['uuid'];
@@ -59,7 +59,7 @@ export class PageLoginComponent implements OnInit {
        );
    
        
-      */
+      
 
   }
   num1: number = 12.638467846;

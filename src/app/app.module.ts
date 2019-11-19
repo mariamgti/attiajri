@@ -37,6 +37,12 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ResultActivationComponent } from './result-activation/result-activation.component';
 import { Data } from './services/Data.service';
+import { SicavValueComponent } from './sicavValue-list/sicav-value/sicav-value.component';
+import { SicavValueService } from './services/sicav-value.service';
+import { FiabilisationService } from './services/fiabilisation.service';
+import { ComplaintService } from './services/complaint.service';
+import { ShareAccountService } from './services/share-account.service';
+import { ComplaintListComponent } from './pages/complaint/complaint-list/complaint-list.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -66,6 +72,9 @@ export function createTranslateLoader(http: HttpClient) {
     ConfirmActivationDebitCardComponent,
     SlideInLoginComponent,
     ResultActivationComponent,
+    SicavValueComponent,
+   
+    ComplaintListComponent,
   ],
   imports: [
     FormsModule,
@@ -86,7 +95,8 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ClientWsService, ConstantParams, ConfirmActivationService, AttijariBankApiWsService, AuthService, CartesMxpWS, Data],
+  providers: [ClientWsService, ConstantParams, ConfirmActivationService, AttijariBankApiWsService, AuthService, CartesMxpWS, 
+    ,SicavValueService,FiabilisationService,ComplaintService,ShareAccountService,Data],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

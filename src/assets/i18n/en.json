@@ -61,5 +61,6 @@
   "successOperation": "This operation is successful",
   "confirmOperation": "Confirm operation",
   "operationResult": "Operation result",
-  "expData": "The data of this page have been expired."
+  "expData": "The data of this page have been expired.",
+  "sicavList": "List of SICAV values"
 }
