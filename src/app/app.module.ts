@@ -55,6 +55,9 @@ import { ResultAddComplaintComponent } from './pages/complaint/result-add-compla
 import { FormErrorComponent } from './pages/modal-pages/form-error/form-error.component';
 import { CustomValidationService } from './services/customValidationService';
 
+import {FiabilisationComponent} from './pages/fiabilisation/fiabilisation.component';
+import {ShareAccountComponent}  from './pages/share-account/share-account.component';
+import {FormErrorComponent} from './pages/modal-pages/form-error/form-error.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -64,8 +67,8 @@ export function createTranslateLoader(http: HttpClient) {
 }
 @NgModule({
   declarations: [
-    AppComponent,
-    PageLoginComponent,
+    AppComponent,FiabilisationComponent,FormErrorComponent,
+    PageLoginComponent,ShareAccountComponent,
     HeaderNotLoginComponent,
     PageLoginBodyComponent,
     PageFooterComponent,

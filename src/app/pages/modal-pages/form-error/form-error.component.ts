@@ -19,8 +19,7 @@ import { transition, trigger, animate, style, } from '@angular/animations';
   ]
 })
 export class FormErrorComponent implements OnInit {
-  @Input() invalidClient: boolean;
-  @Input() invalidAccount: boolean;
+ 
   @Input() invalidMail: boolean;
   @Input() invalidPhone: boolean;
   @Input() invalidProfession: boolean;
@@ -41,18 +40,15 @@ export class FormErrorComponent implements OnInit {
   @Output() invalidDescriptionChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidComplaintObjectChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidComplaintDocChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() show: boolean;
+  @Input() commencewithChar: boolean;
+ 
 
   ngOnInit() {
   }
   constructor(private router: Router) { }
   close() {
-    this.show = false;
-    this.invalidIncedentDate =false;
-   this.invalidDescription = false ;
-    this.invalidComplaintObject = false ;
-    this.invalidComplaintDoc = false ;
-    this.invalidClient = false;
-    this.invalidAccount = false;
+ 
     this.invalidMail = false;
     this.invalidPhone = false;
     this.invalidProfession = false;
@@ -68,6 +64,9 @@ export class FormErrorComponent implements OnInit {
     this.invalidDescriptionChange.emit(this.invalidDescription);
     this.invalidComplaintObjectChange.emit(this.invalidComplaintObject);
     this.invalidComplaintDocChange.emit(this.invalidComplaintDoc);
+    this.show = false;
+    this.commencewithChar=false;
+    
 
   }
 }

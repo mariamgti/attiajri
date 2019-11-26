@@ -10,11 +10,16 @@ import { ConfirmActivationDebitCardComponent } from './pages/confirm-activation-
 import { ResultActivationComponent } from './result-activation/result-activation.component';
 import { SicavValueComponent } from './sicavValue-list/sicav-value/sicav-value.component';
 import { ComplaintListComponent } from './pages/complaint/complaint-list/complaint-list.component';
+<<<<<<< HEAD
 import { AddComplaintComponent } from './pages/complaint/add-complaint-step1/add-complaint.component';
 import { AddComplaintStep2Component } from './pages/complaint/add-complaint-step2/add-complaint-step2.component';
 import { SurveyComponent } from './pages/complaint/survey/survey.component';
 import { ViewComplaintComponent } from './pages/complaint/view-complaint/view-complaint.component';
 import { ResultAddComplaintComponent } from './pages/complaint/result-add-complaint/result-add-complaint.component';
+=======
+import {FiabilisationComponent}  from './pages/fiabilisation/fiabilisation.component';
+import {ShareAccountComponent}  from './pages/share-account/share-account.component';
+>>>>>>> 6108728dbe38581837a354fc9234eabfbd2e9e87
 
 const appRoutes: Routes = [
   { path: '', component: PageLoginComponent },
@@ -33,6 +38,9 @@ const appRoutes: Routes = [
    { path: 'survey', component: SurveyComponent},
    { path: 'viewComplaint', component: ViewComplaintComponent},
    { path: 'resultComplaint', component: ResultAddComplaintComponent},
+  { path: 'fiabilisation', component: FiabilisationComponent },
+  { path: 'shareAccount', component:ShareAccountComponent },
+
  
 ]
 @NgModule({

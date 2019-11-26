@@ -5,28 +5,30 @@
         <div class="container-fluid">
             <div class="tc2"> {{intitulCarte}} </div>
             <br>
-            <table id="data-table" class="table table-striped table-bordered nowrap" width="100%">
-                <thead>
-                <tr>
-                  <th>OPCVM Attijari</th>
-                  <th>VL jour </th>
-                  <th>VL veille</th>
-                </tr>
-                </thead>
-                <tbody>
-  
-                <tr *ngFor="let sicavValue of sicavValues"  class="odd gradeX">
-  
-                  <td style="width: 10%;">{{sicavValue.mutualFund}}</td>
-                  <td style="width: 5%;">{{sicavValue.dayAv}}</td>
-                  <td style="width: 15%;">{{sicavValue.prevDayAv}}</td>
-                  
-  
-                </tr>
-  
-                </tbody>
-              </table>
-  
+   
+              Valeurs liquidatives applicables le  {{todayISOString}}, donnés à titre indicatif.
+              <a  id="l0" class="btn btn-default btn-all" *ngFor="let sicavValue of sicavValues">
+                  <div class="clearfix">
+                          <div class="row">
+                            <div class="col-xs-10 text-left padding-zero">
+                              <div class="ts2 gras ellipsed">
+                                OPCVM Attijari:{{sicavValue.mutualFund}} </div>
+                              <div class="ts2 ellipsed">
+                                VL veille:{{sicavValue.prevDayAv}}<br>
+                              </div>
+                            </div>
+                            <div class="col-xs-2 padding-zero">
+                              <div class="text-right" style="padding-top:7px;">
+                                </div>
+                            </div>
+                          </div>
+                          <div class="text-right ts1 padding-zero">
+                            <span class="gras"> 
+                              VL jour:{{sicavValue.dayAv}} </span>
+                          </div>
+                        </div></a>
+   L'horaire limite de souscription et rachat des OPCVM est: <br>Attijari Obligataire SICAV :08h à 16h. <br> FCP CEA, Dynamique :08h à 09h.
+       <br>Pour toute information complémentaire, veuillez contacter le Centre de Relation Client  au  <b>81 100 004</b>.
             <app-load-page *ngIf="load"></app-load-page>
             <app-page-footer></app-page-footer>
         </div>
