@@ -10,6 +10,8 @@ import { ConfirmActivationDebitCardComponent } from './pages/confirm-activation-
 import { ResultActivationComponent } from './result-activation/result-activation.component';
 import { SicavValueComponent } from './sicavValue-list/sicav-value/sicav-value.component';
 import { ComplaintListComponent } from './pages/complaint/complaint-list/complaint-list.component';
+import {FiabilisationComponent}  from './pages/fiabilisation/fiabilisation.component';
+import {ShareAccountComponent}  from './pages/share-account/share-account.component';
 
 const appRoutes: Routes = [
   { path: '', component: PageLoginComponent },
@@ -23,6 +25,9 @@ const appRoutes: Routes = [
   { path: 'resultActivation', component: ResultActivationComponent },
   { path: 'sicavValue', component: SicavValueComponent },
   { path: 'complaintsList', component: ComplaintListComponent },
+  { path: 'fiabilisation', component: FiabilisationComponent },
+  { path: 'shareAccount', component:ShareAccountComponent },
+
  
 ]
 @NgModule({

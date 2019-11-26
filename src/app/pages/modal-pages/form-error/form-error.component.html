@@ -6,24 +6,16 @@
                     <h4 class="modal-title">{{"warning" |translate}}</h4>
                 </div>
                 <div class="modal-body">
-                     <div  *ngIf="invalidClient" class="bootbox-body">
-                   Please choose a client
-                    </div>
-               
-
-                    <div  *ngIf="invalidAccount" class="bootbox-body">
-                  Please choose account 
-                    </div>
+                
                     <div  *ngIf="invalidMail" class="bootbox-body">
                             Email is missing or incorrect
                              </div>
                     <div  *ngIf="invalidPhone" class="bootbox-body">
                        Phone number is missing or incorrect
                     </div>
-                    <div  *ngIf="invalidProfession" class="bootbox-body">
-                        Profession field is missing or incorrect
+                    <div  *ngIf="commencewithchar" class="bootbox-body">
+                       le numéro du téléphone ne doit pas commencer par un caractere !
                      </div>
-                
                 </div>
                 <div class="modal-footer">
                     <button (click)="close()" data-bb-handler="btn" type="button"

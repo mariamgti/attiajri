@@ -10,7 +10,7 @@ import { SicavValue } from '../../models/sicavValue';
   styleUrls: ['./sicav-value.component.scss']
 })
 export class SicavValueComponent implements OnInit {
-
+  todayISOString : string = new Date().toISOString();
   sicavValues: SicavValue[];
   constructor( 
     private sicavValueService: SicavValueService, private router: Router) {
@@ -19,7 +19,7 @@ export class SicavValueComponent implements OnInit {
   ngOnInit() {
     this.sicavValueService.getSicavValues().subscribe(data => {
       this.sicavValues = data;
-      console.log(this.sicavValues[0].mutualFund);
+      console.log(this.sicavValues);
     });
   }
 
