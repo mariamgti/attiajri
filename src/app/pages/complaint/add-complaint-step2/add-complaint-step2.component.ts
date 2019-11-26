@@ -17,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./add-complaint-step2.component.scss']
 })
 export class AddComplaintStep2Component implements OnInit {
-  fileContent: any ;
+  fileContent: any;
   reader = new FileReader();
   invalidIncedentDate: boolean = false;
   invalidDescription: boolean = false;
@@ -28,9 +28,9 @@ export class AddComplaintStep2Component implements OnInit {
   complaintDocuments: ComplaintDoc[];
   client: ClientModel;
   complaintForm: FormGroup;
-  complaintObejcts: ComplaintObject[] ;
-  file:File
-
+  complaintObejcts: ComplaintObject[];
+  file: File
+  files: File [];
   constructor(private formBuilder: FormBuilder, private clientWsService: ClientWsService, private http: HttpClient, private data: Data,
     private complaintService: ComplaintService,
     private router: Router) { }
@@ -44,7 +44,7 @@ export class AddComplaintStep2Component implements OnInit {
     });
     this.clientWsService.findClientByCodeClient(this.clientInformation[1].codCli).subscribe(data => {
       this.client = data;
-     
+
     });
   }
 
@@ -58,19 +58,20 @@ export class AddComplaintStep2Component implements OnInit {
   }
 
   handleFileInput($event) {
-     this.file = $event.target.files[0];
-    console.log('size', this.file.size);
-    console.log('type', this.file.type);
+    this.file = $event.target.files[0];
+    this.files=$event.target.files;
+    console.log('size', this.files.length);
+    //console.log('type', this.file.type);
 
     if ((this.file.type === 'application/pdf' || 'image/*') && (this.file.size <= 9000000)) {
       console.log('this is a pdf file very good !!!!!!!!!!!');
 
-       
+
       this.reader.readAsArrayBuffer(this.file);
       this.reader.onloadend = () => {
         this.fileContent = Array.from(new Uint8Array(<ArrayBuffer>this.reader.result));
         //this.complaintDocuments.fileContent = fileContent;
-       // this.complaintDocuments.fileName = file.name;
+        // this.complaintDocuments.fileName = file.name;
         alert(Array.from(new Uint8Array(<ArrayBuffer>this.reader.result)));
       };
       //  console.log( "file!!!!!!!!!!!!!!!!!!!!!!!");
@@ -86,22 +87,22 @@ export class AddComplaintStep2Component implements OnInit {
   }
   onSubmitForm() {
     if (this.complaintForm.valid) {
-      this.complaintDocuments=[
-        {id_doc: null,fileName: this.file.name,fileContent:this.fileContent},
-      
-         {id_doc: null,fileName: this.file.name,fileContent:this.fileContent}
+      this.complaintDocuments = [
+        { id_doc: null, fileName: this.file.name, fileContent: this.fileContent },
+
+        { id_doc: null, fileName: this.file.name, fileContent: this.fileContent }
       ]
       console.log(this.complaintDocuments)
-    const formValue = this.complaintForm.value;
-    console.log(formValue)
-   
-    
-     console.log("heeerrrreeeeeeee")
+      const formValue = this.complaintForm.value;
+      console.log(formValue)
+
+
+      console.log("heeerrrreeeeeeee",this.files)
       //console.log(this.clientInformation[1].codCli)
       this.complaintService.addComplaint(
         this.client.codCli,
         this.complaintForm.get('description').value,
-        formatDate(new Date(), 'yyyy/MM/dd', 'en'),
+        formatDate(new Date(), 'dd/MM/yyyy', 'en'),
         this.complaintForm.get('complaintObject').value,
         "login",
         this.clientInformation[3],
@@ -112,11 +113,11 @@ export class AddComplaintStep2Component implements OnInit {
         this.clientInformation[5],
         "1",
         formatDate(this.complaintForm.get('incedentDate').value, 'yyyy/MM/dd', 'en'),
-        this.complaintDocuments
-        ).subscribe(data => {
-          console.log('resulllllt !!!!!!!!!!!!!!!!!!!!!!!')
-          console.log(data)
-        })
+        this.complaintDocuments,this.files
+      ).subscribe(data => {
+        console.log('resulllllt !!!!!!!!!!!!!!!!!!!!!!!')
+        console.log(data)
+      })
     }
     else {
       if (this.complaintForm.get('incedentDate').invalid) {
@@ -133,10 +134,10 @@ export class AddComplaintStep2Component implements OnInit {
         this.invalidComplaintObject = true;
       }
 
-  /*    if (this.complaintForm.get('complaintDoc').invalid) {
-        this.showFormError = true;
-        this.invalidComplaintDoc = true;
-      }*/
+      /*    if (this.complaintForm.get('complaintDoc').invalid) {
+            this.showFormError = true;
+            this.invalidComplaintDoc = true;
+          }*/
 
 
     }
