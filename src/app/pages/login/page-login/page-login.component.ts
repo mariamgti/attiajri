@@ -24,8 +24,7 @@ export class PageLoginComponent implements OnInit {
        this.activatedRoute.queryParams.subscribe(params => {
          this.uuid = params['uuid'];
          this.page = params['page'];
-   
-         console.log(params)
+       
          //SI uuid different de null
        if (this.uuid && this.page) {
          //get access token 
@@ -33,17 +32,20 @@ export class PageLoginComponent implements OnInit {
            //store uuid and access token in cookie 
            this.token = data;
            this.authService.saveParamAuthentication(data,this.uuid);
-         
+           
             //if uuid and access token are valid
            if (this.uuid && this.token) {
-   
+          
              //case page
              //if page == carte navigate to listCarte
              if (this.page === 'listeCartes') {
                this.router.navigate(['/listeCartes']);
              }
              //else page login
-           
+             if (this.page === 'addComplaint') {
+              
+              this.router.navigate(['/addComplaint']);
+            }
      
            }
            //else  page login
@@ -57,9 +59,6 @@ export class PageLoginComponent implements OnInit {
        //else  page login 
        }
        );
-   
-       
-      
 
   }
   num1: number = 12.638467846;

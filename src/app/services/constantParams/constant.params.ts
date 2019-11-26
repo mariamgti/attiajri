@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ConstantParams {
-  public BaseUrlWsClient = 'http://localhost:8089/WSAttijari/services/rest/';
+  public BaseUrlWsClient = 'http://localhost:8090/Internship/services/rest/';
  // public BaseUrlWsApiBanque = 'https://www.attijarimobile.homo.com.tn/';
 
  public BaseUrlWsApiBanque = 'http://localhost:8090/Internship/';

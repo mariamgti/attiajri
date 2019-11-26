@@ -67,7 +67,8 @@ padding: 0;
             .primary-padding{padding:2px}
             .btn-all{display:block;position:relative;padding:10px;margin-top:10px}.btn-all:hover,
             .btn-all:focus{text-decoration:none}.hr-mob,.hr-mob-top,.hr-mob2,.hr-mob2-top{height:2px;border:0;margin:0 0 10px 0}
-            .hr-mob-top,.hr-mob2-top{margin-top:10px}.hr-mob2,.hr-mob2-top{height:1px;opacity:.3}.ts1{font-size:16px}.ts2{font-size:14px}
+            .hr-mob-top,.hr-mob2-top{margin-top:10px}.hr-mob2,.hr-mob2-top{height:1px;opacity:.3}.ts1{font-size:16px}
+            .ts2{font-size:14px}
             .ts3{font-size:12px}div.clear-both{clear:both}.gras{font-weight:bold}
             .width100{width:100%}.width50{width:50%}.width25{width:25%}.width195p{width:195px}.majuscule{text-transform:uppercase}
             .textAlignCenter{text-align:center}.devise-padding{padding-top:7px}.text-lib-ico{width:92%}#codeDevise{width:44px}

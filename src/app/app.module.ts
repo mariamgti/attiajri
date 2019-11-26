@@ -43,6 +43,18 @@ import { FiabilisationService } from './services/fiabilisation.service';
 import { ComplaintService } from './services/complaint.service';
 import { ShareAccountService } from './services/share-account.service';
 import { ComplaintListComponent } from './pages/complaint/complaint-list/complaint-list.component';
+import { AddComplaintComponent } from './pages/complaint/add-complaint-step1/add-complaint.component';
+import { AddComplaintStep2Component } from './pages/complaint/add-complaint-step2/add-complaint-step2.component';
+import { SurveyComponent } from './pages/complaint/survey/survey.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ViewComplaintComponent } from './pages/complaint/view-complaint/view-complaint.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { TableModule } from 'primeng/table';
+import { RatingModule } from 'ng-starrating';
+import { ResultAddComplaintComponent } from './pages/complaint/result-add-complaint/result-add-complaint.component';
+import { FormErrorComponent } from './pages/modal-pages/form-error/form-error.component';
+import { CustomValidationService } from './services/customValidationService';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -75,6 +87,19 @@ export function createTranslateLoader(http: HttpClient) {
     SicavValueComponent,
    
     ComplaintListComponent,
+   
+    AddComplaintComponent,
+   
+    AddComplaintStep2Component,
+   
+    SurveyComponent,
+   
+    ViewComplaintComponent,
+   
+    ResultAddComplaintComponent,
+   
+    FormErrorComponent,
+   
   ],
   imports: [
     FormsModule,
@@ -83,9 +108,13 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
+    TableModule,
+    RatingModule,
     AngularFontAwesomeModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    NgxPaginationModule,
+    NgbModule,
     MatInputModule, MatOptionModule, MatSelectModule, MatIconModule,
     TranslateModule.forRoot({
       loader: {
@@ -95,7 +124,7 @@ export function createTranslateLoader(http: HttpClient) {
       }
     })
   ],
-  providers: [ClientWsService, ConstantParams, ConfirmActivationService, AttijariBankApiWsService, AuthService, CartesMxpWS, 
+  providers: [ClientWsService, ConstantParams, ConfirmActivationService, AttijariBankApiWsService, AuthService, CartesMxpWS, CustomValidationService,
     ,SicavValueService,FiabilisationService,ComplaintService,ShareAccountService,Data],
   bootstrap: [AppComponent]
 })

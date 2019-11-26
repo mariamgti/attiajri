@@ -36,12 +36,18 @@ export class ComplaintService {
         })
       });
   }
-  addComplaint(codCli, complDetails, inputDate, 
+  addComplaint(codCli, complDetails, inputDate,
     objectCode, login, phone, homeAddress,
-     city, post_code,
-    code_prof, autre_prof, flg_supp, 
-    incedent_date,complaintDocs): Observable<object[]> {
+    city, post_code,
+    code_prof, autre_prof, flg_supp,
+    incedent_date, complaintDocs: Array<ComplaintDoc>): Observable<object[]> {
+    let docs: Array<string> = new Array(complaintDocs.length);
+    console.log('lenght', complaintDocs.length)
 
+    complaintDocs.forEach(e => {
+      console.log('dddd', JSON.stringify(e))
+      docs.push(JSON.stringify(e))
+    });
     const params = new HttpParams()
       .set('codCli', codCli)
       .set('complDetails', complDetails)
@@ -56,12 +62,15 @@ export class ComplaintService {
       .set('autre_prof', autre_prof)
       .set('flg_supp', flg_supp)
       .set('incedent_date', incedent_date)
-      .set('complaintDocs',complaintDocs)
+      .set('complaintDocs',JSON.stringify(docs.join(",")))
 
+    console.log("document before join", docs)
+
+    console.log("document sent with ,,,!!!!!!!!!!", JSON.stringify(docs.join(",")))
 
     return this.http.post<object[]>(
 
-      this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/addComplaint', params.toString()
+      this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/addComplaint', params
       ,
       {
         headers: new HttpHeaders({

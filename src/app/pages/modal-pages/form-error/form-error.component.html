@@ -23,7 +23,30 @@
                     <div  *ngIf="invalidProfession" class="bootbox-body">
                         Profession field is missing or incorrect
                      </div>
-                
+                     <div  *ngIf="invalidOtherProfession" class="bootbox-body">
+                            Profession field is missing or incorrect
+                         </div>
+                     
+
+                      <div  *ngIf="invalidIncedentDate" class="bootbox-body">
+                   Please choose Incedent date
+                    </div>
+
+                    <div  *ngIf="invalidDescription" class="bootbox-body">
+                            Profession field is missing or incorrect 
+                             </div>
+
+
+                             <div  *ngIf="invalidComplaintObject" class="bootbox-body">
+                                    Please choose the object of your complaint
+                                     </div>
+
+
+                                     
+                             <div  *ngIf="invalidComplaintDoc" class="bootbox-body">
+                                    Please choose document joined to your complaint
+                                     </div>
+
                 </div>
                 <div class="modal-footer">
                     <button (click)="close()" data-bb-handler="btn" type="button"

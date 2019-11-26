@@ -6,6 +6,11 @@ export interface ClientModel {
      numDoc: number;
      email: string,
      phone: string;
+     postCode: string;
      city: string;
+     
      homeAddress: string;
+
+
+  
 }

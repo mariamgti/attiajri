@@ -1,0 +1,83 @@
+
+
+
+
+          <app-load-page *ngIf="load"></app-load-page>
+<div class="detailCarte">
+    <div>
+        <h4 class="modal-title text-center tc2" id="modalDCLabel">Pour mieux vous servir, merci de bien vouloir répondre au questionnaire de satisfaction client</h4>
+    </div>
+
+    <hr class="hr-mob-top gradient-horizontal-primary">
+    <table class="table table-striped" id="tableMvts">
+        <tbody>
+            <tr>
+                <td class="ts3">
+                    <div class="pull-left">q1</div>
+                    <div class="pull-right gras mnt-neg">huhjhjhjkhjkh</div>
+                </td>
+            </tr>
+            <tr>
+                    <td class="ts3">
+                            <div class="pull-left">q1</div>
+                            <div class="pull-right gras mnt-neg">huhjhjhjkhjkh</div>
+                        </td>
+            </tr>
+            <tr>
+                    <td class="ts3">
+                            <div class="pull-left">q1</div>
+                            <div class="pull-right gras mnt-neg">huhjhjhjkhjkh</div>
+                        </td>
+            </tr>
+            <tr>
+                    <td class="ts3">
+                            <div class="pull-left">q1</div>
+                            <div class="pull-right gras mnt-neg">huhjhjhjkhjkh</div>
+                        </td>
+            </tr>
+            <tr>
+                    <td class="ts3">
+                            <div class="pull-left">q1</div>
+                            <div class="pull-right gras mnt-neg">huhjhjhjkhjkh</div>
+                        </td>
+            </tr>
+            <tr>
+                    <td class="ts3">
+                            <div class="pull-left">q1</div>
+                            <div class="pull-right gras mnt-neg">huhjhjhjkhjkh</div>
+                        </td>
+            </tr>
+            <tr>
+                    <td class="ts3">
+                            <div class="pull-left">q1</div>
+                            <div class="pull-right gras mnt-neg">huhjhjhjkhjkh</div>
+                         
+                        </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default btn-lg btnvalider " data-dismiss="modal"
+            *ngIf="carte.codeStatut === '5'" (click)="redirectToConfirmation()">{{"activateCard" |translate}}
+        </button>
+        <button type="button" class="btn btn-default btn-lg btnvalider " data-dismiss="modal"
+            *ngIf="carte.codeStatut === '2'" (click)="redirectToConfirmation()">{{"desactivateCard" |translate}}
+        </button>
+    </div>
+  
+</div>
+<ngb-rating [(rate)]="currentRate"></ngb-rating>
+<hr>
+<pre>Rate: <b>{{currentRate}}</b></pre>
+
+<ngb-rating [(rate)]="selected" (hover)="hovered=$event" (leave)="hovered=0" [readonly]="readonly"></ngb-rating>
+<hr>
+<pre>
+Selected: <b>{{selected}}</b>
+Hovered: <b>{{hovered}}</b>
+</pre>
+<button class="btn btn-sm btn-outline-{{readonly ? 'danger' : 'success'}}" (click)="readonly = !readonly">
+  {{ readonly ? "readonly" : "editable"}}
+</button>
+ 

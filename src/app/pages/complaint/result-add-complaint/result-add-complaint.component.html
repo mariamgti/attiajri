@@ -1,0 +1,21 @@
+<div id="page-container" styles="min-height: 100%;">
+    <app-header-login></app-header-login>
+    <div id="page-body">
+        <div  id="page-title">Complaint Result </div>
+        <div style="position: relative; bottom:-30px;">
+          
+            <div  style="   background-color:#dff0d8;border-color:#d6e9c6;color:#3c763d;   text-align: center;
+            background-image: none !important;
+            border: none !important;
+            border-radius: 0px !important;
+            padding: 9px;
+            margin: 3px -6px 13px -5px;    line-height: 20px;" class="alert alert-success alert-block">
+            {{"successOperation" |translate}}
+        </div>
+        </div>
+        <div class="container-fluid" style="position: relative; bottom:-30px !important" *ngIf="resultCode === '0000'">
+       
+        </div>
+    </div>
+</div>
+<app-page-footer></app-page-footer>

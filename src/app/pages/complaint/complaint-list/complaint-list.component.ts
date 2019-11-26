@@ -20,12 +20,12 @@ export class ComplaintListComponent implements OnInit {
   complaints: Complaint[];
   survey: Question[];
   contactInfo: object[];
-  updatedContactInfo:object[][];
+  updatedContactInfo: object[][];
   shareAcc: ShareAccount[];
   porteFeuille: PortFeuille[];
-  complaintDocs : ComplaintDoc[];
-  constructor( 
-    private complaintService: ComplaintService,  private fiabilisationService: FiabilisationService,
+  complaintDocs: ComplaintDoc[];
+  constructor(
+    private complaintService: ComplaintService, private fiabilisationService: FiabilisationService,
     private shareAccountService: ShareAccountService, ) {
   }
 
@@ -35,62 +35,88 @@ export class ComplaintListComponent implements OnInit {
       console.log(this.complaints);
     });
 
-    this.complaintService.addComplaint(1, 'updating the details', formatDate(new Date(), 'yyyy/MM/dd', 'en'), formatDate(new Date(), 'yyyy/MM/dd', 'en'), 'handled', 'accepted').subscribe(data => {
+ /*   this.complaintService.addComplaint(
+      '1',
+      ' the complDetails',
+      formatDate(new Date(), 'yyyy/MM/dd', 'en'),
+      '3',
+      'login',
+      'phone',
+      'home Address',
+      'city',
+      'post code',
+      '2',
+      'autre_prof',
+      'flg_supp',
+      formatDate(new Date(), 'yyyy/MM/dd', 'en')
+
+
+
+
+
+    ).subscribe(data => {
       this.addedComplaint = data;
       console.log(this.addedComplaint);
     });
-
+*/
 
     this.complaintService.deleteComplaint(3).subscribe(data => {
-    
+
     });
 
- 
 
-  this.complaintService.getSurvey().subscribe(data => {
-    this.survey=data;
-    console.log(this.survey);
-    
-  });
-  this.complaintService.updateComplaint(28, 'this is the deatail','15/02/2019',  '13/06/2019', 'handled', 'accepted').subscribe(data => {
-    this.updatedComplaint=data;
-    console.log('updating complaint');
-    console.log(this.updatedComplaint);
-    
-  });
-this.fiabilisationService.getContactInfo(1).subscribe(data =>{
-this.contactInfo=data[1];
-console.log('this is contact information')
-console.log(this.contactInfo);
 
-});
+    this.complaintService.getSurvey().subscribe(data => {
+      this.survey = data;
+      console.log(this.survey);
 
-this.fiabilisationService.updateContactInfo(1, 'new mail', 78933441, 'Allemagne', 6130, 'MUNIQUE').subscribe(data=>{
- this.updatedContactInfo=data;
- console.log('updating contact information...')
- console.log(this.updatedContactInfo);
-  
+    });
+    this.complaintService.updateComplaint(28, 'this is the deatail', '15/02/2019', '13/06/2019', 'handled', 'accepted').subscribe(data => {
+      this.updatedComplaint = data;
+      console.log('updating complaint');
+      console.log(this.updatedComplaint);
 
-});
+    });
+    this.fiabilisationService.getContactInfo(1).subscribe(data => {
+      this.contactInfo = data[1];
+      console.log('this is contact information')
+      console.log(this.contactInfo);
 
-this.shareAccountService.getShareAccounts(1).subscribe(data =>{
+    });
 
-this.shareAcc= data;
+    this.fiabilisationService.updateContactInfo(1, 'new mail', 78933441, 'Allemagne', 6130, 'MUNIQUE').subscribe(data => {
+      this.updatedContactInfo = data;
+      console.log('updating contact information...')
+      console.log(this.updatedContactInfo);
 
-})
-this.shareAccountService.getPortFeuilles(1234567).subscribe(data =>{
 
-  this.porteFeuille=data;
-})
+    });
 
-this.complaintService.getComplaintDocs(23).subscribe(data =>{
+    this.shareAccountService.getShareAccounts(1).subscribe(data => {
 
-  this.complaintDocs= data;
-})
+      this.shareAcc = data;
+
+    })
+    this.shareAccountService.getPortFeuilles(1234567).subscribe(data => {
+
+      this.porteFeuille = data;
+    })
+
+    this.complaintService.getComplaintDocs(23).subscribe(data => {
+
+      this.complaintDocs = data;
+    })
+
+
+
+    this.complaintService.addSurveyResponse(2, 51, 'yes I am satisfied').subscribe(data => {
+
+
+    })
   }
 
 
 
-  
+
 
 }

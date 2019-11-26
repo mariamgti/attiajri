@@ -1,0 +1,139 @@
+<div id="page-container" styles="min-height: 100%;">
+  <app-header-login></app-header-login>
+  <div id="page-body">
+    <div id="page-title">Formulaire de réclamation</div>
+    <div class="container-fluid">
+      <div class="tc2"> </div>
+      <div class="gras" style="text-align: center;">Données Réclamation </div>
+      <br>
+      <hr class="hr-mob gradient-horizontal-primary">
+      <br>
+
+      <form [formGroup]="complaintForm" (ngSubmit)="onSubmitForm()">
+
+        <div class="well">
+          <div class="row">
+            <div class="col-xs-3 padding-left-zero padding-right-10">
+              <label for="incedentDate" class=" ts2 gras">Date survenance réclamation: *</label>
+            </div>
+            <div class="col-xs-9 padding-left-zero padding-right-zero">
+              <div class="form-group ">
+
+                <input type="date" formControlName="incedentDate" required id="incedentDate" placeholder="yyyy-MM-dd"
+                  min="2000-01-01" max="2050-12-31" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="well">
+          <div class="row">
+            <div class="col-xs-3 padding-left-zero padding-right-10">
+              <label for="account" class=" ts2 gras">Objet de la réclamation: *</label>
+            </div>
+            <div class="col-xs-9 padding-left-zero padding-right-zero">
+              <div class="form-group ">
+
+                <select formControlName="complaintObject" id="complaintObject" required class="form-control">
+                  <option class="placeholder" selected disabled>Choisir objet</option>
+                  <option *ngFor="let complaintObejct of complaintObejcts" [ngValue]="complaintObejct.objectCode">
+                    {{complaintObejct.libelle}}
+                  </option>
+
+
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="well">
+          <div class="row">
+            <div class="col-xs-3 padding-left-zero padding-right-10">
+              <div class=" ts2 gras">Description: *</div>
+            </div>
+            <div class="col-xs-9 padding-left-zero padding-right-zero">
+              <div class="form-group ">
+                <textarea rows="10" cols="60" id="description" required class="form-control"
+                  formControlName="description">
+                                        </textarea>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="well">
+          <div class="row">
+            <div class="col-xs-3 padding-left-zero padding-right-10">
+              <label for="complaintDoc" class=" ts2 gras">Documents à joindre:(Max:2 documents) (Max: 9 MO): *</label>
+            </div>
+            <div class="col-xs-9 padding-left-zero padding-right-zero">
+              <div class="form-group ">
+
+
+                <button class="btn  " (click)="onClick('complaintDoc')">
+
+                  Ajouter une pièce jointe <i class="fa fa-upload"></i>
+
+                </button>
+                <input type="file" style="height: 50px;" id="complaintDoc" name="complaintDoc" required
+                  accept="application/pdf, image/jpeg,image/png,image/jpg" (change)="handleFileInput($event)"
+                  capture="camera" class="form-control" style="display:none;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="modal-footer">
+          <div style="   position: absolute;
+                      left: 50%;
+                      
+                      transform: translate(-50%)
+                      ">
+
+            <div class="well">
+              <div class="row">
+
+                <table>
+
+                  <tr>
+                    <td>
+                      <button type="button" class="btn btn-default btn-lg btnvalider " (click)="cancel()"
+                        data-dismiss="modal">Annuler
+                      </button>
+                    </td>
+
+                    <td>
+                      <div style="width: 10px!important"></div>
+                    </td>
+
+                    <td> <button type="submit" class="btn btn-default btn-lg btnvalider"  data-dismiss="modal">Valider
+                      </button>
+                    </td>
+
+                  </tr>
+                </table>
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </form>
+
+    
+
+      <app-load-page *ngIf="load"></app-load-page>
+      <app-page-footer></app-page-footer>
+    </div>
+
+    <app-form-error [(show)]="showFormError" [(invalidIncedentDate)]="invalidIncedentDate"
+      [(invalidDescription)]="invalidDescription" [(invalidComplaintObject)]="invalidComplaintObject"
+      [(invalidComplaintDoc)]="invalidComplaintDoc"></app-form-error>

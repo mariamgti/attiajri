@@ -19,6 +19,7 @@ export class AddComplaintComponent implements OnInit {
   invalidPhone: boolean = false;
   invalidAccount: boolean = false;
   invalidClient:boolean = false;
+  invalidOtherProfession:boolean = false;
   showFormError: boolean = false;
 
 
@@ -150,6 +151,14 @@ export class AddComplaintComponent implements OnInit {
         this.invalidClient = true;
       }
 
+
+      if (this.complaintForm.get('other').invalid) {
+        this.showFormError = true;
+        this.invalidOtherProfession = true;
+      }
+
+
+      
     }
 
   }
