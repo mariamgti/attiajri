@@ -57,7 +57,6 @@ import { CustomValidationService } from './services/customValidationService';
 
 import {FiabilisationComponent} from './pages/fiabilisation/fiabilisation.component';
 import {ShareAccountComponent}  from './pages/share-account/share-account.component';
-import {FormErrorComponent} from './pages/modal-pages/form-error/form-error.component';
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

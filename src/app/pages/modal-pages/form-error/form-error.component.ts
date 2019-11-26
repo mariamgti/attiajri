@@ -40,7 +40,6 @@ export class FormErrorComponent implements OnInit {
   @Output() invalidDescriptionChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidComplaintObjectChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidComplaintDocChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Input() show: boolean;
   @Input() commencewithChar: boolean;
  
 
