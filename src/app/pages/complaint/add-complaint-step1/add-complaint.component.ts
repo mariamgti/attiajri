@@ -4,40 +4,40 @@ import { ComplaintService } from '../../../services/complaint.service';
 import { Router } from '@angular/router';
 import { ClientModel } from '../../../models/client.model';
 import { ClientWsService } from '../../../services/client-ws.service';
-//import { Profession } from '../../../models/profession';
+import { Profession } from '../../../models/profession';
 import { Data } from 'src/app/services/Data.service';
-//import { CustomValidationService } from 'src/app/services/customValidationService';
+import { CustomValidationService } from 'src/app/services/customValidationService';
 
 @Component({
   selector: 'app-add-complaint',
   templateUrl: './add-complaint.component.html',
   styleUrls: ['./add-complaint.component.scss']
 })
-export class AddComplaintComponent/* implements OnInit */{
+export class AddComplaintComponent/* implements OnInit */ {
   invalidProfession: boolean = false;
   invalidMail: boolean = false;
   invalidPhone: boolean = false;
   invalidAccount: boolean = false;
-  invalidClient:boolean = false;
-  invalidOtherProfession:boolean = false;
+  invalidClient: boolean = false;
+  invalidOtherProfession: boolean = false;
   showFormError: boolean = false;
 
 
   clientInformation: [any, any, any, any, any, any];
   profession: string;
   other: string;
- // professions: Profession[];
+  professions: Profession[];
   isOther: boolean;
   selectedClient: ClientModel;
   client: ClientModel;
   accounts: any;
   complaintForm: FormGroup;
-  email :string;
-  phone :string;
+  email: string;
+  phone: string;
 
- 
 
-  /*constructor(private formBuilder: FormBuilder, private clientWsService: ClientWsService, private data: Data,/*private customValidationService : CustomValidationService,
+
+  constructor(private formBuilder: FormBuilder, private clientWsService: ClientWsService, private data: Data, private customValidationService: CustomValidationService,
     private complaintService: ComplaintService,
 
     private router: Router) { }
@@ -66,7 +66,7 @@ export class AddComplaintComponent/* implements OnInit */{
       client: ['', Validators.required],
       account: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      telephone: ['', [Validators.required,this.customValidationService.checkLimit(11111111,99999999)]],
+      telephone: ['', [Validators.required, this.customValidationService.checkLimit(11111111, 99999999)]],
       profession: ['', Validators.required],
       other: ['', Validators.required]
 
@@ -74,16 +74,16 @@ export class AddComplaintComponent/* implements OnInit */{
 
     });
   }
- onSelectClient() {
+  onSelectClient() {
     this.email = this.selectedClient.email;
     this.phone = this.selectedClient.phone;
-    
+
     this.clientWsService.findCompteByCodeClient(this.selectedClient.codCli).subscribe((data: {}) => {
 
       this.accounts = data;
 
-      //this.complaintService.getProfessions().subscribe(data => {
-       // this.professions = data;
+      this.complaintService.getProfessions().subscribe(data => {
+        this.professions = data;
       })
 
     });
@@ -158,11 +158,11 @@ export class AddComplaintComponent/* implements OnInit */{
       }
 
 
-      
+
     }
 
   }
-*/
+
 
 
 }

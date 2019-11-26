@@ -19,7 +19,9 @@
                      <div  *ngIf="invalidOtherProfession" class="bootbox-body">
                             Profession field is missing or incorrect
                          </div>
-                     
+                         <div  *ngIf="invalidProfession" class="bootbox-body">
+                            Profession field is missing or incorrect
+                         </div>
 
                       <div  *ngIf="invalidIncedentDate" class="bootbox-body">
                    Please choose Incedent date
@@ -29,6 +31,13 @@
                             Profession field is missing or incorrect 
                              </div>
 
+
+                             <div  *ngIf="invalidAccount" class="bootbox-body">
+                                Account field is missing 
+                                 </div>
+                                 <div  *ngIf="invalidClient" class="bootbox-body">
+                                    Client field is missing 
+                                     </div>
 
                              <div  *ngIf="invalidComplaintObject" class="bootbox-body">
                                     Please choose the object of your complaint

@@ -19,16 +19,18 @@ import { transition, trigger, animate, style, } from '@angular/animations';
   ]
 })
 export class FormErrorComponent implements OnInit {
- 
+
   @Input() invalidMail: boolean;
   @Input() invalidPhone: boolean;
   @Input() invalidProfession: boolean;
   @Input() invalidOtherProfession: boolean;
+  @Input() invalidAccount: boolean;
+  @Input() invalidClient: boolean;
   @Input() show: boolean;
-  @Input() invalidIncedentDate:boolean;
-  @Input() invalidDescription:boolean ;
-  @Input() invalidComplaintObject:boolean ;
-  @Input() invalidComplaintDoc:boolean ;
+  @Input() invalidIncedentDate: boolean;
+  @Input() invalidDescription: boolean;
+  @Input() invalidComplaintObject: boolean;
+  @Input() invalidComplaintDoc: boolean;
   @Output() showChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidClientChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidAccountChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -41,19 +43,21 @@ export class FormErrorComponent implements OnInit {
   @Output() invalidComplaintObjectChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidComplaintDocChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() commencewithChar: boolean;
- 
+
 
   ngOnInit() {
   }
   constructor(private router: Router) { }
   close() {
- 
+
     this.invalidMail = false;
     this.invalidPhone = false;
     this.invalidProfession = false;
-    this.invalidOtherProfession=false;
-    this.invalidClientChange.emit(this.invalidPhone);
-    this.invalidAccountChange.emit(this.invalidPhone);
+    this.invalidAccount = false;
+    this.invalidClient = false;
+    this.invalidOtherProfession = false;
+    this.invalidClientChange.emit(this.invalidClient);
+    this.invalidAccountChange.emit(this.invalidAccount);
     this.showChange.emit(this.show);
     this.invalidMailChange.emit(this.invalidMail);
     this.invalidProfessionChange.emit(this.invalidProfession);
@@ -64,8 +68,8 @@ export class FormErrorComponent implements OnInit {
     this.invalidComplaintObjectChange.emit(this.invalidComplaintObject);
     this.invalidComplaintDocChange.emit(this.invalidComplaintDoc);
     this.show = false;
-    this.commencewithChar=false;
-    
+    this.commencewithChar = false;
+
 
   }
 }
