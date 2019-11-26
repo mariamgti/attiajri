@@ -6,6 +6,8 @@ import { Cookie } from 'ng2-cookies';
 import { Complaint } from '../models/complaint';
 import { ComplaintDoc } from '../models/complaintDoc';
 import { Question } from '../models/question';
+import { Profession } from '../models/profession';
+import { ComplaintObject } from '../models/complaintObject';
 
 @Injectable({
   providedIn: 'root'
@@ -34,26 +36,38 @@ export class ComplaintService {
         })
       });
   }
+  addComplaint(codCli, complDetails, inputDate, 
+    objectCode, login, phone, homeAddress,
+     city, post_code,
+    code_prof, autre_prof, flg_supp, 
+    incedent_date,complaintDocs): Observable<object[]> {
 
-  addComplaint(codCli, complDetails, inputDate, complTreatmentDate, state, bankResponse): Observable<Complaint> {
     const params = new HttpParams()
-    .set('codCli', codCli)
-      .set('complDetails',complDetails)
+      .set('codCli', codCli)
+      .set('complDetails', complDetails)
       .set('inputDate', inputDate)
-      .set('complTreatmentDate', complTreatmentDate)
-      .set('state', state)
-      .set('bankResponse', bankResponse);
-   
-    return this.http.post<Complaint>(
-      //'http://localhost:8090/Internship/services/rest/wsComplaint/addComplaint?codCli=1&complDetails=complaint details here &inputDate=12/12/2019&complTreatmentDate=18/01/2019&state=not handled&bankResponse=in progress'
-      
-    this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/addComplaint',params.toString()
+      .set('objectCode', objectCode)
+      .set('login', login)
+      .set('phone', phone)
+      .set('homeAddress', homeAddress)
+      .set('city', city)
+      .set('post_code', post_code)
+      .set('code_prof', code_prof)
+      .set('autre_prof', autre_prof)
+      .set('flg_supp', flg_supp)
+      .set('incedent_date', incedent_date)
+      .set('complaintDocs',complaintDocs)
+
+
+    return this.http.post<object[]>(
+
+      this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/addComplaint', params.toString()
       ,
       {
-       headers: new HttpHeaders({
-         'Content-type': 'application/x-www-form-urlencoded; charset=utf-8;',
-         Authorization: 'Bearer ' + Cookie.get('access_token')
-       })
+        headers: new HttpHeaders({
+          'Content-type': 'application/x-www-form-urlencoded; charset=utf-8;',
+          Authorization: 'Bearer ' + Cookie.get('access_token')
+        })
       });
   }
 
@@ -61,14 +75,14 @@ export class ComplaintService {
 
 
     const params = new HttpParams()
-    .set('complRef', complRef)
-      .set('complDetails',complDetails)
+      .set('complRef', complRef)
+      .set('complDetails', complDetails)
       .set('inputDate', inputDate)
       .set('complTreatmentDate', complTreatmentDate)
       .set('state', state)
       .set('bankResponse', bankResponse);
-    return this.http.post<Complaint>(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/updateComplaint' ,params.toString(),
-    
+    return this.http.post<Complaint>(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/updateComplaint', params.toString(),
+
       {
         headers: new HttpHeaders({
           'Content-type': 'application/x-www-form-urlencoded; charset=utf-8;',
@@ -98,8 +112,15 @@ export class ComplaintService {
         })
       });
   }
-  addSurveyResponse(questref, response) {
-    return this.http.post(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/addSurveyResponse?questref=' + questref + '?response=' + response,
+  addSurveyResponse(questref, complRef, response) {
+
+    const params = new HttpParams()
+      .set('complaintRef', complRef)
+      .set('questref', questref)
+      .set('response', response)
+
+    return this.http.post(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/addSurveyResponse', params.toString(),
+
       {
         headers: new HttpHeaders({
           'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
@@ -107,5 +128,26 @@ export class ComplaintService {
         })
       });
   }
+  getProfessions(): Observable<Profession[]> {
+    return this.http.get<Profession[]>(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/getProfessions',
+      {
+        headers: new HttpHeaders({
+          'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+          Authorization: 'Bearer ' + Cookie.get('access_token')
+        })
+      });
+  }
+
+  getAllcomplaintObjects(): Observable<ComplaintObject[]> {
+    return this.http.get<ComplaintObject[]>(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/getAllcomplaintObjects',
+      {
+        headers: new HttpHeaders({
+          'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+          Authorization: 'Bearer ' + Cookie.get('access_token')
+        })
+      });
+  }
+
+
 
 }
