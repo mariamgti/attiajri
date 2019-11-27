@@ -9,6 +9,7 @@ import { ClientModel } from '../../../models/client.model';
 import { formatDate } from '@angular/common';
 import { ComplaintDoc } from '../../../models/complaintDoc';
 import { HttpClient } from '@angular/common/http';
+import { DocumentHeader } from '../../../models/documentHeader';
 
 
 @Component({
@@ -31,6 +32,9 @@ export class AddComplaintStep2Component implements OnInit {
   complaintObejcts: ComplaintObject[];
   file: File
   files: File [];
+  documentHeader: DocumentHeader;
+  isSuccess :boolean;
+  
   constructor(private formBuilder: FormBuilder, private clientWsService: ClientWsService, private http: HttpClient, private data: Data,
     private complaintService: ComplaintService,
     private router: Router) { }
@@ -116,8 +120,21 @@ export class AddComplaintStep2Component implements OnInit {
         this.complaintDocuments,this.files
       ).subscribe(data => {
         console.log('resulllllt !!!!!!!!!!!!!!!!!!!!!!!')
-        console.log(data)
-      })
+
+        this.documentHeader = data;
+       // this.documentHeader=this.result[0];
+        console.log(this.documentHeader.resultCode === "0000")
+      
+this.isSuccess = this.documentHeader.resultCode == "0000"
+
+      if (this.documentHeader.resultCode == "0000")
+      {  
+        
+        this.data.storage =this.isSuccess,
+     
+        this.router.navigateByUrl('/resultComplaint')
+      }})
+
     }
     else {
       if (this.complaintForm.get('incedentDate').invalid) {

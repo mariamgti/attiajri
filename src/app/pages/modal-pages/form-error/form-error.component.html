@@ -13,9 +13,7 @@
                     <div  *ngIf="invalidPhone" class="bootbox-body">
                        Phone number is missing or incorrect
                     </div>
-                    <div  *ngIf="commencewithchar" class="bootbox-body">
-                       le numéro du téléphone ne doit pas commencer par un caractere !
-                     </div>
+                
                      <div  *ngIf="invalidOtherProfession" class="bootbox-body">
                             Profession field is missing or incorrect
                          </div>
@@ -45,9 +43,18 @@
 
 
                                      
-                             <div  *ngIf="invalidComplaintDoc" class="bootbox-body">
-                                    Please choose document joined to your complaint
+                             <div  *ngIf="Notdeleted" class="bootbox-body">
+                                   la suppression est echouée!!
                                      </div>
+                                              
+                             <div  *ngIf="deleted" class="bootbox-body">
+                                la suppression est effectuée avec succée!!
+                                  </div>
+
+                                  <div  *ngIf="affecte" class="bootbox-body">
+                                    la modification sur cette réclamation ne peut pas etre effectuée car la réclamation est affectée à la banque!
+                                      </div>
+                                    
 
                 </div>
                 <div class="modal-footer">
