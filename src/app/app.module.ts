@@ -55,7 +55,9 @@ import { FormErrorComponent } from './pages/modal-pages/form-error/form-error.co
 import { CustomValidationService } from './services/customValidationService';
 
 import {FiabilisationComponent} from './pages/fiabilisation/fiabilisation.component';
-import { ShareAccountComponent } from './pages/share-account/share-account.component';
+import {ShareAccountComponent}  from './pages/share-account/share-account.component';
+import { StarRatingComponent } from './pages/complaint/survey/star-rating/star-rating.component';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -92,7 +94,13 @@ export function createTranslateLoader(http: HttpClient) {
     SurveyComponent,
     ViewComplaintComponent,
     ResultAddComplaintComponent,
-    FormErrorComponent
+   
+    FormErrorComponent,
+  
+    
+   
+    StarRatingComponent,
+   
   ],
   imports: [
     FormsModule,
