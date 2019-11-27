@@ -43,41 +43,45 @@ export class ComplaintService {
     objectCode, login, phone, homeAddress,
     city, post_code,
     code_prof, autre_prof, flg_supp,
-    incedent_date, complaintDocs: Array<ComplaintDoc>): Observable<object[]> {
+    incedent_date, complaintDocs: Array<ComplaintDoc> ,file): Observable<DocumentHeader> {
     let docs: Array<string> = new Array(complaintDocs.length);
-    console.log('lenght', complaintDocs.length)
+    console.log('here 2', file)
 
     complaintDocs.forEach(e => {
       console.log('dddd', JSON.stringify(e))
       docs.push(JSON.stringify(e))
     });
-    const params = new HttpParams()
-      .set('codCli', codCli)
-      .set('complDetails', complDetails)
-      .set('inputDate', inputDate)
-      .set('objectCode', objectCode)
-      .set('login', login)
-      .set('phone', phone)
-      .set('homeAddress', homeAddress)
-      .set('city', city)
-      .set('post_code', post_code)
-      .set('code_prof', code_prof)
-      .set('autre_prof', autre_prof)
-      .set('flg_supp', flg_supp)
-      .set('incedent_date', incedent_date)
-      .set('complaintDocs',JSON.stringify(docs.join(",")))
+    const params = new FormData();
+    params.append('codCli', codCli)
+    params .append('complDetails', complDetails)
+    params.append('inputDate', inputDate)
+    params.append('objectCode', objectCode)
+    params.append('login', login)
+    params.append('phone', phone)
+    params.append('homeAddress', homeAddress)
+    params.append('city', city)
+    params.append('post_code', post_code)
+    params.append('code_prof', code_prof)
+    params.append('autre_prof', autre_prof)
+    params.append('flg_supp', flg_supp)
+    params.append('incedent_date', incedent_date)
+   
+    for (let i = 0; i < file.length; i++) {
+      
+      params.append('file', file[i])
+  }
 
     console.log("document before join", docs)
 
     console.log("document sent with ,,,!!!!!!!!!!", JSON.stringify(docs.join(",")))
 
-    return this.http.post<object[]>(
+    return this.http.post<DocumentHeader>(
 
       this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/addComplaint', params
       ,
       {
         headers: new HttpHeaders({
-          'Content-type': 'application/x-www-form-urlencoded; charset=utf-8;',
+          'Content-type': 'multipart/form-data; charset=utf-8;',
           Authorization: 'Bearer ' + Cookie.get('access_token')
         })
       });

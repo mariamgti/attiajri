@@ -98,15 +98,15 @@ export class DebitCardListComponent implements OnInit {
   }
   toggleGroup(group) {
     this.load = true;
-    setTimeout(() => {
+   
       if (this.isGroupShown(group)) {
         this.shownGroup = null;
       } else {
         this.shownGroup = group;
       }
-      ;
+     
       this.load = false;
-    }, 3000);
+   
   }
   isGroupShown(group) {
     return this.shownGroup === group;
