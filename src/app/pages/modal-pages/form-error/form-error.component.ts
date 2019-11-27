@@ -42,8 +42,9 @@ export class FormErrorComponent implements OnInit {
   @Output() invalidDescriptionChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidComplaintObjectChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidComplaintDocChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Input() commencewithChar: boolean;
-
+  @Input() deleted: boolean;
+  @Input() Notdeleted: boolean;
+  @Input() affecte:boolean;
 
   ngOnInit() {
   }
@@ -68,8 +69,9 @@ export class FormErrorComponent implements OnInit {
     this.invalidComplaintObjectChange.emit(this.invalidComplaintObject);
     this.invalidComplaintDocChange.emit(this.invalidComplaintDoc);
     this.show = false;
-    this.commencewithChar = false;
-
+    this.deleted = false;
+    this.Notdeleted=  false;
+    this.affecte=false;
 
   }
 }

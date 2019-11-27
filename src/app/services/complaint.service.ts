@@ -8,6 +8,7 @@ import { ComplaintDoc } from '../models/complaintDoc';
 import { Question } from '../models/question';
 import { Profession } from '../models/profession';
 import { ComplaintObject } from '../models/complaintObject';
+import { DocumentHeader } from '../models/documentHeader';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,9 @@ export class ComplaintService {
 
 
   getComplaints(codCli): Observable<Complaint[]> {
-    return this.http.get<Complaint[]>(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/getComplaints?codCli=' + codCli,
+    const params = new HttpParams()
+    .set('codCli', codCli);
+    return this.http.post<Complaint[]>(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/getComplaints' ,params,
       {
         headers: new HttpHeaders({
           'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
@@ -100,8 +103,10 @@ export class ComplaintService {
       });
   }
 
-  deleteComplaint(complRef) {
-    return this.http.delete(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/deleteComplaint?complRef=' + complRef,
+  deleteComplaint(complRef): Observable<any> {
+    const params = new HttpParams()
+    .set('complRef', complRef);
+    return this.http.post(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/deleteComplaint',params,
       {
         headers: new HttpHeaders({
           'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
