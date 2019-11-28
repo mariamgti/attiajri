@@ -49,8 +49,7 @@ import { SurveyComponent } from './pages/complaint/survey/survey.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ViewComplaintComponent } from './pages/complaint/view-complaint/view-complaint.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import { TableModule } from 'primeng/table';
-import { RatingModule } from 'ng-starrating';
+
 import { ResultAddComplaintComponent } from './pages/complaint/result-add-complaint/result-add-complaint.component';
 import { FormErrorComponent } from './pages/modal-pages/form-error/form-error.component';
 import { CustomValidationService } from './services/customValidationService';
@@ -116,8 +115,6 @@ export function createTranslateLoader(http: HttpClient) {
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    TableModule,
-    RatingModule,
     AngularFontAwesomeModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
