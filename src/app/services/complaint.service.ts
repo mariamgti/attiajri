@@ -8,6 +8,7 @@ import { ComplaintDoc } from '../models/complaintDoc';
 import { Question } from '../models/question';
 import { Profession } from '../models/profession';
 import { ComplaintObject } from '../models/complaintObject';
+import { DocumentHeader } from '../models/documentHeader';
 
 @Injectable({
   providedIn: 'root'
@@ -40,7 +41,7 @@ export class ComplaintService {
     objectCode, login, phone, homeAddress,
     city, post_code,
     code_prof, autre_prof, flg_supp,
-    incedent_date, complaintDocs: Array<ComplaintDoc> ,file): Observable<object[]> {
+    incedent_date, complaintDocs: Array<ComplaintDoc> ,file): Observable<DocumentHeader> {
     let docs: Array<string> = new Array(complaintDocs.length);
     console.log('here 2', file)
 
@@ -72,7 +73,7 @@ export class ComplaintService {
 
     console.log("document sent with ,,,!!!!!!!!!!", JSON.stringify(docs.join(",")))
 
-    return this.http.post<object[]>(
+    return this.http.post<DocumentHeader>(
 
       this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/addComplaint', params
       ,
