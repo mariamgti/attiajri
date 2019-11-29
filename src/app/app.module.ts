@@ -55,6 +55,7 @@ import { CustomValidationService } from './services/customValidationService';
 
 import {FiabilisationComponent} from './pages/fiabilisation/fiabilisation.component';
 import {ShareAccountComponent}  from './pages/share-account/share-account.component';
+import { StarRatingComponent } from './pages/complaint/survey/star-rating/star-rating.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -86,20 +87,18 @@ export function createTranslateLoader(http: HttpClient) {
     SlideInLoginComponent,
     ResultActivationComponent,
     SicavValueComponent,
-   
     ComplaintListComponent,
-   
     AddComplaintComponent,
-   
     AddComplaintStep2Component,
-   
     SurveyComponent,
-   
     ViewComplaintComponent,
-   
     ResultAddComplaintComponent,
    
     FormErrorComponent,
+  
+    
+   
+    StarRatingComponent,
    
   ],
   imports: [

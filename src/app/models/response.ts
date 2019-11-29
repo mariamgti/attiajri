@@ -2,7 +2,7 @@ import { Question } from './question';
 
 
 export interface response {
-    responseRef: number,
+    complaintRef: number,
     response: string,
     question: Question
 

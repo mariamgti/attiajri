@@ -1,0 +1,45 @@
+$gray: #aaa;
+
+
+.container{
+  display: flex!important;
+  flex-direction: column!important;
+  align-items: center!important;
+  justify-content: center!important;
+  padding: 16px!important;
+  .section{
+    display: flex!important;
+    height: 200px!important;
+    align-items: center!important;
+    justify-content: center!important;
+    .block{
+      border: 1px solid $gray!important;
+      border-radius: 3px!important;
+      margin:16px!important;
+      padding: 40px!important;
+      .margin-vertical-8{
+        margin: 8px 0!important;
+      }
+    }
+  }
+  
+}
+
+.star-rating{
+    .to-rate{
+        cursor: pointer!important;
+        padding: 0 3px!important;
+    }
+    .fa-star-o{
+        color: orange!important;
+    }
+    .fa-star{
+        color: orange!important;
+    }
+    .fa-star-half-o{
+        color: orange!important;
+    }
+    .to-display{
+        padding: 0 2px!important;
+    }
+}
