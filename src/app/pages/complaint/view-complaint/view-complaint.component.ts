@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Complaint } from '../../../models/complaint';
 import { ComplaintService } from '../../../services/complaint.service';
 import { transition, trigger, animate, style,state } from '@angular/animations';
-import { DocumentHeader } from 'src/app/models/documentHeader';
 @Component({
   selector: 'app-view-complaint',
   templateUrl: './view-complaint.component.html',
@@ -23,9 +22,10 @@ import { DocumentHeader } from 'src/app/models/documentHeader';
 export class ViewComplaintComponent implements OnInit {
   complaints:Complaint[];
   CommentDescrip:string;
-  show:boolean=false;
+  show_details:boolean=false;
   i:Number=0;
   complRef;
+  warning:string;
   statut:boolean=false;
   bankResponse;
   selectedClaimValue;
@@ -45,23 +45,22 @@ export class ViewComplaintComponent implements OnInit {
       return this.complaintService.getComplaints(1).subscribe(data => {
         this.complaints = data;
         
-        console.log(" those are the complaints"+   this.complaints[0].inputDate);
       })
     }
     Descrip(complaint:Complaint)
     {
-     this.i =+1;
+   
       this.CommentDescrip=complaint.complDetails;
       this.complRef=complaint.complRef;
       this.bankResponse=complaint.bankResponse;
       this.selectedClaimValue=complaint;
-     if(complaint.state=="En cours de traitement")
-     this.statut=true;
-     if(this.show==false)
+
+     if(this.show_details==false)
      {
-       this.show=true;
-     }
-      console.log(" hi" + complaint.state);
+       this.show_details=true;
+     }else
+     this.show_details=false;
+     
     }
     Delete(complaint:Complaint)
     {
@@ -69,9 +68,9 @@ export class ViewComplaintComponent implements OnInit {
       {
         this.showFormError=true;
         this.affecte=true;
+        this.warning="Attention"
 
       }else{
-        console.log(" hi" + this.complRef);
         this.complaintService.deleteComplaint(this.complRef).subscribe((data: {})  => {
        
          this.resultCode=data;
@@ -79,10 +78,13 @@ export class ViewComplaintComponent implements OnInit {
          {
            this.showFormError=true;
          this.Notdeleted=true;
+         this.warning="Attention"
+         
          }
          else
          this.showFormError=true;
          this.deleted=true;
+         this.warning="Attention"
          this.loadComplaints();
         
        })
@@ -91,7 +93,5 @@ export class ViewComplaintComponent implements OnInit {
 
     }
     
-    dismiss(){
-      this.show=false;
-    }
+    
 }

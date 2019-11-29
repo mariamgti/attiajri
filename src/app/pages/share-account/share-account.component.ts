@@ -9,6 +9,9 @@ import {
   trigger
 } from '@angular/animations';
 import {PortFeuille} from '../../models/portFeuille';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 @Component({
   selector: 'app-share-account',
   templateUrl: './share-account.component.html',
@@ -29,68 +32,63 @@ export class ShareAccountComponent implements OnInit {
    ShareAccountList: any = [];
    FlowAccountList: any = [];
   ShareWalletList: any = [];
-  _show = false;
-  _show1=false;
-  _show2=false;
+  _showPortefeuilles=false;
+  _showDetailsPF=false;
   selectedLevel;
   selectedLevel1;
   selectedWalletValue;
-  shareAccount:boolean=false;
+ 
   constructor(public shareAccService: ShareAccountService,public flowAccService:FlowaccserviceService) { }
 
   ngOnInit() {
     this.loadFlowAccounts();
    
   }
-  onSelect(PortFeuille: PortFeuille): void {
+  //permet de faire apparaitre ou disparaitre le detail de la portefeuille
+  onSelectWallet(PortFeuille: PortFeuille): void {
     this.selectedWalletValue = PortFeuille;
-  if(!this._show2)
-  {this._show2=true;}
+  if(!this._showDetailsPF)
+  {this._showDetailsPF=true;}
   
   else 
-  {this._show2=false;}
+  {this._showDetailsPF=false;}
   
-    console.log(this._show2);
+    
   } 
   
-  Dismiss() {
-   
-    this._show2 = false;
-  
-}
-  selected(){
-    console.log(this.selectedLevel.numCpt);
+
+  selectedFlowAccount(){
+ 
     this.loadShareAccounts(this.selectedLevel.numCpt);
-    this._show=true;
-    if(!this.shareAccount)
-   { this.shareAccount=true;}
-   else
-   this.shareAccount=false;
+    this._showPortefeuilles=false;
+  
   } 
+  // le compte titre selectionné
   selectedShareAcc()
   {
-    console.log(this.selectedLevel1.shareAccNumber);
+   
     this.loadWallets(this.selectedLevel1.shareAccNumber);
-    this._show1=true;
+    this._showPortefeuilles=true;
   } 
-   // list
+   // list des comptes debits
    loadFlowAccounts() {
     return this.flowAccService.GetFlowAccount().subscribe((data: {}) => {
       this.FlowAccountList = data;
-      console.log(" those are the accounts"+data);
+      
     })
   }
-   //  list
+   //  list des comptes titres
    loadShareAccounts(numCpt) {
     return this.flowAccService.GetShareAccount(numCpt).subscribe((data: {}) => {
       this.ShareAccountList = data;
-      console.log(" those are the accounts"+ data);
+    
     })
   }
+  //  list des portefeuilles
   loadWallets(shareAccNumber) {
     return this.flowAccService.GetWallets(shareAccNumber).subscribe((data: {}) => {
       this.ShareWalletList = data;
-      console.log(" those are the accounts"+ data);
+     
     })
   }
 }

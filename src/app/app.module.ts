@@ -49,13 +49,13 @@ import { SurveyComponent } from './pages/complaint/survey/survey.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ViewComplaintComponent } from './pages/complaint/view-complaint/view-complaint.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-
 import { ResultAddComplaintComponent } from './pages/complaint/result-add-complaint/result-add-complaint.component';
 import { FormErrorComponent } from './pages/modal-pages/form-error/form-error.component';
 import { CustomValidationService } from './services/customValidationService';
 
 import {FiabilisationComponent} from './pages/fiabilisation/fiabilisation.component';
 import {ShareAccountComponent}  from './pages/share-account/share-account.component';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
