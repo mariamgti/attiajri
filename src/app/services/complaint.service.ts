@@ -9,6 +9,7 @@ import { Question } from '../models/question';
 import { Profession } from '../models/profession';
 import { ComplaintObject } from '../models/complaintObject';
 import { DocumentHeader } from '../models/documentHeader';
+import { response } from '../models/response';
 
 @Injectable({
   providedIn: 'root'
@@ -130,18 +131,15 @@ export class ComplaintService {
         })
       });
   }
-  addSurveyResponse(questref, complRef, response) {
+  addSurveyResponse(reqponse : response   []) {
 
-    const params = new HttpParams()
-      .set('complaintRef', complRef)
-      .set('questref', questref)
-      .set('response', response)
 
-    return this.http.post(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/addSurveyResponse', params.toString(),
+
+    return this.http.post(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsComplaint/addSurveyResponse', reqponse,
 
       {
         headers: new HttpHeaders({
-          'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+          'Content-type': 'application/json',
           Authorization: 'Bearer ' + Cookie.get('access_token')
         })
       });
