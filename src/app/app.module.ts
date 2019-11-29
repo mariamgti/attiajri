@@ -19,7 +19,6 @@ import { HeaderNotLoginComponent } from './pages/login/header-not-login/header-n
 import { PageLoginBodyComponent } from './pages/login/page-login-body/page-login-body.component';
 import { SlideInComponent } from './pages/logged-in/slide-in/slide-in.component';
 import { BgHeaderAuthComponent } from './pages/logged-in/header-login/header-login.component';
-import { CardListComponent } from './pages/card-list/card-list/card-list.component';
 import { PageLoginComponent } from './pages/login/page-login/page-login.component';
 import { PageFooterComponent } from './page-footer/page-footer/page-footer.component';
 import { ConfirmActivationService } from './services/confirm-activation.service';
@@ -57,6 +56,8 @@ import { CustomValidationService } from './services/customValidationService';
 import {FiabilisationComponent} from './pages/fiabilisation/fiabilisation.component';
 import {ShareAccountComponent}  from './pages/share-account/share-account.component';
 import { StarRatingComponent } from './pages/complaint/survey/star-rating/star-rating.component';
+import { RedirectResolveService } from './services/redirect-resolve.service';
+import { AccessGuardService } from './services/access-guard.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -72,7 +73,6 @@ export function createTranslateLoader(http: HttpClient) {
     HeaderNotLoginComponent,
     PageLoginBodyComponent,
     PageFooterComponent,
-    CardListComponent,
     BgHeaderAuthComponent,
     PrepaidCardListComponent,
     DebitCardListComponent,
@@ -94,11 +94,7 @@ export function createTranslateLoader(http: HttpClient) {
     SurveyComponent,
     ViewComplaintComponent,
     ResultAddComplaintComponent,
-   
     FormErrorComponent,
-  
-    
-   
     StarRatingComponent,
    
   ],
@@ -124,7 +120,7 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [ClientWsService, ConstantParams, ConfirmActivationService, AttijariBankApiWsService, AuthService, CartesMxpWS, CustomValidationService,
-    ,SicavValueService,FiabilisationService,ComplaintService,ShareAccountService,Data],
+    ,SicavValueService,FiabilisationService,ComplaintService,ShareAccountService,Data,RedirectResolveService,AccessGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
