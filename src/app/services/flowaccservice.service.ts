@@ -23,7 +23,7 @@ export class FlowaccserviceService {
   GetFlowAccount(): Observable<AccountModel[]> {
     const  params = new  HttpParams().set('codeClient', "1");
 
-    console.log("flow account"+Cookie.get('access_token')+ params);
+
     return this.http.post<AccountModel[]>(this.base.BaseUrlWsElargissementAttijariMob +'wsCompte/findCompteByCodeClient' ,params,{
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded; charset=utf-8',
@@ -38,7 +38,7 @@ export class FlowaccserviceService {
   GetShareAccount(numCpt): Observable<ShareAccount[]> {
     const  params = new  HttpParams().set('numCpt', numCpt);
 
-    console.log("share account"+Cookie.get('access_token')+ params);
+  
     return this.http.post<ShareAccount[]>(this.base.BaseUrlWsElargissementAttijariMob +'wsShareAccount/getShareAccounts' ,params,{
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded; charset=utf-8',
@@ -53,7 +53,7 @@ export class FlowaccserviceService {
   GetWallets(shareAccNumber): Observable<ShareAccount[]> {
     const  params = new  HttpParams().set('shareAccNumber', shareAccNumber);
 
-    console.log("share account"+Cookie.get('access_token')+ params);
+ 
     return this.http.post<ShareAccount[]>(this.base.BaseUrlWsElargissementAttijariMob +'wsShareAccount/getPortFeuilles' ,params,{
       headers: new HttpHeaders({
         'Content-Type':  'application/x-www-form-urlencoded; charset=utf-8',
@@ -75,7 +75,7 @@ export class FlowaccserviceService {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    console.log(errorMessage);
+
     return throwError(errorMessage);
  }
 }
