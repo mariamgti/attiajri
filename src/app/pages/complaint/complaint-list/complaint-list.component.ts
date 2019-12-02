@@ -106,13 +106,6 @@ export class ComplaintListComponent implements OnInit {
 
       this.complaintDocs = data;
     })
-
-
-
-    this.complaintService.addSurveyResponse(2, 51, 'yes I am satisfied').subscribe(data => {
-
-
-    })
   }
 
 
