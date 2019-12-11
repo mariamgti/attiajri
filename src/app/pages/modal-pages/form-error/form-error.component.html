@@ -3,21 +3,33 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title">{{"warning" |translate}}</h4>
+                    <h4 class="modal-title">{{warning}}</h4>
                 </div>
                 <div class="modal-body">
                 
                     <div  *ngIf="invalidMail" class="bootbox-body">
-                            Email is missing or incorrect
+                            {{"invalidMail" | translate }}
                              </div>
                     <div  *ngIf="invalidPhone" class="bootbox-body">
-                       Phone number is missing or incorrect
+                            {{"invalidPhone" | translate }}
                     </div>
-                
+                    <div  *ngIf="infoNotChanged" class="bootbox-body">
+                            {{"infoNotChanged" | translate }}
+                     </div>
+                     <div  *ngIf="serverError" class="bootbox-body">
+                            {{"serverError" | translate }}
+                      </div>
                      <div  *ngIf="invalidOtherProfession" class="bootbox-body">
                             Profession field is missing or incorrect
                          </div>
-                         <div  *ngIf="invalidProfession" class="bootbox-body">
+                         <div  *ngIf="phoneChanged" class="bootbox-body">
+                                {{"phoneChanged1" | translate }}{{phoneValue}}  {{"phoneChanged2" | translate }}
+                         </div>
+                         <div  *ngIf="emailChanged" class="bootbox-body">
+                                {{"emailChanged1" | translate }} {{emailValue}} {{"emailChanged2" | translate }} 
+                            </div>
+                           
+                            <div  *ngIf="invalidProfession" class="bootbox-body">
                             Profession field is missing or incorrect
                          </div>
 
@@ -33,29 +45,29 @@
                              <div  *ngIf="invalidAccount" class="bootbox-body">
                                 Account field is missing 
                                  </div>
-                                 <div  *ngIf="invalidClient" class="bootbox-body">
-                                    Client field is missing 
-                                     </div>
+                              
 
                              <div  *ngIf="invalidComplaintObject" class="bootbox-body">
                                     Please choose the object of your complaint
                                      </div>
-
+                                     <div  *ngIf="invalidComplaintObject" class="bootbox-body">
+                                        Please choose the object of your complaint
+                                         </div>
 
                                      
                              <div  *ngIf="Notdeleted" class="bootbox-body">
-                                   la suppression est echouée!!
+                                    {{"Notdeleted" | translate }}
                                      </div>
                                               
                              <div  *ngIf="deleted" class="bootbox-body">
-                                la suppression est effectuée avec succée!!
+                                    {{"deleted" | translate }}
                                   </div>
 
                                   <div  *ngIf="affecte" class="bootbox-body">
-                                    la modification sur cette réclamation ne peut pas etre effectuée car la réclamation est affectée à la banque!
+                                        {{"affecte" | translate }}
                                       </div>
                                       <div  *ngIf="invalidResponse" class="bootbox-body">
-                                       Merci de répondre à tousd les questions!!
+                                       Merci de répondre à tous les questions!!
                                           </div>
                                       
 

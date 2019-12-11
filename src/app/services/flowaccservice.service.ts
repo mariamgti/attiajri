@@ -23,7 +23,7 @@ export class FlowaccserviceService {
     const params = new HttpParams().set('codeClient', "1");
 
 
-    return this.http.post<AccountModel[]>(this.base.BaseUrlWsElargissementAttijariMob + 'wsCompte/findCompteByCodeClient', params, {
+    return this.http.post<AccountModel[]>(this.base.BaseUrlWsElargissementAttijariMob +'wsCompte/findCompteByCodeClient' ,params,{
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
         'Authorization': 'Bearer ' + Cookie.get('access_token')
@@ -38,7 +38,7 @@ export class FlowaccserviceService {
     const params = new HttpParams().set('numCpt', numCpt);
 
   
-    return this.http.post<ShareAccount[]>(this.base.BaseUrlWsElargissementAttijariMob + 'wsShareAccount/getShareAccounts', params, {
+    return this.http.post<ShareAccount[]>(this.base.BaseUrlWsElargissementAttijariMob +'wsShareAccount/getShareAccounts' ,params,{
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
         'Authorization': 'Bearer ' + Cookie.get('access_token')
@@ -52,8 +52,8 @@ export class FlowaccserviceService {
   GetWallets(shareAccNumber): Observable<ShareAccount[]> {
     const params = new HttpParams().set('shareAccNumber', shareAccNumber);
 
-   
-    return this.http.post<ShareAccount[]>(this.base.BaseUrlWsElargissementAttijariMob + 'wsShareAccount/getPortFeuilles', params, {
+ 
+    return this.http.post<ShareAccount[]>(this.base.BaseUrlWsElargissementAttijariMob +'wsShareAccount/getPortFeuilles' ,params,{
       headers: new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
         'Authorization': 'Bearer ' + Cookie.get('access_token')
@@ -74,7 +74,6 @@ export class FlowaccserviceService {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-  
     return throwError(errorMessage);
   }
 }

@@ -1,101 +1,127 @@
 import { Component, OnInit } from '@angular/core';
 import { ReliabilityService } from 'src/app/services/reliability.service';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger
-} from '@angular/animations';
-import { AbstractControl, ValidatorFn } from '@angular/forms';
-import { ValidatePhone } from '../../validators/phone.validator';
+import { FormGroup  ,FormBuilder, FormControl  , Validators } from '@angular/forms';
+import { ClientWsService } from 'src/app/services/client-ws.service';
+import { DocumentHeader } from 'src/app/models/documentHeader';
+import { ClientModel } from '../../models/ClientModel';
+
+
 @Component({
   selector: 'app-fiabilisation',
   templateUrl: './fiabilisation.component.html',
-  styleUrls: ['./fiabilisation.component.scss'], animations: [
-    trigger('EnterLeave', [
-      state('flyIn', style({ transform: 'translateY(0)' })),
-      transition(':enter', [
-        style({ transform: 'translatey(100%)' }),
-        animate('0.5s 300ms ease-in')
-      ]),
-      transition(':leave', [
-        animate('0.3s ease-out', style({ transform: 'translateY(100%)' }))
-      ])
-    ])
-  ]
+  styleUrls: ['./fiabilisation.component.scss']
 })
 export class FiabilisationComponent implements OnInit {
-  selectedLevel1;
-  client;
+  DocumentHeader:DocumentHeader;
+  Client:ClientModel;
+  emailValue:string;
+  phoneValue:string;
   registerForm: FormGroup;
-  submitted = false;
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  warning:string;
   invalidMail: boolean = false;
   invalidPhone: boolean = false;
   showFormError: boolean = false;
-  commencewithchar: boolean = false;
-  static validPhone = false;
-  constructor(private reliabilityService: ReliabilityService, private formBuilder: FormBuilder) { }
-
+  emailChanged:boolean=false;
+  phoneChanged:boolean=false;
+  serverError:boolean=false;
+  infoNotChanged:boolean=false;
+  constructor(private reliabilityService :ReliabilityService,private formBuilder: FormBuilder,private clientService : ClientWsService) { }
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(8), ValidatePhone]),
-    });
-
+    this.loadClient();
+    this.createForm();
+      
   }
 
-  // Issues list
-  loadClient(id) {
-    return this.reliabilityService.GetClient(id).subscribe((data: {}) => {
-      this.client = data;
+    // Issues list
+    loadClient() {
+      return this.clientService.findClientByCodeClient(1).subscribe(data => {
+        this.Client = data; 
+        this.emailValue=this.Client.email;
+        this.phoneValue=this.Client.phone;
+        
+      })
+    }
+
+
+    createForm() {
+      this.registerForm = this.formBuilder.group({
+        email:new FormControl('',[Validators.required, Validators.email]) ,
+        phone: new FormControl('',[Validators.required,Validators.minLength(8)]),
+      });
+    }
+onSubmit()
+{
+ 
+  if (this.registerForm.get('email').invalid && this.registerForm.get('phone').invalid) {
+  
+    this.showFormError = true;
+    this.invalidMail = true;
+    this.invalidPhone = true;
+    this.warning="Attention"
+return;
+  }
+  if(this.emailValue!=this.Client.email|| this.phoneValue!=this.Client.phone)
+  {
+
+    return this.reliabilityService.UpdateClient(this.Client.codCli,this.emailValue,this.phoneValue).subscribe(data => {
+      this.DocumentHeader = data;
+   
+       if(this.DocumentHeader.resultCode=="0000")
+       {
+        
+        if(this.emailValue!=this.Client.email)
+        {
+          this.showFormError = true;
+          this.emailChanged=true; 
+          this.warning="Info";
      
 
+        }
+        if(this.phoneValue!=this.Client.phone)
+        {
+          this.showFormError = true;
+          this.phoneChanged=true;
+          this.warning="Info";
+        }
+      
+       }else
+       {
+        this.showFormError = true;
+        this.serverError=true; 
+        this.warning="Attention"
+       }
+       
+  
+      
     })
   }
-  selectedShareAcc() {
-
-    this.loadClient(this.selectedLevel1);
-
-
+  if (this.registerForm.get('email').invalid ) {
+    this.showFormError = true;
+    this.invalidMail = true;
+    this.warning="Attention"
+return;
   }
-  static checkChar(control: AbstractControl) {
-    var letters = /^[A-Za-z]+$/;
-    if (!control.value.startsWith(letters)) {
-      return { 'this.validPhone': true };
-    }
-    return null;
+ 
+  if (this.registerForm.get('phone').invalid) {
+    this.showFormError = true;
+    this.invalidPhone = true;
+    this.warning="Attention"
+  return;
   }
-  onSubmit() {
-    if (this.registerForm.get('email').invalid) {
-      this.showFormError = true;
-      this.invalidMail = true;
-
-    }
-
-    if (this.registerForm.get('phone').invalid) {
-      this.showFormError = true;
-      this.invalidPhone = true;
-    }
-    return this.reliabilityService.UpdateClient(this.selectedLevel1, this.client.email, this.client.phone).subscribe((data: {}) => {
-      this.client = data;
-
-      if (this.client.resultCode == "0000") {
-        this.submitted = true;
-
-        this.registerForm.reset();
-      }
-
-
-
-    })
+ 
+ 
+  if(this.emailValue==this.Client.email && this.phoneValue==this.Client.phone)
+  {
+    console.log("  Vous n'avez pas commis des modifications!")
+    this.showFormError = true;
+    this.infoNotChanged=true;
+    this.warning="Attention"
   }
-  Dismiss() {
+   
 
-    this.submitted = false;
+ 
 
-  }
+}
+
 }

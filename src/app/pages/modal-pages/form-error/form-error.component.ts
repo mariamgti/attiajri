@@ -22,6 +22,16 @@ export class FormErrorComponent implements OnInit {
   @Input() invalidResponse: boolean;
   @Input() invalidMail: boolean;
   @Input() invalidPhone: boolean;
+@Input() emailValue:string;
+@Input() phoneValue:string;
+@Input() emailChanged:boolean;
+@Input() phoneChanged:boolean;
+@Input() serverError:boolean;
+@Input() infoNotChanged:boolean;
+@Input() deleted: boolean;
+@Input() Notdeleted: boolean;
+@Input() affecte:boolean;
+@Input() warning:string;
   @Input() invalidProfession: boolean;
   @Input() invalidOtherProfession: boolean;
   @Input() invalidAccount: boolean;
@@ -43,15 +53,23 @@ export class FormErrorComponent implements OnInit {
   @Output() invalidDescriptionChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidComplaintObjectChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidComplaintDocChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Input() deleted: boolean;
-  @Input() Notdeleted: boolean;
-  @Input() affecte: boolean;
+  
 
+  @Output() deletedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() NotdeletedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() affecteChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() emailChangedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() phoneChangedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() serverErrorChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() infoNotChangedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output() warningChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() emailValueChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() phoneValueChange: EventEmitter<string> = new EventEmitter<string>();
   ngOnInit() {
   }
   constructor(private router: Router) { }
   close() {
-
+    this.show = false;
     this.invalidMail = false;
     this.invalidPhone = false;
     this.invalidProfession = false;
@@ -66,16 +84,35 @@ export class FormErrorComponent implements OnInit {
     this.invalidResponseChange.emit(this.invalidResponse)
     this.invalidClientChange.emit(this.invalidClient);
     this.invalidAccountChange.emit(this.invalidAccount);
+    //
+    this.emailChanged=false;
+    this.phoneChanged=false;
+    this.serverError=false;
+    this.infoNotChanged=false;
+    //
+    this.deletedChange.emit(this.deleted);
+    this.NotdeletedChange.emit(this.Notdeleted);
+    //
     this.showChange.emit(this.show);
     this.invalidMailChange.emit(this.invalidMail);
-    this.invalidProfessionChange.emit(this.invalidProfession);
-    this.invalidOtherProfessionChange.emit(this.invalidOtherProfession);
     this.invalidPhoneChange.emit(this.invalidPhone);
+    this.affecteChange.emit(this.affecte);
+    this.emailValueChange.emit(this.emailValue);
+    this.phoneValueChange.emit(this.phoneValue);
+    this.emailChangedChange.emit(this.emailChanged);
+    this.serverErrorChange.emit(this.serverError);
+    this.infoNotChangedChange.emit(this.infoNotChanged);
+    //
+    this.invalidProfessionChange.emit(this.invalidProfession);
+    this.invalidOtherProfessionChange.emit(this.invalidOtherProfession);   
     this.invalidIncedentDateChange.emit(this.invalidIncedentDate);
     this.invalidDescriptionChange.emit(this.invalidDescription);
     this.invalidComplaintObjectChange.emit(this.invalidComplaintObject);
     this.invalidComplaintDocChange.emit(this.invalidComplaintDoc);
 
 
+    this.invalidClientChange.emit(this.invalidClient);
+    this.invalidAccountChange.emit(this.invalidAccount);
+    this.warningChange.emit(this.warning);
   }
 }

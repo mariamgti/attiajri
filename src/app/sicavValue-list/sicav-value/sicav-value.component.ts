@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { SicavValue } from '../../models/SicavValue';
 import { SicavValueService } from '../../services/sicav-value.service';
+import { SicavValue } from '../../models/SicavValue';
 
 @Component({
   selector: 'app-sicav-value',
@@ -9,17 +8,20 @@ import { SicavValueService } from '../../services/sicav-value.service';
   styleUrls: ['./sicav-value.component.scss']
 })
 export class SicavValueComponent implements OnInit {
-  todayISOString: string = new Date().toISOString();
+  today= new Date();
   sicavValues: SicavValue[];
-  constructor(
-    private sicavValueService: SicavValueService, private router: Router) {
+  VLveille:number;
+  VLjour:number;
+  constructor( 
+    private sicavValueService: SicavValueService) {
   }
 
   ngOnInit() {
     this.sicavValueService.getSicavValues().subscribe(data => {
       this.sicavValues = data;
-    
+      
     });
   }
+  
 
 }

@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { PortFeuille } from '../../models/PortFeuille';
 import { FlowaccserviceService } from '../../services/flowaccservice.service';
 import { ShareAccountService } from '../../services/share-account.service';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 @Component({
   selector: 'app-share-account',
   templateUrl: './share-account.component.html',
@@ -20,65 +23,65 @@ import { ShareAccountService } from '../../services/share-account.service';
   ]
 })
 export class ShareAccountComponent implements OnInit {
-  shareAccountList: any = [];
-  flowAccountList: any = [];
-  shareWalletList: any = [];
-  _show = false;
-  _show1 = false;
-  _show2 = false;
+   ShareAccountList: any = [];
+   FlowAccountList: any = [];
+  ShareWalletList: any = [];
+  _showPortefeuilles=false;
+  _showDetailsPF=false;
   selectedLevel;
   selectedLevel1;
   selectedWalletValue;
-  shareAccount: boolean = false;
-  constructor(public shareAccService: ShareAccountService, public flowAccService: FlowaccserviceService) { }
+ 
+  constructor(public shareAccService: ShareAccountService,public flowAccService:FlowaccserviceService) { }
 
   ngOnInit() {
     this.loadFlowAccounts();
 
   }
-  onSelect(PortFeuille: PortFeuille): void {
+  //permet de faire apparaitre ou disparaitre le detail de la portefeuille
+  onSelectWallet(PortFeuille: PortFeuille): void {
     this.selectedWalletValue = PortFeuille;
-    if (!this._show2) { this._show2 = true; }
-
-    else { this._show2 = false; }
- 
-  }
-
-  Dismiss() {
-
-    this._show2 = false;
-
-  }
-  selected() {
-
-    this.loadShareAccounts(this.selectedLevel.numCpt);
-    this._show = true;
-    if (!this.shareAccount) { this.shareAccount = true; }
-    else
-      this.shareAccount = false;
-  }
-  selectedShareAcc() {
+  if(!this._showDetailsPF)
+  {this._showDetailsPF=true;}
   
+  else 
+  {this._showDetailsPF=false;}
+  
+    
+  } 
+  
+
+  selectedFlowAccount(){
+ 
+    this.loadShareAccounts(this.selectedLevel.numCpt);
+    this._showPortefeuilles=false;
+  
+  } 
+  // le compte titre selectionné
+  selectedShareAcc()
+  {
+   
     this.loadWallets(this.selectedLevel1.shareAccNumber);
-    this._show1 = true;
-  }
-  // list
-  loadFlowAccounts() {
+    this._showPortefeuilles=true;
+  } 
+   // list des comptes debits
+   loadFlowAccounts() {
     return this.flowAccService.GetFlowAccount().subscribe((data: {}) => {
-      this.flowAccountList = data;
+      this.FlowAccountList = data;
+      
+    })
+  }
+   //  list des comptes titres
+   loadShareAccounts(numCpt) {
+    return this.flowAccService.GetShareAccount(numCpt).subscribe((data: {}) => {
+      this.ShareAccountList = data;
     
     })
   }
-  //  list
-  loadShareAccounts(numCpt) {
-    return this.flowAccService.GetShareAccount(numCpt).subscribe((data: {}) => {
-      this.shareAccountList = data;
-   
-    })
-  }
+  //  list des portefeuilles
   loadWallets(shareAccNumber) {
     return this.flowAccService.GetWallets(shareAccNumber).subscribe((data: {}) => {
-      this.shareWalletList = data;
+      this.ShareWalletList = data;
      
     })
   }

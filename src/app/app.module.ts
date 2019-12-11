@@ -18,7 +18,6 @@ import { InfoPratiqueComponent } from './page-footer/info-pratique/info-pratique
 import { PageFooterComponent } from './page-footer/page-footer/page-footer.component';
 import { DebitCardDetailComponent } from './pages/card-detail/debit-card-detail/debit-card-detail.component';
 import { PrepaidCardDetailComponent } from './pages/card-detail/prepaid-card-detail/prepaid-card-detail.component';
-import { CardListComponent } from './pages/card-list/card-list/card-list.component';
 import { DebitCardListComponent } from './pages/card-list/debit-card-list/debit-card-list.component';
 import { PrepaidCardListComponent } from './pages/card-list/prepaid-card-list/prepaid-card-list.component';
 import { AddComplaintComponent } from './pages/complaint/add-complaint-step1/add-complaint.component';
@@ -31,10 +30,10 @@ import { ViewComplaintComponent } from './pages/complaint/view-complaint/view-co
 import { ConfirmActivationDebitCardComponent } from './pages/confirm-activation-debit-card/confirm-activation-debit-card.component';
 import { ConfirmActivationPrepaidCardComponent } from './pages/confirm-activation-prepaid-card/confirm-activation-prepaid-card.component';
 import { FiabilisationComponent } from './pages/fiabilisation/fiabilisation.component';
-import { BgHeaderAuthComponent } from './pages/logged-in/header-login/header-login.component';
-import { SlideInComponent } from './pages/logged-in/slide-in/slide-in.component';
 import { HeaderNotLoginComponent } from './pages/login/header-not-login/header-not-login.component';
 import { PageLoginBodyComponent } from './pages/login/page-login-body/page-login-body.component';
+import { SlideInComponent } from './pages/logged-in/slide-in/slide-in.component';
+import { BgHeaderAuthComponent } from './pages/logged-in/header-login/header-login.component';
 import { PageLoginComponent } from './pages/login/page-login/page-login.component';
 import { SlideInLoginComponent } from './pages/login/slide-in-login/slide-in-login.component';
 import { ConfirmDeconnectionComponent } from './pages/modal-pages/confirm-deconnection/confirm-deconnection.component';
@@ -51,12 +50,16 @@ import { ClientWsService } from './services/client-ws.service';
 import { ComplaintService } from './services/complaint.service';
 import { ConfirmActivationService } from './services/confirm-activation.service';
 import { ConstantParams } from './services/constantParams/constant.params';
-import { CustomValidationService } from './services/customValidationService';
 import { Data } from './services/Data.service';
 import { FiabilisationService } from './services/fiabilisation.service';
 import { ShareAccountService } from './services/share-account.service';
+import { ComplaintListComponent } from './pages/complaint/complaint-list/complaint-list.component';
+import { CustomValidationService } from './services/customValidationService';
+import { RedirectResolveService } from './services/redirect-resolve.service';
+import { AccessGuardService } from './services/access-guard.service';
 import { SicavValueService } from './services/sicav-value.service';
 import { SicavValueComponent } from './sicavValue-list/sicav-value/sicav-value.component';
+
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -71,7 +74,6 @@ export function createTranslateLoader(http: HttpClient) {
     HeaderNotLoginComponent,
     PageLoginBodyComponent,
     PageFooterComponent,
-    CardListComponent,
     BgHeaderAuthComponent,
     PrepaidCardListComponent,
     DebitCardListComponent,
@@ -87,6 +89,7 @@ export function createTranslateLoader(http: HttpClient) {
     SlideInLoginComponent,
     ResultActivationComponent,
     SicavValueComponent,
+    ComplaintListComponent,
     AddComplaintComponent,
     AddComplaintStep2Component,
     SurveyComponent,
@@ -123,7 +126,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   entryComponents: [FormConfirmConctInfoComponent],
   providers: [ClientWsService, ConstantParams, ConfirmActivationService, AttijariBankApiWsService, AuthService, CartesMxpWS, CustomValidationService,
-    , SicavValueService, FiabilisationService, ComplaintService, ShareAccountService, Data],
+    ,SicavValueService,FiabilisationService,ComplaintService,ShareAccountService,Data,RedirectResolveService,AccessGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

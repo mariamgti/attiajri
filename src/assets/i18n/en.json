@@ -62,5 +62,67 @@
   "confirmOperation": "Confirm operation",
   "operationResult": "Operation result",
   "expData": "The data of this page have been expired.",
-  "sicavList": "List of SICAV values"
+  "sicavList": "List of SICAV values",
+
+
+
+
+
+  "_mariam":"my own changes ",
+  "Historique réclamation":"Complaints' List",
+  "Modifier":"Update",
+  "Supprimer":"Delete",
+  "Repondre Questionnaire":"Answer questionnaire",
+  "Réponse Attijari Banque":"Attijari Bank responses",
+  "Date de traitement":"Process date",
+  "Description":"Description",
+  "Objet de réclamation":"Subject",
+  "Date survenance réclamation":"Complaint's occurrence date",
+  "Date réclamation":"Complaint's date",
+  "Détail":"Detail",
+  "VL veille":"VL day before", 
+  "VL jour":"VL today", 
+  "Valeurs OPCVM":"OPCVM values",
+  "Valeur cours":"Course value",
+  "Valeur prmp":"PRMP value",
+  "Valeurs liquidatives applicables le":"Net asset values applicable on",
+  "B":"are given for reference only.",
+  "L'horaire limite de souscription et rachat des OPCVM est":"the hourly limit value for subscription, redemption of OPCVM is ",
+  "Attijari Obligataire SICAV":"Attijari's bondholder SICAV",
+  "FCP CEA, Dynamique":"FCP CEA, Dynamic",
+  "A":"For further information, please contact the customer relations centre at ",
+  "Comptes titres":"Trading account",
+  "Comptes espèces":"Cash account",
+  "Choisir un compte":"choose an account",
+  " valeur :Code-libelle":"value: code-libel",
+  "Quantité":"Quantity",
+  "Latente":"latent",
+  "Valeur":"Value",
+  "Code":"code",
+  "libelle":"libel",
+  "Qté bloquée":"Bloqued Qty",
+  "Cours cloture":"Closing course",
+
+
+  "affecte":"  You can not delete you complaint because  it has already been affected to the bank!",
+  "Fiabilisation donnée":"Data reliability",
+  "deleted":" You have deleted your complaint with success!!",
+  "Notdeleted":" The deletion failed !!",
+  "emailChanged1":" We alert you that the new mail address",
+  "emailChanged2":"that you have just typed will be henceforth used by Attijari Bank for all types of notifications: account statements, news letter,informations's messages, etc ",
+  "phoneChanged1":" We alert you that your new phone number ",
+  "phoneChanged2":" that you have just typed will be henceforth used by Attijari Bank for all types of notifications: Attijari SMS , informations's messages ,ect",
+  "invalidMail":"Email is empty or incorrect!!",
+"Nom et prénom/Raison sociale":"Lastname and Firstname/corporate name",
+"Téléphone portable":"Phone number",
+"Adresse courrier":" address",
+"Ville": "City",
+"Code postal":"Zipcode",
+"Valider":"Submit",
+  "infoNotChanged":"You have not committed any changes !", 
+  "invalidPhone":"Your phone number is either empty or incorrect!" ,
+  "serverError":"Something happened in the server!",
+  "NB":" To change your address , please go to your agency."
+
+
 }
