@@ -69,7 +69,7 @@ export class ViewComplaintComponent implements OnInit {
         this.showFormError=true;
         this.affecte=true;
         this.warning="Attention"
-
+         
       }else{
         this.complaintService.deleteComplaint(this.complRef).subscribe((data: {})  => {
        

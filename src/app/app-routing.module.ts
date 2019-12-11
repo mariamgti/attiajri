@@ -9,7 +9,6 @@ import { ConfirmDeconnectionComponent } from './pages/modal-pages/confirm-deconn
 import { ConfirmActivationDebitCardComponent } from './pages/confirm-activation-debit-card/confirm-activation-debit-card.component';
 import { ResultActivationComponent } from './result-activation/result-activation.component';
 import { SicavValueComponent } from './sicavValue-list/sicav-value/sicav-value.component';
-import { ComplaintListComponent } from './pages/complaint/complaint-list/complaint-list.component';
 import { AddComplaintComponent } from './pages/complaint/add-complaint-step1/add-complaint.component';
 import { AddComplaintStep2Component } from './pages/complaint/add-complaint-step2/add-complaint-step2.component';
 import { SurveyComponent } from './pages/complaint/survey/survey.component';
@@ -29,7 +28,6 @@ const appRoutes: Routes = [
   { path: 'confirm-activation-carte-debit', component: ConfirmActivationDebitCardComponent },
   { path: 'resultActivation', component: ResultActivationComponent },
   { path: 'sicavValue', component: SicavValueComponent },
-  { path: 'complaintsList', component: ComplaintListComponent },
   { path: 'addComplaint', component: AddComplaintComponent },
    { path: 'addComplaintStep2', component: AddComplaintStep2Component},
    { path: 'survey', component: SurveyComponent},

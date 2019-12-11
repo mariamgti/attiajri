@@ -39,10 +39,8 @@ import { ResultActivationComponent } from './result-activation/result-activation
 import { Data } from './services/Data.service';
 import { SicavValueComponent } from './sicavValue-list/sicav-value/sicav-value.component';
 import { SicavValueService } from './services/sicav-value.service';
-import { FiabilisationService } from './services/fiabilisation.service';
 import { ComplaintService } from './services/complaint.service';
 import { ShareAccountService } from './services/share-account.service';
-import { ComplaintListComponent } from './pages/complaint/complaint-list/complaint-list.component';
 import { AddComplaintComponent } from './pages/complaint/add-complaint-step1/add-complaint.component';
 import { AddComplaintStep2Component } from './pages/complaint/add-complaint-step2/add-complaint-step2.component';
 import { SurveyComponent } from './pages/complaint/survey/survey.component';
@@ -87,7 +85,6 @@ export function createTranslateLoader(http: HttpClient) {
     SlideInLoginComponent,
     ResultActivationComponent,
     SicavValueComponent,
-    ComplaintListComponent,
     AddComplaintComponent,
     AddComplaintStep2Component,
     SurveyComponent,
@@ -123,7 +120,7 @@ export function createTranslateLoader(http: HttpClient) {
     })
   ],
   providers: [ClientWsService, ConstantParams, ConfirmActivationService, AttijariBankApiWsService, AuthService, CartesMxpWS, CustomValidationService,
-    ,SicavValueService,FiabilisationService,ComplaintService,ShareAccountService,Data],
+    ,SicavValueService,ComplaintService,ShareAccountService,Data],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

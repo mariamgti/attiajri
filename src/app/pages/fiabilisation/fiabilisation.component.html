@@ -33,6 +33,7 @@
                         </div>
                         
                           <div class="form-group row">
+
                           <label for="staticEmail" class="col-sm-2 col-form-label">{{"Téléphone portable" |translate}}:<span class="ui-outputlabel-rfi">*</span></label>
                           <div class="col-sm-10">
                             <input type="number" 
@@ -57,29 +58,24 @@
                           <div class="col-sm-10">
                             <input type="text" readonly class="form-control" id="formGroupExampleInput" id="staticEmail" [(ngModel)]="Client.postCode" [ngModelOptions]="{standalone: true}" >
                              <button type="submit" class="btn btn-pill btn-warning" >{{"Valider" |translate}}</button>
-                          </div></div>
+                          </div></div><br>
+                      
+                          <div class="form-group row" style="background-color:#e2ca9f">
+                              <div class="pull-left col-sm-2  ">
+                                  <i class="fa fa-warning" style="font-size:48px;color:orange"></i>	
+                                            </div>
+                              
+                              <div class="col-sm-10 pull-left text-left ">
+                              <span class="gras ">  {{"NB" |translate}}</span>  
+                                   </div></div>
                        
                         </form>
-                        <br>
-                        <br>
-                        <div id="affSuivants" style="background-color:#e2ca9f">
-                       
-                            <div class="clearfix">
-                                <div class="pull-left ">
-                                    <i class="fa fa-warning" style="font-size:48px;color:orange"></i>	
-                                              </div>
-                              <div class="pull-left text-left text-lib-ico" style="padding-left: 60px;padding-top: 10px;">
-                                <span class="gras ellipsed">{{"NB" |translate}}</span>
-                              </div>
-                     
-                            </div>
-                         
-                        </div>                      
+                                        
                         
 
 <app-load-page *ngIf="load"></app-load-page>
          
 </div></div> 
   <app-page-footer></app-page-footer>
-  <app-form-error [(warning)]="warning" [(phoneValue)]="phoneValue" [(emailValue)]="emailValue" [(invalidMail)]="invalidMail" [(infoNotChanged)]="infoNotChanged" [(invalidPhone)]="invalidPhone" [(phoneChanged)]="phoneChanged" [(emailChanged)]="emailChanged" [(show)]="showFormError" [(phoneValue)]="phoneValue" [(emailValue)]="emailValue" [(invalidMail)]="invalidMail" [(serverError)]="serverError" [(invalidPhone)]="invalidPhone" ></app-form-error>
+  <app-form-error [(warning)]="warning"  [(phoneValue)]="phoneValue" [(emailValue)]="emailValue" [(invalidMail)]="invalidMail" [(infoNotChanged)]="infoNotChanged" [(invalidPhone)]="invalidPhone" [(phoneChanged)]="phoneChanged" [(emailChanged)]="emailChanged" [(show)]="showFormError" [(phoneValue)]="phoneValue" [(emailValue)]="emailValue" [(invalidMail)]="invalidMail" [(serverError)]="serverError" [(invalidPhone)]="invalidPhone" ></app-form-error>
 </div>
