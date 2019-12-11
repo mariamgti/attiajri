@@ -74,7 +74,7 @@ console.log(this.selectedComplaint.autre_prof)
         this.complaintInput.flgSupp = this.selectedComplaint.flgSupp;
         this.complaintInput.login = this.selectedComplaint.login;
         this.complaintInput.numCpt = this.selectedComplaint.account.numCpt;
-        this.complaintInput.autreProf = this.selectedComplaint.autreProf;
+        //this.complaintInput.autreProf = this.selectedComplaint.autreProf;
 
 
 
