@@ -1,14 +1,8 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, OnInit } from '@angular/core';
+import { PortFeuille } from '../../models/PortFeuille';
+import { FlowaccserviceService } from '../../services/flowaccservice.service';
 import { ShareAccountService } from '../../services/share-account.service';
-import{FlowaccserviceService} from '../../services/flowaccservice.service';
-import {
-  animate,
-  state,
-  style,
-  transition,
-  trigger
-} from '@angular/animations';
-import {PortFeuille} from '../../models/portFeuille';
 @Component({
   selector: 'app-share-account',
   templateUrl: './share-account.component.html',
@@ -26,71 +20,66 @@ import {PortFeuille} from '../../models/portFeuille';
   ]
 })
 export class ShareAccountComponent implements OnInit {
-   ShareAccountList: any = [];
-   FlowAccountList: any = [];
-  ShareWalletList: any = [];
+  shareAccountList: any = [];
+  flowAccountList: any = [];
+  shareWalletList: any = [];
   _show = false;
-  _show1=false;
-  _show2=false;
+  _show1 = false;
+  _show2 = false;
   selectedLevel;
   selectedLevel1;
   selectedWalletValue;
-  shareAccount:boolean=false;
-  constructor(public shareAccService: ShareAccountService,public flowAccService:FlowaccserviceService) { }
+  shareAccount: boolean = false;
+  constructor(public shareAccService: ShareAccountService, public flowAccService: FlowaccserviceService) { }
 
   ngOnInit() {
     this.loadFlowAccounts();
-   
+
   }
   onSelect(PortFeuille: PortFeuille): void {
     this.selectedWalletValue = PortFeuille;
-  if(!this._show2)
-  {this._show2=true;}
-  
-  else 
-  {this._show2=false;}
-  
-    console.log(this._show2);
-  } 
-  
+    if (!this._show2) { this._show2 = true; }
+
+    else { this._show2 = false; }
+ 
+  }
+
   Dismiss() {
-   
+
     this._show2 = false;
-  
-}
-  selected(){
-    console.log(this.selectedLevel.numCpt);
+
+  }
+  selected() {
+
     this.loadShareAccounts(this.selectedLevel.numCpt);
-    this._show=true;
-    if(!this.shareAccount)
-   { this.shareAccount=true;}
-   else
-   this.shareAccount=false;
-  } 
-  selectedShareAcc()
-  {
-    console.log(this.selectedLevel1.shareAccNumber);
+    this._show = true;
+    if (!this.shareAccount) { this.shareAccount = true; }
+    else
+      this.shareAccount = false;
+  }
+  selectedShareAcc() {
+  
     this.loadWallets(this.selectedLevel1.shareAccNumber);
-    this._show1=true;
-  } 
-   // list
-   loadFlowAccounts() {
+    this._show1 = true;
+  }
+  // list
+  loadFlowAccounts() {
     return this.flowAccService.GetFlowAccount().subscribe((data: {}) => {
-      this.FlowAccountList = data;
-      console.log(" those are the accounts"+data);
+      this.flowAccountList = data;
+    
     })
   }
-   //  list
-   loadShareAccounts(numCpt) {
+  //  list
+  loadShareAccounts(numCpt) {
     return this.flowAccService.GetShareAccount(numCpt).subscribe((data: {}) => {
-      this.ShareAccountList = data;
-      console.log(" those are the accounts"+ data);
+      this.shareAccountList = data;
+   
     })
   }
   loadWallets(shareAccNumber) {
     return this.flowAccService.GetWallets(shareAccNumber).subscribe((data: {}) => {
-      this.ShareWalletList = data;
-      console.log(" those are the accounts"+ data);
+      this.shareWalletList = data;
+     
     })
   }
 }

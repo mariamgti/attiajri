@@ -3,7 +3,6 @@
     <div>
         <h4 class="modal-title text-center tc2" id="modalDCLabel">{{"cardDetails" |translate}}</h4>
     </div>
-
     <hr class="hr-mob-top gradient-horizontal-primary">
     <table class="table table-striped" id="tableMvts">
         <tbody>
@@ -54,11 +53,9 @@
     </table>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-lg btnvalider " data-dismiss="modal"
-            *ngIf="carte.codeStatut === '5'" (click)="redirectToConfirmation()">{{"activateCard" |translate}}
+        <button type="button" class="btn btn-default btn-lg btnvalider " data-dismiss="modal" *ngIf="carte.codeStatut === '5'" (click)="redirectToConfirmation()">{{"activateCard" |translate}}
         </button>
-        <button type="button" class="btn btn-default btn-lg btnvalider " data-dismiss="modal"
-            *ngIf="carte.codeStatut === '2'" (click)="redirectToConfirmation()">{{"desactivateCard" |translate}}
+        <button type="button" class="btn btn-default btn-lg btnvalider " data-dismiss="modal" *ngIf="carte.codeStatut === '2'" (click)="redirectToConfirmation()">{{"desactivateCard" |translate}}
         </button>
     </div>
 </div>

@@ -1,11 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PrepaidCardModel } from 'src/app/models/prepaid.card.model';
-
+import { PrepaidCardModel } from 'src/app/models/PrepaidCardModel';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClientWsService } from '../../services/client-ws.service';
 import { FormGroup, FormBuilder, Validators, FormControl, } from '@angular/forms';
 import { ConfirmActivationService } from '../../services/confirm-activation.service';
-import { DebitCardModel } from '../../models/debit.card.model';
+
 
 
 @Component({

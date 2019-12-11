@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { Cookie, CookieService } from 'ng2-cookies';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 
 
@@ -62,7 +61,7 @@ export class PageLoginComponent implements OnInit {
             }
 
 
-            
+
           }
           //else  page login
 

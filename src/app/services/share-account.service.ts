@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ConstantParams } from './constantParams/constant.params';
-import { Observable } from 'rxjs';
-import { ShareAccount } from '../models/shareAccount';
+import { Injectable } from '@angular/core';
 import { Cookie } from 'ng2-cookies';
-import { PortFeuille } from '../models/portFeuille';
+import { Observable } from 'rxjs';
+import { PortFeuille } from '../models/PortFeuille';
+import { ShareAccount } from '../models/ShareAccount';
+import { ConstantParams } from './constantParams/constant.params';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShareAccountService {
 
-  
+
   constructor(private http: HttpClient, private constantParams: ConstantParams) { }
 
 
 
   getShareAccounts(numCpt): Observable<ShareAccount[]> {
-    return this.http.get<ShareAccount[]>(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsShareAccount/getShareAccounts?numCpt=' +numCpt,
+    return this.http.get<ShareAccount[]>(this.constantParams.BaseUrlWsElargissementAttijariMob + 'wsShareAccount/getShareAccounts?numCpt=' + numCpt,
       {
         headers: new HttpHeaders({
           'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',

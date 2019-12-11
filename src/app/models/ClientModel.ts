@@ -1,16 +1,14 @@
+import { Profession } from './Profession';
 
-export interface ClientModel {
+export class ClientModel {
      codCli: number;
      nom: string;
      prenom: string;
      numDoc: number;
-     email: string,
+     email: string;
      phone: string;
      postCode: string;
      city: string;
-     
      homeAddress: string;
-
-
-  
+     proffession:Profession;
 }

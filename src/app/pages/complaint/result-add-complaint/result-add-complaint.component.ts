@@ -7,7 +7,7 @@ import { Data } from 'src/app/services/Data.service';
   styleUrls: ['./result-add-complaint.component.scss']
 })
 export class ResultAddComplaintComponent implements OnInit {
-  isSuccess:boolean;
+  isSuccess: boolean;
   constructor(private data: Data) { }
 
   ngOnInit() {

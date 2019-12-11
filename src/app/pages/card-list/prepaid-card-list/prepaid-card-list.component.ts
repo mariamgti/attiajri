@@ -1,7 +1,6 @@
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ClientWsService } from 'src/app/services/client-ws.service';
 import { AuthService } from '../../../services/auth.service';
-
 @Component({
   selector: 'app-prepaid-card-list',
   templateUrl: './prepaid-card-list.component.html',
@@ -23,20 +22,18 @@ export class PrepaidCardListComponent implements OnInit {
     });
     this.clientWsService.findCartePrepayeeBycodCli(1).subscribe((data: {}) => {
       this.cards = data;
-      console.log('cards', data);
+  
     });
     window.dispatchEvent(new CustomEvent('init-select'));
   }
   toggleGroup(group) {
     this.load = true;
-   
-      if (this.isGroupShown(group)) {
-        this.shownGroup = null;
-      } else {
-        this.shownGroup = group;
-      }
-      this.load = false;
-   
+    if (this.isGroupShown(group)) {
+      this.shownGroup = null;
+    } else {
+      this.shownGroup = group;
+    }
+    this.load = false;
   }
   isGroupShown(group) {
     return this.shownGroup === group;

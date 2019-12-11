@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -52,9 +52,9 @@ export class PageLoginBodyComponent implements OnInit {
 
   onchange(value) {
 
-    console.log('value', value);
+  
     this.password = value.concat(this.password);
-    console.log('password=', this.password, '.');
+    
   }
   login() {
 

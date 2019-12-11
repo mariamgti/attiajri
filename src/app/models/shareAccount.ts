@@ -1,11 +1,10 @@
-import { AccountModel } from './account.model';
+import { AccountModel } from './AccountModel';
 
 
 
 export interface ShareAccount {
-    shareAcc_id: number,
+    shareAccId: number,
     shareAccNumber: string,
     espcAccNumber: string,
     compte: AccountModel,
-
 }

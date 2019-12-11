@@ -1,6 +1,6 @@
-import { ShareAccount } from './shareAccount';
 
 
+import { ShareAccount } from './ShareAccount';
 export interface PortFeuille {
     code: number,
     libelle: string,
@@ -11,7 +11,5 @@ export interface PortFeuille {
     PRMP: number,
     PRMPValue: number,
     latency: number,
-    shareAccount:ShareAccount
-    
-
+    shareAccount: ShareAccount
 }

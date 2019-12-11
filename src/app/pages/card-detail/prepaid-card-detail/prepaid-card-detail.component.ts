@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { PrepaidCardModel } from '../../../models/prepaid.card.model';
+import { PrepaidCardModel } from '../../../models/PrepaidCardModel';
 import { Subscription } from 'rxjs';
 import { ClientWsService } from '../../../services/client-ws.service';
 import { CardListComponent } from '../../card-list/card-list/card-list.component';
@@ -16,9 +16,7 @@ export class PrepaidCardDetailComponent implements OnInit {
   load: boolean;
   @Input() public carte: PrepaidCardModel;
   constructor(private route: ActivatedRoute, private router: Router, private clientWsService: ClientWsService, ) { }
-
   ngOnInit() { }
-
   redirectToConfirmation() {
     this.load = true;
     setTimeout(() => {
@@ -30,7 +28,7 @@ export class PrepaidCardDetailComponent implements OnInit {
     this.clientWsService.activerCarteP(numCarteP);
   }
   onDesactivate(numCarteP) {
-    console.log('heree' + numCarteP)
+  
     this.clientWsService.desactiverCarteP(numCarteP);
   }
 }

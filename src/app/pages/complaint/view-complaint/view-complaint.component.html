@@ -1,107 +1,105 @@
 <div id="page-container" styles="min-height: 100%;">
   <app-header-login></app-header-login>
   <div id="page-body">
-    <div id="page-title">Historique réclamation  </div>
-    <div class="container-fluid">
-      <div *ngFor="let complaint of complaints">
-      <a  id="l0" class="btn btn-default btn-all"  (click)="Descrip(complaint)">
-        <div class="clearfix">
-                <div class="row">
-                  <div class="col-xs-10 text-left padding-zero">
-                    <div class="ts2 gras ellipsed">
-                     {{complaint.inputDate}} </div>
-                    <div class="ts2 ellipsed">
-                      {{complaint.complaintObject.libelle}}<br>
-                    </div>
-                  </div>
-                  <div class="col-xs-2 padding-zero">
-                    <div class="text-right" style="padding-top:7px;">
+      <div id="page-title">Historique réclamation </div>
+      <div class="container-fluid">
+          <div *ngFor="let complaint of complaints">
+              <a id="l0" class="btn btn-default btn-all" (click)="Descrip(complaint)">
+                  <div class="clearfix">
+                      <div class="row">
+                          <div class="col-xs-10 text-left padding-zero">
+                              <div class="ts2 gras ellipsed">
+                                  {{complaint.inputDate}} </div>
+                              <div class="ts2 ellipsed">
+                                  {{complaint.complaintObject.libelle}}
+                                  <br>
+                              </div>
+                          </div>
+                          <div class="col-xs-2 padding-zero">
+                              <div class="text-right" style="padding-top:7px;">
+                              </div>
+                          </div>
+                      </div>
+                      <div _ngcontent-gcw-c1="" class="text-right" style="padding-top:7px;">
+                          <i _ngcontent-gcw-c1="" class="fa fa-chevron-down ico-size-min ico-color pointer"></i>
+                      </div>
+
+                      <div class="text-right ts1 padding-zero">
+                          <span class="gras"> 
+                 {{complaint.state}} </span>
                       </div>
                   </div>
-                </div>
-    <div _ngcontent-gcw-c1="" class="text-right" style="padding-top:7px;">
-    <i _ngcontent-gcw-c1="" class="fa fa-chevron-down ico-size-min ico-color pointer"></i>
-    </div>
-
-               <div class="text-right ts1 padding-zero">
-                  <span class="gras"> 
-                   {{complaint.state}} </span>
-                </div>
-              </div></a>
+              </a>
               <div class="detailCarte" *ngIf="show && selectedClaimValue==complaint" [@EnterLeave]="'flyIn'">
-                <div>
-<div (click)="dismiss()" _ngcontent-gcw-c1="" class="text-right" style="padding-top:7px;"><i _ngcontent-gcw-c1="" class="fa fa-window-close" aria-hidden="true"></i></div>
+                  <div>
+                      <div (click)="dismiss()" _ngcontent-gcw-c1="" class="text-right" style="padding-top:7px;"><i _ngcontent-gcw-c1="" class="fa fa-window-close" aria-hidden="true"></i></div>
 
-                    <h4 class="modal-title text-center tc2" id="modalDCLabel">{{"Détailles" |translate}}</h4>
-                </div>
-            
-                <hr class="hr-mob-top gradient-horizontal-primary">
-                <table class="table table-striped" id="tableMvts">
-                    <tbody>
-                        <tr>
-                            <td class="ts3">
-                                <div class="pull-left">Date réclamation:{{"Date réclamation:" |translate}}:</div>
-                                <div class="pull-right gras mnt-neg">{{complaint.inputDate}}</div>
-                            </td>
-                        </tr>
-                       
-                     
-                        <tr>
-                            <td class="ts3">
-                                <div class="pull-left">{{"Date survenance réclamation" |translate}}:</div>
-                                <div class="pull-right gras ">{{complaint.incedent_date}}</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="ts3">
-                                <div class="pull-left">{{"Objet de réclamation" |translate}}:</div>
-                                <div class="pull-right gras mnt-neg ">{{complaint.complaintObject.libelle}}</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="ts3">
-                                <div class="pull-left">{{"Description" |translate}}: </div>
-                                <div class="pull-right gras ">{{complaint.complDetails}}</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="ts3">
-                                <div class="pull-left">{{"Date de traitement" |translate}}:</div>
-                                <div class="pull-right gras mnt-neg">{{complaint.complTreatmentDate}}</div>
-                            </td>
-                        </tr>
-                         <tr>
-                            <td class="ts3">
-                                <div class="pull-left">{{"Réponse Attijari Banque" |translate}}:</div>
-                                <div class="pull-right gras ">{{complaint.bankResponse}}</div>
-                            </td>
-                        </tr>
-                        
-                    </tbody> 
-                </table>
-            
-                <div class="modal-footer">
-                    <div class="btn-group">
+                      <h4 class="modal-title text-center tc2" id="modalDCLabel">{{"Détailles" |translate}}</h4>
+                  </div>
 
-<button type="button" class="btn btn-default btn-warning  ">Modifier 
-</button>
+                  <hr class="hr-mob-top gradient-horizontal-primary">
+                  <table class="table table-striped" id="tableMvts">
+                      <tbody>
+                          <tr>
+                              <td class="ts3">
+                                  <div class="pull-left">Date réclamation:{{"Date réclamation:" |translate}}:</div>
+                                  <div class="pull-right gras mnt-neg">{{complaint.inputDate}}</div>
+                              </td>
+                          </tr>
 
-<button type="button"  (click)="Delete(complaint)"  class="btn btn-default btn-warning ">Supprimer
-</button>
+                          <tr>
+                              <td class="ts3">
+                                  <div class="pull-left">{{"Date survenance réclamation" |translate}}:</div>
+                                  <div class="pull-right gras ">{{complaint.incedentDate}}</div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="ts3">
+                                  <div class="pull-left">{{"Objet de réclamation" |translate}}:</div>
+                                  <div class="pull-right gras mnt-neg ">{{complaint.complaintObject.libelle}}</div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="ts3">
+                                  <div class="pull-left">{{"Description" |translate}}: </div>
+                                  <div class="pull-right gras ">{{complaint.complDetails}}</div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="ts3">
+                                  <div class="pull-left">{{"Date de traitement" |translate}}:</div>
+                                  <div class="pull-right gras mnt-neg">{{complaint.complTreatmentDate}}</div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td class="ts3">
+                                  <div class="pull-left">{{"Réponse Attijari Banque" |translate}}:</div>
+                                  <div class="pull-right gras ">{{complaint.bankResponse}}</div>
+                              </td>
+                          </tr>
 
+                      </tbody>
+                  </table>
 
-<button type="button"  class="btn btn-default btn-warning ">Repondre Questionnaire
-</button>
+                  <div class="modal-footer">
+                      <div class="btn-group">
 
+                          <button type="submit" class="btn btn-default btn-warning" *ngIf="isNotHandled" (click)="onUpdate()">Modifier
+                          </button>
 
-</div>
-                </div>
-            </div>
+                          <button type="button" (click)="Delete(complaint)" class="btn btn-default btn-warning ">Supprimer
+                          </button>
+
+                          <button type="submit" (click)="onSurvey()" class="btn btn-default btn-warning " *ngIf="isHandled">Repondre Questionnaire
+                          </button>
+
+                      </div>
+                  </div>
+              </div>
 
           </div>
 
-
-      <app-load-page *ngIf="load"></app-load-page>
-      <app-page-footer></app-page-footer>
-    </div>
-    <app-form-error [(show)]="showFormError" [(affecte)]="affecte" [(Notdeleted)]="Notdeleted"  [(deleted)]="deleted"></app-form-error>
+          <app-load-page *ngIf="load"></app-load-page>
+          <app-page-footer></app-page-footer>
+      </div>
+      <app-form-error [(show)]="showFormError" [(affecte)]="affecte" [(Notdeleted)]="Notdeleted" [(deleted)]="deleted"></app-form-error>

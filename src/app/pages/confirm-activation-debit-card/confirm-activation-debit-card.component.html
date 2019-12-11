@@ -42,9 +42,7 @@
                             <div class="pull-left">
                                 <div class="input-group width195p">
                                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                    <input class="form-control" formControlName="password" type="password"
-                                        id="mdpAffiche" disabled="disabled" name="mdpAffiche" [(ngModel)]="password"
-                                        required="true" style=" height: 42px ;">
+                                    <input class="form-control" formControlName="password" type="password" id="mdpAffiche" disabled="disabled" name="mdpAffiche" [(ngModel)]="password" required="true" style=" height: 42px ;">
                                 </div>
                             </div>
                             <div class="pull-left">
@@ -59,16 +57,14 @@
                             <table class="tableauChiffres">
                                 <tbody class="tbody">
                                     <tr>
-                                        <td *ngFor="let tableauChiffre1 of tableauChiffres2; let i = index"
-                                            class="chiffre" (click)="onchange(tableauChiffre1.item)">
+                                        <td *ngFor="let tableauChiffre1 of tableauChiffres2; let i = index" class="chiffre" (click)="onchange(tableauChiffre1.item)">
                                             <div class="btn btn-default btn-lg chiffre-cv" id="c5">
                                                 {{tableauChiffre1.item}}
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td *ngFor="let tableauChiffre2 of tableauChiffres1; let i = index"
-                                            class="chiffre" (click)="onchange(tableauChiffre2.item)">
+                                        <td *ngFor="let tableauChiffre2 of tableauChiffres1; let i = index" class="chiffre" (click)="onchange(tableauChiffre2.item)">
                                             <div class="btn btn-default btn-lg chiffre-cv" id="c5">
                                                 {{tableauChiffre2.item}}
                                             </div>

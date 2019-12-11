@@ -2,9 +2,8 @@
 
 
 export interface SicavValue {
-    sicavValue_id: number,
+    sicavValueId: number,
     mutualFund: string,
     dayAv: string,
     prevDayAv: string,
-
 }

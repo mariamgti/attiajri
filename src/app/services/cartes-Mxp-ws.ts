@@ -1,10 +1,10 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ConstantParams } from './constantParams/constant.params';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ListCartesMxp } from '../models/listCartesMxp';
-import { DocumentHeader } from '../models/documentHeader';
+import { DocumentHeader } from '../models/DocumentHeader';
+import { ListCartesMxp } from '../models/ListCartesMxp';
 import { ResponseDocumentHeader } from '../models/ResponseDocumentHeader';
+import { ConstantParams } from './constantParams/constant.params';
 
 @Injectable({
   providedIn: 'root'

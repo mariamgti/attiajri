@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReliabilityService } from 'src/app/services/reliability.service';
-import { FormGroup  ,FormBuilder, FormControl  , Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import {
   animate,
   state,
@@ -9,7 +9,7 @@ import {
   trigger
 } from '@angular/animations';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
-import {ValidatePhone} from '../../validators/phone.validator';
+import { ValidatePhone } from '../../validators/phone.validator';
 @Component({
   selector: 'app-fiabilisation',
   templateUrl: './fiabilisation.component.html',
@@ -28,90 +28,74 @@ import {ValidatePhone} from '../../validators/phone.validator';
 })
 export class FiabilisationComponent implements OnInit {
   selectedLevel1;
-  Client;
-  AddressValue;
-  CityValue;
-  ZipCodeValue;
-  emailValue;
- phoneValue;  
- nomValue;
- prenomValue;
+  client;
   registerForm: FormGroup;
   submitted = false;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
   invalidMail: boolean = false;
   invalidPhone: boolean = false;
-   showFormError: boolean = false;
-   commencewithchar: boolean = false;
-  static validPhone=false;
-  constructor(private reliabilityService :ReliabilityService,private formBuilder: FormBuilder) { }
+  showFormError: boolean = false;
+  commencewithchar: boolean = false;
+  static validPhone = false;
+  constructor(private reliabilityService: ReliabilityService, private formBuilder: FormBuilder) { }
 
-  
+
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      email:new FormControl('',[Validators.required, Validators.email]) ,
-      phone: new FormControl('',[Validators.required,Validators.minLength(8),ValidatePhone]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      phone: new FormControl('', [Validators.required, Validators.minLength(8), ValidatePhone]),
     });
-      
-  }
-
-    // Issues list
-    loadClient(id) {
-      return this.reliabilityService.GetClient(id).subscribe((data: {}) => {
-        this.Client = data; console.log(this.Client);
-        this.AddressValue=this.Client.homeAddress;
-        this.CityValue=this.Client.city;
-        this.ZipCodeValue=this.Client.postCode;
-        this.nomValue=this.Client.nom;
-        this.prenomValue=this.Client.prenom;
-        
-      })
-    }
-selectedShareAcc()
-{
-  console.log(this.selectedLevel1);
-  this.loadClient(this.selectedLevel1);
- 
-
-}
-static checkChar(control: AbstractControl)
-{
-var  letters = /^[A-Za-z]+$/;
-if(!control.value.startsWith(letters))
-  {
-    return { 'this.validPhone': true };
-  }
-  return null;
-}
-onSubmit()
-{
-  if (this.registerForm.get('email').invalid) {
-    this.showFormError = true;
-    this.invalidMail = true;
 
   }
- 
-  if (this.registerForm.get('phone').invalid) {
-    this.showFormError = true;
-    this.invalidPhone = true;
-  }
-  return this.reliabilityService.UpdateClient(this.selectedLevel1,this.emailValue,this.phoneValue).subscribe((data: {}) => {
-    this.Client = data;
-     console.log(this.Client);
-     if(this.Client.resultCode=="0000")
-     {
-       this.submitted=true;
-       console.log(this.submitted=true);
-       this.registerForm.reset();
-     }
+
+  // Issues list
+  loadClient(id) {
+    return this.reliabilityService.GetClient(id).subscribe((data: {}) => {
+      this.client = data;
      
 
-    
-  })
-}
-Dismiss() {
-   
-  this.submitted = false;
+    })
+  }
+  selectedShareAcc() {
 
-}
+    this.loadClient(this.selectedLevel1);
+
+
+  }
+  static checkChar(control: AbstractControl) {
+    var letters = /^[A-Za-z]+$/;
+    if (!control.value.startsWith(letters)) {
+      return { 'this.validPhone': true };
+    }
+    return null;
+  }
+  onSubmit() {
+    if (this.registerForm.get('email').invalid) {
+      this.showFormError = true;
+      this.invalidMail = true;
+
+    }
+
+    if (this.registerForm.get('phone').invalid) {
+      this.showFormError = true;
+      this.invalidPhone = true;
+    }
+    return this.reliabilityService.UpdateClient(this.selectedLevel1, this.client.email, this.client.phone).subscribe((data: {}) => {
+      this.client = data;
+
+      if (this.client.resultCode == "0000") {
+        this.submitted = true;
+
+        this.registerForm.reset();
+      }
+
+
+
+    })
+  }
+  Dismiss() {
+
+    this.submitted = false;
+
+  }
 }

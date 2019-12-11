@@ -1,34 +1,36 @@
 <div id="page-container" styles="min-height: 100%;">
-    <app-header-login></app-header-login>
-    <div id="page-body">
-        <div id="page-title"> {{"sicavList" |translate}}</div>
-        <div class="container-fluid">
-            <div class="tc2"> {{intitulCarte}} </div>
-            <br>
-   
-              Valeurs liquidatives applicables le  {{todayISOString}}, donnés à titre indicatif.
-              <a  id="l0" class="btn btn-default btn-all" *ngFor="let sicavValue of sicavValues">
-                  <div class="clearfix">
-                          <div class="row">
-                            <div class="col-xs-10 text-left padding-zero">
-                              <div class="ts2 gras ellipsed">
-                                OPCVM Attijari:{{sicavValue.mutualFund}} </div>
-                              <div class="ts2 ellipsed">
-                                VL veille:{{sicavValue.prevDayAv}}<br>
-                              </div>
-                            </div>
-                            <div class="col-xs-2 padding-zero">
-                              <div class="text-right" style="padding-top:7px;">
-                                </div>
-                            </div>
+  <app-header-login></app-header-login>
+  <div id="page-body">
+      <div id="page-title"> {{"sicavList" |translate}}</div>
+      <div class="container-fluid">
+          <div class="tc2"> {{intitulCarte}} </div>
+          <br> Valeurs liquidatives applicables le {{todayISOString}}, donnés à titre indicatif.
+          <a id="l0" class="btn btn-default btn-all" *ngFor="let sicavValue of sicavValues">
+              <div class="clearfix">
+                  <div class="row">
+                      <div class="col-xs-10 text-left padding-zero">
+                          <div class="ts2 gras ellipsed">
+                              OPCVM Attijari:{{sicavValue.mutualFund}} </div>
+                          <div class="ts2 ellipsed">
+                              VL veille:{{sicavValue.prevDayAv}}
+                              <br>
                           </div>
-                          <div class="text-right ts1 padding-zero">
-                            <span class="gras"> 
-                              VL jour:{{sicavValue.dayAv}} </span>
+                      </div>
+                      <div class="col-xs-2 padding-zero">
+                          <div class="text-right" style="padding-top:7px;">
                           </div>
-                        </div></a>
-   L'horaire limite de souscription et rachat des OPCVM est: <br>Attijari Obligataire SICAV :08h à 16h. <br> FCP CEA, Dynamique :08h à 09h.
-       <br>Pour toute information complémentaire, veuillez contacter le Centre de Relation Client  au  <b>81 100 004</b>.
-            <app-load-page *ngIf="load"></app-load-page>
-            <app-page-footer></app-page-footer>
-        </div>
+                      </div>
+                  </div>
+                  <div class="text-right ts1 padding-zero">
+                      <span class="gras"> 
+                            VL jour:{{sicavValue.dayAv}} </span>
+                  </div>
+              </div>
+          </a>
+          L'horaire limite de souscription et rachat des OPCVM est:
+          <br>Attijari Obligataire SICAV :08h à 16h.
+          <br> FCP CEA, Dynamique :08h à 09h.
+          <br>Pour toute information complémentaire, veuillez contacter le Centre de Relation Client au <b>81 100 004</b>.
+          <app-load-page *ngIf="load"></app-load-page>
+          <app-page-footer></app-page-footer>
+      </div>

@@ -1,4 +1,4 @@
-<div id="page-container" styles="min-height: 100%;"> <app-header-login></app-header-login> <div id="page-body"> <div id="page-title">Complaint Result </div> <div style="position: relative; bottom:-30px;"> <div *ngIf="!isSuccess " style="    background-color: #E6CECE;    text-align: center;
+<div id="page-container" styles="min-height: 100%;"> <app-header-login></app-header-login> <div id="page-body"> <div id="page-title">Survey Result </div> <div style="position: relative; bottom:-30px;"> <div *ngIf="!isSuccess " style="    background-color: #E6CECE;    text-align: center;
     background-image: none !important;
    border: none !important;
    border-radius: 0px !important;
@@ -18,6 +18,4 @@
    " class="alert alert-success alert-block">
     {{"successOperation" |translate}}
    
-   </div> </div> <div class="container-fluid" style="position: relative; bottom:-30px !important" *ngIf="resultCode === '0000'">
- </div> </div> </div> 
-   <app-page-footer></app-page-footer>
+   </div> </div> <div class="container-fluid" style="position: relative; bottom:-30px !important" > <div class="text-center primary-padding mb10"> <button type="submit" (click)="onRetour()" class="btn btn-default btn-lg btnvalider">Retour</button> </div> </div> </div> </div> <app-page-footer></app-page-footer>

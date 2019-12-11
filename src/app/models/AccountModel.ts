@@ -2,7 +2,7 @@
 
 
 export interface AccountModel {
-    numCpt: number;
+    numCpt: string;
     codCli: number;
     rib: number;
 }

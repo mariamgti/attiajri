@@ -53,11 +53,9 @@
     </table>
 
     <div class="modal-footer">
-        <button type="button" class="btn btn-default btn-lg btnvalider " data-dismiss="modal"
-            *ngIf="carte.statut === 'I'" (click)="redirectToConfirmation()">{{"activateCard" |translate}}
+        <button type="button" class="btn btn-default btn-lg btnvalider " data-dismiss="modal" *ngIf="carte.statut === 'I'" (click)="redirectToConfirmation()">{{"activateCard" |translate}}
         </button>
-        <button type="button" class="btn btn-default btn-lg btnvalider " data-dismiss="modal"
-            *ngIf="carte.statut === 'A'" (click)="redirectToConfirmation()">{{"desactivateCard" |translate}}
+        <button type="button" class="btn btn-default btn-lg btnvalider " data-dismiss="modal" *ngIf="carte.statut === 'A'" (click)="redirectToConfirmation()">{{"desactivateCard" |translate}}
         </button>
     </div>
 </div>

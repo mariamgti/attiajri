@@ -19,7 +19,7 @@ import { transition, trigger, animate, style, } from '@angular/animations';
   ]
 })
 export class FormErrorComponent implements OnInit {
-
+  @Input() invalidResponse: boolean;
   @Input() invalidMail: boolean;
   @Input() invalidPhone: boolean;
   @Input() invalidProfession: boolean;
@@ -31,6 +31,7 @@ export class FormErrorComponent implements OnInit {
   @Input() invalidDescription: boolean;
   @Input() invalidComplaintObject: boolean;
   @Input() invalidComplaintDoc: boolean;
+  @Output() invalidResponseChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() showChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidClientChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidAccountChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -44,7 +45,7 @@ export class FormErrorComponent implements OnInit {
   @Output() invalidComplaintDocChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Input() deleted: boolean;
   @Input() Notdeleted: boolean;
-  @Input() affecte:boolean;
+  @Input() affecte: boolean;
 
   ngOnInit() {
   }
@@ -56,7 +57,13 @@ export class FormErrorComponent implements OnInit {
     this.invalidProfession = false;
     this.invalidAccount = false;
     this.invalidClient = false;
+    this.invalidResponse = false;
     this.invalidOtherProfession = false;
+    this.show = false;
+    this.deleted = false;
+    this.Notdeleted = false;
+    this.affecte = false;
+    this.invalidResponseChange.emit(this.invalidResponse)
     this.invalidClientChange.emit(this.invalidClient);
     this.invalidAccountChange.emit(this.invalidAccount);
     this.showChange.emit(this.show);
@@ -68,10 +75,7 @@ export class FormErrorComponent implements OnInit {
     this.invalidDescriptionChange.emit(this.invalidDescription);
     this.invalidComplaintObjectChange.emit(this.invalidComplaintObject);
     this.invalidComplaintDocChange.emit(this.invalidComplaintDoc);
-    this.show = false;
-    this.deleted = false;
-    this.Notdeleted=  false;
-    this.affecte=false;
+
 
   }
 }
