@@ -53,7 +53,6 @@ import { ConstantParams } from './services/constantParams/constant.params';
 import { Data } from './services/Data.service';
 import { FiabilisationService } from './services/fiabilisation.service';
 import { ShareAccountService } from './services/share-account.service';
-import { ComplaintListComponent } from './pages/complaint/complaint-list/complaint-list.component';
 import { CustomValidationService } from './services/customValidationService';
 import { RedirectResolveService } from './services/redirect-resolve.service';
 import { AccessGuardService } from './services/access-guard.service';
@@ -89,7 +88,6 @@ export function createTranslateLoader(http: HttpClient) {
     SlideInLoginComponent,
     ResultActivationComponent,
     SicavValueComponent,
-    ComplaintListComponent,
     AddComplaintComponent,
     AddComplaintStep2Component,
     SurveyComponent,
