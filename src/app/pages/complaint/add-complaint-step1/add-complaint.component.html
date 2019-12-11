@@ -1,216 +1,183 @@
 <div id="page-container" styles="min-height: 100%;">
-  <app-header-login></app-header-login>
-  <div id="page-body">
-    <div id="page-title">Formulaire de réclamation</div>
-    <div class="container-fluid">
-      <div class="tc2"> </div>
-      <div class="gras" style="text-align: center;">Données du Client </div>
-      <br>
-      <hr class="hr-mob gradient-horizontal-primary">
-      <br>
+    <app-header-login></app-header-login>
+    <div id="page-body">
+        <div id="page-title">Formulaire de réclamation</div>
+        <div class="container-fluid">
+            <div class="tc2"> </div>
+            <div class="gras" style="text-align: center;">Données du Client</div>
+            <br>
+            <hr class="hr-mob gradient-horizontal-primary">
+            <br>
+            <form [formGroup]="complaintForm" (ngSubmit)="onSubmitForm()">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-3 padding-left-zero padding-right-10">
+                            <label for="client" class=" ts2 gras">Client: *</label>
+                        </div>
+                        <div class="col-xs-9 padding-left-zero padding-right-zero">
+                            <div class="form-group ">
+                                <select formControlName="client" [(ngModel)]="complaintInput.client"
+                                    (change)='onSelectClient()' required class="form-control" id="client">
+                                    <option class="placeholder" disabled value="">Choisir client</option>
+                                    <option *ngFor="let client of listClientRatt" selected="true" [ngValue]="client">
+                                        {{client?.nom}} {{client?.prenom}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-3 padding-left-zero padding-right-10">
+                            <label for="account" class=" ts2 gras">Numéro de compte: *</label>
+                        </div>
+                        <div class="col-xs-9 padding-left-zero padding-right-zero">
+                            <div class="form-group">
+                                <select formControlName="account" [(ngModel)]="complaintInput.numCpt" required
+                                    class="form-control" id="account">
+                                    <option class="placeholder"  disabled value="">
+                                        {{"selectAccount" |translate}}</option>
+                                    <option *ngFor="let compte of listCompteRatt" selected="true" [ngValue]="compte.numCpt">
+                                        {{compte.rib}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-3 padding-left-zero padding-right-10">
+                            <label for="nomPrenom" class=" ts2 gras">Nom et prénom/Raison sociale:</label>
+                        </div>
+                        <div class="col-xs-9 padding-left-zero padding-right-zero">
+                            <div class="form-group ">
+                                <input type="text" id="nomPrenom" readonly
+                                    value={{complaintInput?.client.nom}}{{complaintInput?.client.prenom}} maxlength="38" size="20"
+                                    class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-3 padding-left-zero padding-right-10">
+                            <label for="email" class=" ts2 gras">Email: *</label>
+                        </div>
+                        <div class="col-xs-9 padding-left-zero padding-right-zero">
+                            <div class="form-group ">
+                                <input type="text" id="email" formControlName="email" [(ngModel)]="complaintInput.email"
+                                    class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-3 padding-left-zero padding-right-10">
+                            <label for="telephone" class=" ts2 gras">Téléphone portable: *</label>
+                        </div>
+                        <div class="col-xs-9 padding-left-zero padding-right-zero">
+                            <div class="form-group ">
+                                <input type="number" id="telephone" [(ngModel)]="complaintInput.phone" formControlName="telephone"
+                                    class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-3 padding-left-zero padding-right-10">
+                            <label for="adresse" class=" ts2 gras">Adresse courrier:</label>
+                        </div>
+                        <div class="col-xs-9 padding-left-zero padding-right-zero">
+                            <div class="form-group ">
+                                <input type="text" readonly value={{complaintInput?.client.homeAddress}} id="adresse"
+                                    maxlength="38" size="20" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-3 padding-left-zero padding-right-10">
+                            <label for="ville" class=" ts2 gras">Ville:</label>
+                        </div>
+                        <div class="col-xs-9 padding-left-zero padding-right-zero">
+                            <div class="form-group ">
+                                <input type="text" id="ville" readonly value={{complaintInput?.client.city}} maxlength="38"
+                                    size="20" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-3 padding-left-zero padding-right-10">
+                            <label for="codePostal" class=" ts2 gras">Code postal:</label>
+                        </div>
+                        <div class="col-xs-9 padding-left-zero padding-right-zero">
+                            <div class="form-group ">
+                                <input type="text" id="codePostal" readonly value={{complaintInput?.client.postCode}}
+                                    maxlength="38" size="20" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="well">
+                    <div class="row">
+                        <div class="col-xs-3 padding-left-zero padding-right-10">
+                            <label for="profession" class=" ts2 gras">Profession: *</label>
+                        </div>
+                        <div class="col-xs-9 padding-left-zero padding-right-zero">
+                            <div class="form-group ">
+                                <table>
+                                    <tr>
+                                        <td>
 
-      <form [formGroup]="complaintForm" (ngSubmit)="onSubmitForm()">
+                                            <select formControlName="profession" [(ngModel)]="complaintInput.codeProf"
+                                                (change)='onSelectProfession()' id="profession" required
+                                                class="form-control">
+                                                <option class="placeholder" selected disabled value="">
+                                                    Choisir profession</option>
+                                                <option *ngFor="let profession of listProfession"
+                                                    [ngValue]="profession.code">
+                                                    {{profession.libelle}}
+                                                </option>
+                                            </select>
+
+                                        </td>
+                                        <td>
+                                            <div style="width: 10px!important"></div>
+                                        </td>
+                                        <td>
+                                            <input type="text" id="other" formControlName="other" class="form-control"
+                                                [(ngModel)]="complaintInput.autreProf">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
 
 
-        <div class="well">
-          <div class="row">
-            <div class="col-xs-3 padding-left-zero padding-right-10">
-              <label for="client" class=" ts2 gras">Client: *</label>
-            </div>
-            <div class="col-xs-9 padding-left-zero padding-right-zero">
-              <div class="form-group ">
-                <select formControlName="client" [(ngModel)]="selectedClient" (change)='onSelectClient()' required
-                  class="form-control" id="client">
-                  <option class="placeholder" selected disabled>Choisir client</option>
-
-                  <option [ngValue]="client">
-                    {{client?.nom}} {{client?.prenom}}
-                  </option>
-
-
-                </select>
-              </div>
-            </div>
-          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-default btn-lg btnvalider " data-dismiss="modal">
+                        Suivant <i class="fa fa-arrow-right"></i>
+                    </button>
+                    <button type="button" class="btn btn-default btn-lg btnvalider " (click)="onAnnuler()"
+                        data-dismiss="modal">
+                        Annuler <i class="fa fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+            <app-load-page *ngIf="load"></app-load-page>
         </div>
-
-
-        <div class="well">
-          <div class="row">
-            <div class="col-xs-3 padding-left-zero padding-right-10">
-              <label for="account" class=" ts2 gras">Numéro de compte: *</label>
-            </div>
-            <div class="col-xs-9 padding-left-zero padding-right-zero">
-              <div class="form-group ">
-
-                <select formControlName="account" required class="form-control" id="account">
-                  <option class="placeholder" selected disabled value="">{{"selectAccount" |translate}}</option>
-
-                  <option *ngFor="let account of accounts" [ngValue]="account">
-                    {{account.rib}}
-                  </option>
-
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="well">
-          <div class="row">
-            <div class="col-xs-3 padding-left-zero padding-right-10">
-              <label for="nomPrenom" class=" ts2 gras">Nom et prénom/Raison sociale:</label>
-            </div>
-            <div class="col-xs-9 padding-left-zero padding-right-zero">
-              <div class="form-group ">
-                <input type="text" id="nomPrenom" readonly value={{selectedClient?.nom}}{{selectedClient?.prenom}}
-                  maxlength="38" size="20" class="form-control">
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="well">
-          <div class="row">
-            <div class="col-xs-3 padding-left-zero padding-right-10">
-              <label for="email" class=" ts2 gras">Email: *</label>
-            </div>
-            <div class="col-xs-9 padding-left-zero padding-right-zero">
-              <div class="form-group ">
-                <input type="text" id="email" formControlName="email" [(ngModel)]="email" 
-                  class="form-control">
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="well">
-          <div class="row">
-            <div class="col-xs-3 padding-left-zero padding-right-10">
-              <label for="telephone" class=" ts2 gras">Téléphone portable: *</label>
-            </div>
-            <div class="col-xs-9 padding-left-zero padding-right-zero">
-              <div class="form-group ">
-                <input type="number" id="telephone" [(ngModel)]="phone" formControlName="telephone" 
-                   class="form-control">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="well">
-          <div class="row">
-            <div class="col-xs-3 padding-left-zero padding-right-10">
-              <label for="adresse" class=" ts2 gras">Adresse courrier:</label>
-            </div>
-            <div class="col-xs-9 padding-left-zero padding-right-zero">
-              <div class="form-group ">
-                <input type="text" readonly value={{selectedClient?.homeAddress}} id="adresse" maxlength="38" size="20"
-                  class="form-control">
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="well">
-          <div class="row">
-            <div class="col-xs-3 padding-left-zero padding-right-10">
-              <label for="ville" class=" ts2 gras">Ville:</label>
-            </div>
-            <div class="col-xs-9 padding-left-zero padding-right-zero">
-              <div class="form-group ">
-                <input type="text" id="ville" readonly value={{selectedClient?.city}} maxlength="38" size="20"
-                  class="form-control">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="well">
-          <div class="row">
-            <div class="col-xs-3 padding-left-zero padding-right-10">
-              <label for="codePostal" class=" ts2 gras">Code postal:</label>
-            </div>
-            <div class="col-xs-9 padding-left-zero padding-right-zero">
-              <div class="form-group ">
-                <input type="text" id="codePostal" readonly value={{selectedClient?.postCode}} maxlength="38" size="20"
-                  class="form-control">
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="well">
-          <div class="row">
-            <div class="col-xs-3 padding-left-zero padding-right-10">
-              <label for="profession" class=" ts2 gras">Profession: *</label>
-            </div>
-            <div class="col-xs-9 padding-left-zero padding-right-zero">
-              <div class="form-group ">
-                <table>
-                  <tr>
-                    <td>
-                      <select id="profession" (change)='onChange()' required class="form-control"
-                        formControlName="profession">
-
-                        <option class="placeholder" selected disabled value="">Choisir Profession</option>
-                        <option *ngFor="let profession of professions">
-                          {{profession.libelle}}
-                        </option>
-
-                      </select>
-
-                    </td>
-                    <td>
-                      <div style="width: 10px!important"></div>
-                    </td>
-                    <td>
-                      <input type="text" id="other" formControlName="other" maxlength="38" size="20" value=""
-                        class="form-control">
-                    </td>
-                  </tr>
-                </table>
-
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="modal-footer">
-
-
-          <button type="submit" class="btn btn-default btn-lg btnvalider " data-dismiss="modal"
-            >
-
-            Suivant <i class="fa fa-arrow-right"></i>
-
-          </button>
-
-          <button type="button" class="btn btn-default btn-lg btnvalider " (click)="onAnnuler()" data-dismiss="modal">
-
-            Annuler <i class="fa fa-arrow-right"></i>
-
-          </button>
-          
-
-
-
-
-        </div>
-
-
-      </form>
-
-
-
-
-
-      <app-load-page *ngIf="load"></app-load-page>
     </div>
-  </div>
-  <app-page-footer></app-page-footer>
+    <app-page-footer></app-page-footer>
 </div>
-
-
-<app-form-error [(show)]="showFormError" [(invalidMail)]="invalidMail" [(invalidPhone)]="invalidPhone" [(invalidProfession)]="invalidProfession" 
-[(invalidAccount)]="invalidAccount" [(invalidClient)]="invalidClient" [(invalidOtherProfession)]="invalidOtherProfession" ></app-form-error>
+<app-form-error [(show)]="showFormError" [(invalidMail)]="invalidMail" [(invalidPhone)]="invalidPhone"
+    [(invalidProfession)]="invalidProfession" [(invalidAccount)]="invalidAccount" [(invalidClient)]="invalidClient"
+    [(invalidOtherProfession)]="invalidOtherProfession"></app-form-error>

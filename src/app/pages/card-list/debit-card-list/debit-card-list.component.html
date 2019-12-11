@@ -7,8 +7,7 @@
             <br>
             <div>
                 <label for="account-select">{{"selectAccount" |translate}}:</label>
-                <select id="account-select" required class="form-control" [(ngModel)]="selectedAccount"
-                    (change)="getSelectedAccount()">
+                <select id="account-select" required class="form-control" [(ngModel)]="selectedAccount" (change)="getSelectedAccount()">
                     <option class="placeholder" selected disabled value="">{{"selectAccount" |translate}}</option>
                     <option *ngFor="let account of accounts" [ngValue]="account">
                     </option>
@@ -23,15 +22,14 @@
             <br>
             <hr class="hr-mob gradient-horizontal-primary">
             <div *ngFor="let mxpcard of cartesMxp">
-                <div (click)="toggleGroup(mxpcard)" [ngClass]="{active: isGroupShown(mxpcard)}" id="l0"
-                    class="btn btn-default btn-all active">
+                <div (click)="toggleGroup(mxpcard)" [ngClass]="{active: isGroupShown(mxpcard)}" id="l0" class="btn btn-default btn-all active">
                     <div class="clearfix">
                         <div class="col-xs-10 text-left padding-zero">
                             <div class="ts2 gras ellipsed">
                                 {{mxpcard.libTypeCarte}}</div>
                             <div class="ts2 ellipsed">
-                                N°
-                                &nbsp; {{mxpcard.numCarte}}<br>
+                                N° &nbsp; {{mxpcard.numCarte}}
+                                <br>
                             </div>
                         </div>
                         <div class="col-xs-2 padding-zero">

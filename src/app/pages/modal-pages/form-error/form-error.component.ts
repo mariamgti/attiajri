@@ -19,20 +19,19 @@ import { transition, trigger, animate, style, } from '@angular/animations';
   ]
 })
 export class FormErrorComponent implements OnInit {
-  @Input() emailValue: string;
-  @Input() phoneValue: string;
-  @Input() emailChanged: boolean;
-  @Input() phoneChanged: boolean;
-  @Input() serverError: boolean;
-  @Input() infoNotChanged: boolean;
-  @Input() deleted: boolean;
-  @Input() Notdeleted: boolean;
-  @Input() affecte: boolean;
+  @Input() invalidResponse: boolean;
   @Input() invalidMail: boolean;
   @Input() invalidPhone: boolean;
-  @Input() warning: string;
-
-
+@Input() emailValue:string;
+@Input() phoneValue:string;
+@Input() emailChanged:boolean;
+@Input() phoneChanged:boolean;
+@Input() serverError:boolean;
+@Input() infoNotChanged:boolean;
+@Input() deleted: boolean;
+@Input() Notdeleted: boolean;
+@Input() affecte:boolean;
+@Input() warning:string;
   @Input() invalidProfession: boolean;
   @Input() invalidOtherProfession: boolean;
   @Input() invalidAccount: boolean;
@@ -42,6 +41,7 @@ export class FormErrorComponent implements OnInit {
   @Input() invalidDescription: boolean;
   @Input() invalidComplaintObject: boolean;
   @Input() invalidComplaintDoc: boolean;
+  @Output() invalidResponseChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() showChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidClientChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidAccountChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -53,6 +53,8 @@ export class FormErrorComponent implements OnInit {
   @Output() invalidDescriptionChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidComplaintObjectChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() invalidComplaintDocChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+  
+
   @Output() deletedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() NotdeletedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() affecteChange: EventEmitter<boolean> = new EventEmitter<boolean>();
@@ -74,16 +76,20 @@ export class FormErrorComponent implements OnInit {
     this.invalidProfession = false;
     this.invalidAccount = false;
     this.invalidClient = false;
+    this.invalidResponse = false;
     this.invalidOtherProfession = false;
-    //
-
+    this.show = false;
     this.deleted = false;
     this.Notdeleted = false;
     this.affecte = false;
-    this.emailChanged = false;
-    this.phoneChanged = false;
-    this.serverError = false;
-    this.infoNotChanged = false;
+    this.invalidResponseChange.emit(this.invalidResponse)
+    this.invalidClientChange.emit(this.invalidClient);
+    this.invalidAccountChange.emit(this.invalidAccount);
+    //
+    this.emailChanged=false;
+    this.phoneChanged=false;
+    this.serverError=false;
+    this.infoNotChanged=false;
     //
     this.deletedChange.emit(this.deleted);
     this.NotdeletedChange.emit(this.Notdeleted);
@@ -105,6 +111,8 @@ export class FormErrorComponent implements OnInit {
     this.invalidDescriptionChange.emit(this.invalidDescription);
     this.invalidComplaintObjectChange.emit(this.invalidComplaintObject);
     this.invalidComplaintDocChange.emit(this.invalidComplaintDoc);
+
+
     this.invalidClientChange.emit(this.invalidClient);
     this.invalidAccountChange.emit(this.invalidAccount);
     this.warningChange.emit(this.warning);

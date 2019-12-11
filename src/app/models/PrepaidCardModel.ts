@@ -1,6 +1,5 @@
 
 export interface PrepaidCardModel {
-
     numCarteP: number,
     numCpt: string,
     type_carte_p: string,
@@ -9,5 +8,4 @@ export interface PrepaidCardModel {
     plafond: number,
     statut: string,
     soldeDispo: number,
-
 }

@@ -1,8 +1,6 @@
 
-import {
-  Component, OnInit, Input, Output, OnChanges, EventEmitter,
-} from '@angular/core';
-import { transition, trigger, animate, style, state } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-password-required',

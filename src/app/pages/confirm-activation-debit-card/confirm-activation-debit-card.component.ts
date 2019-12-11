@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClientWsService } from '../../services/client-ws.service';
 import { FormGroup, FormBuilder, Validators, FormControl, } from '@angular/forms';
@@ -47,12 +45,10 @@ export class ConfirmActivationDebitCardComponent implements OnInit {
   }
   ngOnInit() {
     this.previousUrl = this.data.storage;
-    console.log("previous url!!!!!");
-    console.log(this.previousUrl)
+ 
     if (!this.previousUrl) {
       this.isRefresh = true
-      console.log("refresh !!!")
-      console.log(this.isRefresh)
+      
     }
     new FormControl(this.password, Validators.required);
     this.carte = history.state;
@@ -87,11 +83,11 @@ export class ConfirmActivationDebitCardComponent implements OnInit {
     }
     if (this.confirmForm.valid && this.confirmActivationService.checkPassword(this.password) === true) {
       this.load = true;
-      console.log(this.carte.codeStatut);
+     
       if (this.carte.codeStatut == 5) {
         this.cartesMxpWS.activerCarte(this.age, this.ncp, this.numCarte, 2).subscribe(data => {
           this.activationResult = data;
-          console.log('result', this.activationResult)
+          
           this.resultCode = this.activationResult.documentHeader.resultCode;
           this.data.storage = this.currentUrl,
             this.router.navigateByUrl('/resultActivation', {

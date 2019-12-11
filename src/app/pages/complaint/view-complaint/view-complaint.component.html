@@ -17,11 +17,6 @@
                   <div class="col-xs-2 padding-zero">
                     <div class="text-right" style="padding-top:7px;">
                       </div>
-                  </div>
-                </div>
-    <div _ngcontent-gcw-c1="" class="text-right" style="padding-top:7px;">
-    <i _ngcontent-gcw-c1="" class="fa fa-chevron-down ico-size-min ico-color pointer"></i>
-    </div>
 
                <div class="text-right ts1 padding-zero">
                   <span class="gras"> 
@@ -88,17 +83,22 @@
 <button type="button"  (click)="Delete(complaint)"  class="btn btn-default btn-warning ">{{"Supprimer" |translate}}
 </button>
 
+                      </tbody>
+                  </table>
 
 <button type="button"  class="btn btn-default btn-warning ">{{"Repondre Questionnaire" |translate}}
 </button>
 
+                          <button type="submit" class="btn btn-default btn-warning" *ngIf="isNotHandled" (click)="onUpdate()">Modifier
+                          </button>
 
+                          <button type="submit" (click)="onSurvey()" class="btn btn-default btn-warning " *ngIf="isHandled">Repondre Questionnaire
+                          </button>
 
-                </div>
-            </div>
+                  </div>
+              </div>
 
           </div>
-
 
       <app-load-page *ngIf="load"></app-load-page>
       <app-page-footer></app-page-footer>

@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Cookie } from 'ng2-cookies';
 import 'rxjs';
 import { Observable, of, Subject } from 'rxjs';
-import { ClientModel } from '../models/client.model';
-import { AccountModel } from '../models/account.model';
-import { DebitCardModel } from '../models/debit.card.model';
-import { PrepaidCardModel } from '../models/prepaid.card.model';
+import { AccountModel } from '../models/AccountModel';
+import { ClientModel } from '../models/ClientModel';
+import { DebitCardModel } from '../models/DebitCardModel';
+import { PrepaidCardModel } from '../models/PrepaidCardModel';
 import { ConstantParams } from './constantParams/constant.params';
-import { Cookie } from 'ng2-cookies';
 @Injectable({
   providedIn: 'root'
 })
@@ -25,9 +25,20 @@ export class ClientWsService {
       })
     });
   }
-  findCompteByCodeClient(codeClient): Observable<AccountModel> {
+
+  findClientRattByLogin(login): Observable<ClientModel[]> {
+    const params = new HttpParams().set('login', login);
+    return this.http.post<ClientModel[]>(this.constantParams.BaseUrlWsClient + 'wsClient/findClientRattByLogin?',
+      params.toString(), {
+      headers: new HttpHeaders({
+        'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+        Authorization: 'Bearer ' + Cookie.get('access_token')
+      })
+    });
+  }
+  findCompteByCodeClient(codeClient): Observable<AccountModel[]> {
     const params = new HttpParams().set('codeClient', codeClient);
-    return this.http.post<AccountModel>(this.constantParams.BaseUrlWsClient + 'wsCompte/findCompteByCodeClient?'
+    return this.http.post<AccountModel[]>(this.constantParams.BaseUrlWsClient + 'wsCompte/findCompteByCodeClient?'
       , params.toString(), {
       headers: new HttpHeaders({
         'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
@@ -97,11 +108,7 @@ export class ClientWsService {
   }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-      // Let the app keep running by returning an empty result.
+
       return of(result as T);
     };
   }

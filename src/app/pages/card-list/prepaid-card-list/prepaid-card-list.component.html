@@ -11,12 +11,12 @@
             <div>
             </div>
             <div *ngFor="let card of cards">
-                <div (click)="toggleGroup(card)" [ngClass]="{active: isGroupShown(card)}" id="l0"
-                    class="btn btn-default btn-all active">
+                <div (click)="toggleGroup(card)" [ngClass]="{active: isGroupShown(card)}" id="l0" class="btn btn-default btn-all active">
                     <div class="clearfix">
                         <div class="col-xs-10 text-left padding-zero">
                             <div class="ts2 gras ellipsed">{{card.type}}</div>
-                            <div class="ts2 ellipsed">N° &nbsp; {{card.numCarteP}}<br>
+                            <div class="ts2 ellipsed">N° &nbsp; {{card.numCarteP}}
+                                <br>
                             </div>
                         </div>
                         <div class="col-xs-2 padding-zero">

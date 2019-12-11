@@ -12,7 +12,7 @@ import { PortFeuille } from '../../models/portFeuille';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { ShareAccount } from 'src/app/models/shareAccount';
-import { AccountModel } from 'src/app/models/account.model';
+import { AccountModel } from 'src/app/models/AccountModel';
 registerLocaleData(localeFr, 'fr');
 @Component({
   selector: 'app-share-account',
@@ -48,7 +48,6 @@ export class ShareAccountComponent implements OnInit {
 
 
     this.loadFlowAccounts();
-
 
   }
   //permet de faire apparaitre ou disparaitre le detail de la portefeuille

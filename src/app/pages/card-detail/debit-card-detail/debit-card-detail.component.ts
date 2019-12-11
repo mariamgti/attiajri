@@ -1,10 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { DebitCardModel } from '../../../models/debit.card.model';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClientWsService } from 'src/app/services/client-ws.service';
-import { ListCartesMxp } from 'src/app/models/listCartesMxp';
 import { CarteMxp } from 'src/app/models/CarteMxp';
-import { CartesMxpWS } from 'src/app/services/cartes-Mxp-ws';
+import { ListCartesMxp } from 'src/app/models/ListCartesMxp';
+import { ClientWsService } from 'src/app/services/client-ws.service';
 import { Data } from 'src/app/services/Data.service';
 
 @Component({
@@ -21,7 +19,6 @@ export class DebitCardDetailComponent implements OnInit {
   currentUrl: string = "/listeCartesDébit"
   constructor(private route: ActivatedRoute, private router: Router, private clientWsService: ClientWsService, private data: Data, ) { }
   ngOnInit() {
-
   }
   redirectToConfirmation() {
     this.load = true;

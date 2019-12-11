@@ -39,7 +39,7 @@
                     </div>
 
                     <div  *ngIf="invalidDescription" class="bootbox-body">
-                            Profession field is missing or incorrect 
+                            Description field is missing or incorrect 
                              </div>
 
 
@@ -67,10 +67,10 @@
                                   <div  *ngIf="affecte" class="bootbox-body">
                                         {{"affecte" | translate }}
                                       </div>
-                    
- 
-                                 
-                                    
+                                      <div  *ngIf="invalidResponse" class="bootbox-body">
+                                       Merci de répondre à tous les questions!!
+                                          </div>
+                                      
 
                 </div>
                 <div class="modal-footer">

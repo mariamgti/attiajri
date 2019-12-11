@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Output, OnChanges, EventEmitter, } from '@angular/core';
-import { transition, trigger, animate, style, state } from '@angular/animations';
+import { Component, OnInit, Input, Output,  EventEmitter, } from '@angular/core';
+import { transition, trigger, animate, style  } from '@angular/animations';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-confirm-deconnection',

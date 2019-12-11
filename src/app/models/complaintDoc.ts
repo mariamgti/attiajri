@@ -1,11 +1,8 @@
-import { Complaint } from './complaint';
-
 
 
 export interface ComplaintDoc {
-    id_doc:number;
+    idDoc:number;
     fileName: string,
     fileContent: any,
-    
-
+    type: string,
 }

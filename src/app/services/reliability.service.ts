@@ -1,11 +1,9 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
-import {ConstantParams} from './constantParams/constant.params';
-import {ClientModel} from '../models/client.model';
-import {HttpParams} from  "@angular/common/http";
 import { Cookie } from 'ng2-cookies';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { ConstantParams } from './constantParams/constant.params';
 import { DocumentHeader } from '../models/documentHeader';
 @Injectable({
   providedIn: 'root'
@@ -32,14 +30,13 @@ export class ReliabilityService {
    // Error handling
    errorHandl(error) {
     let errorMessage = '';
-    if(error.error instanceof ErrorEvent) {
+    if (error.error instanceof ErrorEvent) {
       // Get client-side error
       errorMessage = error.error.message;
     } else {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    console.log(errorMessage);
     return throwError(errorMessage);
- }
+  }
 }

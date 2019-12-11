@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Complaint } from '../../../models/complaint';
+import { Complaint } from '../../../models/Complaint';
 import { ComplaintService } from '../../../services/complaint.service';
-import { transition, trigger, animate, style,state } from '@angular/animations';
+import { transition, trigger, animate, style, state } from '@angular/animations';
+import { Router, } from '@angular/router';
+import { Data } from 'src/app/services/Data.service';
 @Component({
   selector: 'app-view-complaint',
   templateUrl: './view-complaint.component.html',
@@ -20,24 +22,31 @@ import { transition, trigger, animate, style,state } from '@angular/animations';
   ]
 })
 export class ViewComplaintComponent implements OnInit {
-  complaints:Complaint[];
-  CommentDescrip:string;
+  complaint: Complaint;
+  complaints: Complaint[];
+  CommentDescrip: string;
+  show: boolean = false;
+  i: Number = 0;
+  state: string;
+  isHandled: boolean = false;
+  isNotHandled: boolean = false;
+  complRef: number;
+  statut: boolean = false;
   show_details:boolean=false;
-  i:Number=0;
-  complRef;
   warning:string;
-  statut:boolean=false;
   bankResponse;
   selectedClaimValue;
-  resultCode:any;
-  Notdeleted:boolean=false;
-  showFormError:boolean=false;
-  deleted:boolean=false;
+  resultCode: any;
+  Notdeleted: boolean = false;
+  showFormError: boolean = false;
+  deleted: boolean = false;
   affecte;
-  constructor(private complaintService: ComplaintService) { }
+  currentUrl: string = "/viewComplaint"
+  usefullInformation: [any, any]
+  constructor(private complaintService: ComplaintService, private router: Router, private data: Data) { }
 
   ngOnInit() {
-  this.loadComplaints();
+    this.loadComplaints();
   }
 
      // Issues list
@@ -91,6 +100,7 @@ export class ViewComplaintComponent implements OnInit {
       }
     
 
+      this.isHandled = false;
     }
     
     

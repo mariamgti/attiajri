@@ -1,9 +1,9 @@
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Cookie } from 'ng2-cookies';
 import { Observable } from 'rxjs';
-import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { ConstantParams } from './constantParams/constant.params';
-import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -50,7 +50,7 @@ export class AuthService {
       return true;
     }
     else {
-      this.router.navigate(['/index']);
+     
       return false;
     }
   }

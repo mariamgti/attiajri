@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ReliabilityService } from 'src/app/services/reliability.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ClientWsService } from 'src/app/services/client-ws.service';
-import { ClientModel } from 'src/app/models/client.model';
 import { DocumentHeader } from 'src/app/models/documentHeader';
+import { ClientModel } from '../../models/ClientModel';
 
      
 @Component({

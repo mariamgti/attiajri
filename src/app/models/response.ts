@@ -1,11 +1,8 @@
 import { Question } from './question';
 
 
-export interface response {
-    complaintRef: number,
-    response: string,
-    question: Question
-
-    
-
+export class Response {
+    complaintRef: number;
+    response: number;
+    question: Question;
 }

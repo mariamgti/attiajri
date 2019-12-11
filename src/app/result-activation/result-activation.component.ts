@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClientWsService } from 'src/app/services/client-ws.service';
 import { CarteMxp } from 'src/app/models/CarteMxp';
+import { ClientWsService } from 'src/app/services/client-ws.service';
 import { Data } from '../services/Data.service';
 
 
@@ -23,16 +23,14 @@ export class ResultActivationComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private clientWsService: ClientWsService, private data: Data) {
     this.router.getCurrentNavigation().extras.state;
     this.resultCode = this.data.storage;
-    console.log(this.resultCode);
+   
   }
   ngOnInit() {
     this.previousUrl = this.data.storage;
-    console.log("previous url!!!!!");
-    console.log(this.previousUrl)
+   
     if (!this.previousUrl) {
       this.isRefresh = true
-      console.log("refresh !!!")
-      console.log(this.isRefresh)
+  
     }
     this.carte = history.state;
     this.nomClient = this.carte.inti;

@@ -1,0 +1,33 @@
+<div [@dialog]>
+    <div class="bootbox modal fade in" tabindex="-1" role="dialog" aria-hidden="false" style="display: block;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h4 class="modal-title" mat-dialog-title>{{data.titre}}</h4>
+
+                </div>
+                <div class="modal-body">
+
+                    <div class="bootbox-body">
+                        <div mat-dialog-content>
+
+                            <p>{{data.contenu}}</p>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <div mat-dialog-actions>
+
+                        <button mat-button class="btn btnvalider btn btn-default btn-lg" *ngIf="data.annuler" data-bb-handler="btn" type="button" (click)="onNoClick()">Annuler</button>
+                        <button mat-button data-bb-handler="btn" type="button" class="btn btnvalider btn btn-default btn-lg" cdkFocusInitial (click)="accept()">Valider</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade in"></div>
+</div>
