@@ -21,12 +21,7 @@ export class AccessGuardService {
 
     else if (!this.data.storage) {
       switch (path) {
-        case 'addComplaintStep2': {
-          return false;
-        }
-        case 'resultComplaint': {
-          return false;
-        }
+        
         case 'confirm-activation-carte-prepaye': {
           return false;
         }

@@ -43,7 +43,7 @@ const appRoutes: Routes = [
   { path: 'addComplaintStep2', component: AddComplaintStep2Component ,canActivate : [AccessGuardService]  },
   { path: 'survey', component: SurveyComponent ,canActivate : [AccessGuardService]},
   { path: 'viewComplaint', component: ViewComplaintComponent,canActivate : [AccessGuardService] },
-  { path: 'resultComplaint', component: ResultAddComplaintComponent ,canActivate : [AccessGuardService]},
+  { path: 'resultComplaint', component: ResultAddComplaintComponent},
   { path: 'fiabilisation', component: FiabilisationComponent,canActivate : [AccessGuardService] },
   { path: 'shareAccount', component: ShareAccountComponent,canActivate : [AccessGuardService] },
 
