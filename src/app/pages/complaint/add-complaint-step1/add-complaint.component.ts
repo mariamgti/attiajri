@@ -74,8 +74,8 @@ console.log(this.selectedComplaint.autre_prof)
         this.complaintInput.flgSupp = this.selectedComplaint.flgSupp;
         this.complaintInput.login = this.selectedComplaint.login;
         this.complaintInput.numCpt = this.selectedComplaint.account.numCpt;
-       // this.complaintInput.autreProf = this.selectedComplaint.autreProf;
-
+        this.complaintInput.autreProf = this.complaintInput.client.autre_prof
+      
 
 
         this.complaintService.getComplaintDocs(this.complaintInput.complRef).subscribe(data => {
@@ -121,6 +121,7 @@ console.log(this.selectedComplaint.autre_prof)
           this.complaintInput.flgSupp = 1;
           this.complaintInput.login = "my new login"
           this.complaintInput.numCpt = '';
+          this.complaintInput.autreProf = this.complaintInput.client.autre_prof
 
           if (this.complaintInput.codeProf == 3) {
             this.isOtherProfess = true;
@@ -151,7 +152,6 @@ console.log(this.selectedComplaint.autre_prof)
       email: ['', [Validators.required, Validators.email]],
       telephone: ['', [Validators.required, this.customValidationService.checkLimit(11111111, 99999999)]],
       profession: ['', Validators.required],
-
       other: ['', Validators.required]
     });
   }

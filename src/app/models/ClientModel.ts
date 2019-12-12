@@ -8,6 +8,7 @@ export class ClientModel {
      email: string;
      phone: string;
      postCode: string;
+     autre_prof: string;
      city: string;
      homeAddress: string;
      proffession:Profession;

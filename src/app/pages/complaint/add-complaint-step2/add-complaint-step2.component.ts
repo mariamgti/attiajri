@@ -264,7 +264,7 @@ export class AddComplaintStep2Component implements OnInit {
               });
               dialogRef.afterClosed().subscribe(result => {
                 if (result === true) {
-                 
+
                   this.onSubmitForm();
                 }
                 if (result === false) {
@@ -300,7 +300,7 @@ export class AddComplaintStep2Component implements OnInit {
     }
   }
   onSubmitForm() {
-
+console.log( this.complaintInput.autreProf)
     if (this.complaintForm.valid) {
       if (this.complaintInput.isUpdate === false) {
         this.complaintService.addComplaint(
@@ -324,8 +324,8 @@ export class AddComplaintStep2Component implements OnInit {
           this.documentHeader = data;
           this.isSuccess = this.documentHeader.resultCode == "0000"
           if (this.documentHeader.resultCode == "0000") {
-            this.data.storage = this.isSuccess,
-              this.router.navigateByUrl('/resultComplaint')
+            this.data.storage = this.isSuccess;
+            this.router.navigateByUrl('/resultComplaint');
           }
         })
       }
@@ -353,8 +353,8 @@ export class AddComplaintStep2Component implements OnInit {
           this.documentHeader = data;
           this.isSuccess = this.documentHeader.resultCode == "0000"
           if (this.documentHeader.resultCode == "0000") {
-            this.data.storage = this.isSuccess,
-              this.router.navigateByUrl('/resultComplaint')
+            this.data.storage = this.isSuccess;
+            this.router.navigateByUrl('/resultComplaint')
           }
         })
       }
