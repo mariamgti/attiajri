@@ -10,7 +10,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
-import { FileUploadModule } from 'ng2-file-upload';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -51,7 +50,6 @@ import { ComplaintService } from './services/complaint.service';
 import { ConfirmActivationService } from './services/confirm-activation.service';
 import { ConstantParams } from './services/constantParams/constant.params';
 import { Data } from './services/Data.service';
-import { FiabilisationService } from './services/fiabilisation.service';
 import { ShareAccountService } from './services/share-account.service';
 import { CustomValidationService } from './services/customValidationService';
 import { RedirectResolveService } from './services/redirect-resolve.service';
@@ -102,7 +100,6 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     FormsModule,
     MatDialogModule,
-    FileUploadModule,
     BrowserAnimationsModule,
     AngularFontAwesomeModule,
     BrowserModule,
@@ -124,7 +121,7 @@ export function createTranslateLoader(http: HttpClient) {
   ],
   entryComponents: [FormConfirmConctInfoComponent],
   providers: [ClientWsService, ConstantParams, ConfirmActivationService, AttijariBankApiWsService, AuthService, CartesMxpWS, CustomValidationService,
-    ,SicavValueService,FiabilisationService,ComplaintService,ShareAccountService,Data,RedirectResolveService,AccessGuardService],
+    ,SicavValueService,ComplaintService,ShareAccountService,Data,RedirectResolveService,AccessGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

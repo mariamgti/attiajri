@@ -65,6 +65,7 @@ export class FormErrorComponent implements OnInit {
   @Output() warningChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() emailValueChange: EventEmitter<string> = new EventEmitter<string>();
   @Output() phoneValueChange: EventEmitter<string> = new EventEmitter<string>();
+
   ngOnInit() {
   }
   constructor(private router: Router) { }
@@ -99,12 +100,13 @@ export class FormErrorComponent implements OnInit {
     this.affecteChange.emit(this.affecte);
     this.emailValueChange.emit(this.emailValue);
     this.phoneValueChange.emit(this.phoneValue);
+    this.phoneChangedChange.emit(this.phoneChanged);
     this.emailChangedChange.emit(this.emailChanged);
     this.serverErrorChange.emit(this.serverError);
     this.infoNotChangedChange.emit(this.infoNotChanged);
     //
     this.invalidProfessionChange.emit(this.invalidProfession);
-    this.invalidOtherProfessionChange.emit(this.invalidOtherProfession);   
+    this.invalidOtherProfessionChange.emit(this.invalidOtherProfession);
     this.invalidIncedentDateChange.emit(this.invalidIncedentDate);
     this.invalidDescriptionChange.emit(this.invalidDescription);
     this.invalidComplaintObjectChange.emit(this.invalidComplaintObject);

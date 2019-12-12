@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SicavValueService } from '../../services/sicav-value.service';
-import { SicavValue } from '../../models/SicavValue';
-
+import { Router } from '@angular/router';
+import { SicavValue } from '../../models/sicavValue';
+    
 @Component({
   selector: 'app-sicav-value',
   templateUrl: './sicav-value.component.html',

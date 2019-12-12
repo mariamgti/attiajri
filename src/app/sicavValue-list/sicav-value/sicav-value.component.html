@@ -13,7 +13,7 @@
                             <div class="col-xs-10 text-left padding-zero">
                               <div class="ts2 gras ellipsed">
                                {{sicavValue.mutualFund}} </div>
-                              <div class="ts2 ellipsed">
+                              <div  >
                                 {{"VL veille" |translate}}:{{sicavValue.prevDayAv|currency:'TND':'symbol':'4.3-3':'fr'}}<br>
                               </div>
                             </div>
@@ -22,26 +22,21 @@
                                 </div>
                             </div>
                           </div>
-                          <div class="text-right ts1 padding-zero">
+                          <div class="text-right ts2 padding-zero">
                             <span class="gras"> 
                               {{"VL jour" |translate}}:{{sicavValue.dayAv|currency:'TND':'symbol':'4.3-3':'fr'}} </span>
                           </div>
-                        </div></a><br><br><br>
-                    
-                         <div id="affSuivants" style="background-color:#e2ca9f">
-                       
-                            <div class="clearfix">
-                                <div class="pull-left ">
-                                    <i class="fa fa-info-circle" style="font-size:48px;color:orange"></i>	
-                                              </div>
-                              <div class="pull-left text-left text-lib-ico" style="padding-left: 60px;padding-top: 10px;">
-                                <span class="gras ellipsed">  {{"L'horaire limite de souscription et rachat des OPCVM est" |translate}}: <br>{{"Attijari Obligataire SICAV" |translate}}:08h à 16h. <br> {{"FCP CEA, Dynamique" |translate}}:08h à 09h.
+                        </div></a><br>
+                        <div class="form-group row" style="background-color:#e2ca9f">
+                            <div class="pull-left col-sm-2  ">
+                                <i class="fa fa-info-circle" style="font-size:48px;color:orange"></i>	
+                                          </div>
+                            
+                            <div class="col-sm-10 pull-left text-left ">
+                                <span class="gras ">  {{"L'horaire limite de souscription et rachat des OPCVM est" |translate}}: <br>{{"Attijari Obligataire SICAV" |translate}}:08h à 16h. <br> {{"FCP CEA, Dynamique" |translate}}:08h à 09h.
                                   <br> {{"A" |translate}} <b>81 100 004</b>.</span>
-                              </div>
-                     
-                            </div>
-                         
-                        </div>  
+                                 </div></div>
+                    
  
             <app-load-page *ngIf="load"></app-load-page>
             <app-page-footer></app-page-footer>

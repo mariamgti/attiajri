@@ -1,146 +1,130 @@
 <div id="page-container" styles="min-height: 100%;">
-        <app-header-login></app-header-login>
-        <div id="page-body">
-            <div id="page-title"> {{"Fiabilisation donnée" |translate}}</div>
-            <div class="container-fluid">
-                <div class="tc2"> {{intitulCarte}} </div>
-                
-                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
- 
-                    
-                        <div class="form-group row">
-                          
-                        <div class="form-inline ">
-                            <label for="staticEmail" class="col-sm-2 col-form-label">{{"Nom et prénom/Raison sociale" |translate}}:</label>
-                            <div class="col-sm-10">
-                              <input type="text" readonly class="form-control col-sm-2" id="formGroupExampleInput"  [(ngModel)]="Client.nom"[ngModelOptions]="{standalone: true}" >
-                                                
-                             
-                              <input type="text" readonly class="form-control col-sm-2" id="formGroupExampleInput"  [(ngModel)]="Client.prenom"[ngModelOptions]="{standalone: true}" >
-                                </div></div>
-                          </div>
-                            
+    <app-header-login></app-header-login>
+    <div id="page-body">
+        <div id="page-title"> {{"Fiabilisation donnée" |translate}}</div>
+        <div class="container-fluid">
+            <div class="tc2"> {{intitulCarte}} </div>
 
-              <div class="form-group row">
-                  <label for="staticEmail" class="col-sm-2 col-form-label">Email:<span class="ui-outputlabel-rfi">*</span></label>
-                  <div class="col-sm-10">
-                      <input type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required class="form-control" formControlName='email' id="staticEmail" [(ngModel)]="client.phone">
-                      <div *ngIf=" registerForm.controls.email.errors" class="text-danger">
-                          <div *ngIf="registerForm.controls.email.errors.required">Email est obligatoire</div>
-                          <div *ngIf="registerForm.controls.email.errors.email">Email doit etre valid :email@example.com</div>
-                      </div>
-                  </div>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 
-              </div>
 
-              <div class="form-group row">
-                  <label for="staticEmail" class="col-sm-2 col-form-label">Téléphone portable:<span class="ui-outputlabel-rfi">*</span></label>
-                  <div class="col-sm-10">
-                      <input type="text" minlength="8" maxlength="8" class="form-control" formControlName="phone" required id="formGroupExampleInput" [(ngModel)]="client.phone">
-                      <div *ngIf=" registerForm.controls.phone.errors" class="text-danger">
-                          <div *ngIf="registerForm.controls.phone.errors.required">phone est obligatoire</div>
-                          <div *ngIf="registerForm.controls.phone.errors.minLength">phone doit etre valid :VOUS NE DEVEZ PAS DEPASSER 8 NOMBRES</div>
+                <div class="form-group row">
 
-                      </div>
-                  </div>
+                    <div class="form-inline ">
+                        <label for="staticEmail"
+                            class="col-sm-2 col-form-label">{{"Nom et prénom/Raison sociale" |translate}}:</label>
+                        <div class="col-sm-10">
+                            <input type="text" readonly class="form-control col-sm-2" id="formGroupExampleInput"
+                                [(ngModel)]="Client.nom" [ngModelOptions]="{standalone: true}">
 
-              </div>
-              <div class="form-group row">
-                  <label for="staticEmail" class="col-sm-2 col-form-label">Adresse courrier</label>
-                  <div class="col-sm-10">
-                      <input type="text" readonly class="form-control" id="formGroupExampleInput" [(ngModel)]="client.homeAddress" [ngModelOptions]="{standalone: true}">
-                  </div>
-              </div>
-              <div class="form-group row">
-                  <label for="staticEmail" class="col-sm-2 col-form-label">Ville</label>
-                  <div class="col-sm-10">
-                      <input type="text" readonly class="form-control" id="formGroupExampleInput" [(ngModel)]="client.city" [ngModelOptions]="{standalone: true}">
-                  </div>
-              </div>
-              <div class="form-group row">
-                  <label for="staticEmail" class="col-sm-2 col-form-label">Code postal:</label>
-                  <div class="col-sm-10">
-                      <input type="text" readonly class="form-control" id="formGroupExampleInput" id="staticEmail" [(ngModel)]="client.postCode" [ngModelOptions]="{standalone: true}">
-                      <button type="submit" class="btn btn-pill btn-warning">Fiabiliser vos Données</button>
-                  </div>
-              </div>
-              <div class="modal-dialog" *ngIf="submitted" [@EnterLeave]="'flyIn'">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h4 class="modal-title" id="modalDDLabel">fiabilisation de l email</h4></div>
-                      <div class="modal-body ts2">
 
-                          <hr class="hr-mob2-top bgc2">
-                          <div>
-                              <p>Nous vous informons que la nouvelle adresse mail {{client.email}} que vous avez saisi sera désormais utilisée par Attijari Bank pour tout type de notifications : relevés de compte, news letter, messages d’informations, etc.</p>
-                          </div>
-                      </div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-default btn-lg btnvalider" data-dismiss="modal" (click)="Dismiss()">Enregistrez les modifications.</button>
-                          <button type="button" class="btn btn-default btn-lg btnvalider" data-dismiss="modal" (click)="Dismiss()">Fermez</button>
-                      </div>
-                  </div>
-              </div>
-          </form>
-
-                         <div class="form-group row">
-                          <label for="staticEmail" class="col-sm-2 col-form-label">Email:<span class="ui-outputlabel-rfi">*</span></label>
-                          <div class="col-sm-10">
-                            <input type="text"   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required class="form-control"  formControlName='email' id="staticEmail" [(ngModel)]="emailValue" >
-                            
+                            <input type="text" readonly class="form-control col-sm-2" id="formGroupExampleInput"
+                                [(ngModel)]="Client.prenom" [ngModelOptions]="{standalone: true}">
                         </div>
-                        
-                          
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Email:<span
+                            class="ui-outputlabel-rfi">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required
+                            class="form-control" formControlName='email' id="staticEmail" [(ngModel)]="client.phone">
+                        <div *ngIf=" registerForm.controls.email.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.email.errors.required">Email est obligatoire</div>
+                            <div *ngIf="registerForm.controls.email.errors.email">Email doit etre valid
+                                :email@example.com</div>
                         </div>
-                        
-                          <div class="form-group row">
-                          <label for="staticEmail" class="col-sm-2 col-form-label">{{"Téléphone portable" |translate}}:<span class="ui-outputlabel-rfi">*</span></label>
-                          <div class="col-sm-10">
-                            <input type="number" 
-                            min="8"
-                            max="8"  class="form-control" formControlName="phone"   required id="formGroupExampleInput" [(ngModel)]="phoneValue" >
-                           
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Téléphone portable:<span
+                            class="ui-outputlabel-rfi">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" minlength="8" maxlength="8" class="form-control" formControlName="phone"
+                            required id="formGroupExampleInput" [(ngModel)]="client.phone">
+                        <div *ngIf=" registerForm.controls.phone.errors" class="text-danger">
+                            <div *ngIf="registerForm.controls.phone.errors.required">phone est obligatoire</div>
+                            <div *ngIf="registerForm.controls.phone.errors.minLength">phone doit etre valid :VOUS NE
+                                DEVEZ PAS DEPASSER 8 NOMBRES</div>
+
                         </div>
-                         
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Adresse courrier</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control" id="formGroupExampleInput"
+                            [(ngModel)]="client.homeAddress" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Ville</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control" id="formGroupExampleInput"
+                            [(ngModel)]="client.city" [ngModelOptions]="{standalone: true}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Code postal:</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control" id="formGroupExampleInput" id="staticEmail"
+                            [(ngModel)]="client.postCode" [ngModelOptions]="{standalone: true}">
+                        <button type="submit" class="btn btn-pill btn-warning">Fiabiliser vos Données</button>
+                    </div>
+                </div>
+                <div class="modal-dialog" *ngIf="submitted" [@EnterLeave]="'flyIn'">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modalDDLabel">fiabilisation de l email</h4>
                         </div>
-                            <div class="form-group row">
-                          <label for="staticEmail" class="col-sm-2 col-form-label">{{"Adresse courrier" |translate}}</label>
-                          <div class="col-sm-10">
-                            <input type="text" readonly class="form-control" id="formGroupExampleInput"  [(ngModel)]="Client.homeAddress" [ngModelOptions]="{standalone: true}" >
-                          </div></div>
-                            <div class="form-group row">
-                          <label for="staticEmail" class="col-sm-2 col-form-label">{{"Ville" |translate}}</label>
-                          <div class="col-sm-10">
-                            <input type="text" readonly class="form-control" id="formGroupExampleInput" [(ngModel)]="Client.city" [ngModelOptions]="{standalone: true}" >
-                          </div></div>
-                           <div class="form-group row">
-                          <label for="staticEmail" class="col-sm-2 col-form-label">{{"Code postal" |translate}}:</label>
-                          <div class="col-sm-10">
-                            <input type="text" readonly class="form-control" id="formGroupExampleInput" id="staticEmail" [(ngModel)]="Client.postCode" [ngModelOptions]="{standalone: true}" >
-                             <button type="submit" class="btn btn-pill btn-warning" >{{"Valider" |translate}}</button>
-                          </div></div>
-                       
-                        </form>
-                        <br>
-                        <br>
-                        <div id="affSuivants" style="background-color:#e2ca9f">
-                       
-                            <div class="clearfix">
-                                <div class="pull-left ">
-                                    <i class="fa fa-warning" style="font-size:48px;color:orange"></i>	
-                                              </div>
-                              <div class="pull-left text-left text-lib-ico" style="padding-left: 60px;padding-top: 10px;">
-                                <span class="gras ellipsed">{{"NB" |translate}}</span>
-                              </div>
-                     
+                        <div class="modal-body ts2">
+
+                            <hr class="hr-mob2-top bgc2">
+                            <div>
+                                <p>Nous vous informons que la nouvelle adresse mail {{client.email}} que vous avez saisi
+                                    sera désormais utilisée par Attijari Bank pour tout type de notifications : relevés
+                                    de compte, news letter, messages d’informations, etc.</p>
                             </div>
-                         
-                        </div>                      
-                        
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default btn-lg btnvalider" data-dismiss="modal"
+                                (click)="Dismiss()">Enregistrez les modifications.</button>
+                            <button type="button" class="btn btn-default btn-lg btnvalider" data-dismiss="modal"
+                                (click)="Dismiss()">Fermez</button>
+                        </div>
+                    </div>
+                </div>
 
-<app-load-page *ngIf="load"></app-load-page>
-         
-</div></div> 
-  <app-page-footer></app-page-footer>
-  <app-form-error [(warning)]="warning" [(phoneValue)]="phoneValue" [(emailValue)]="emailValue" [(invalidMail)]="invalidMail" [(infoNotChanged)]="infoNotChanged" [(invalidPhone)]="invalidPhone" [(phoneChanged)]="phoneChanged" [(emailChanged)]="emailChanged" [(show)]="showFormError" [(phoneValue)]="phoneValue" [(emailValue)]="emailValue" [(invalidMail)]="invalidMail" [(serverError)]="serverError" [(invalidPhone)]="invalidPhone" ></app-form-error>
+                
+               
+
+                <div class="form-group row" style="background-color:#e2ca9f">
+                    <div class="pull-left col-sm-2  ">
+                        <i class="fa fa-warning" style="font-size:48px;color:orange"></i>
+                    </div>
+
+                    <div class="col-sm-10 pull-left text-left ">
+                        <span class="gras "> {{"NB" |translate}}</span>
+                    </div>
+                </div>
+
+            </form>
+
+
+
+            <app-load-page *ngIf="load"></app-load-page>
+
+        </div>
+    </div>
+    <app-page-footer></app-page-footer>
+    <app-form-error [(warning)]="warning" [(phoneValue)]="phoneValue" [(emailValue)]="emailValue"
+        [(invalidMail)]="invalidMail" [(infoNotChanged)]="infoNotChanged" [(invalidPhone)]="invalidPhone"
+        [(phoneChanged)]="phoneChanged" [(emailChanged)]="emailChanged" [(show)]="showFormError"
+        [(phoneValue)]="phoneValue" [(emailValue)]="emailValue" [(invalidMail)]="invalidMail"
+        [(serverError)]="serverError" [(invalidPhone)]="invalidPhone"></app-form-error>
 </div>

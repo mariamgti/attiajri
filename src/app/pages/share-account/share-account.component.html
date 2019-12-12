@@ -4,177 +4,101 @@
         <div id="page-title"> {{"Comptes titres" |translate}}</div>
         <div class="container-fluid">
             <div class="tc2"> {{intitulCarte}} </div>
-           
-                            <br>
-                            <div>
-                                   
-                                <label for="account-select">{{"Comptes espèces" |translate}}:</label>
-                                <select id="account-select" required class="form-control" [(ngModel)]="selectedLevel" (change)="selectedFlowAccount()"
-                                > <option class="placeholder" selected disabled value="">{{"Choisir un compte" |translate}}</option>
-                                <option *ngFor="let FlowAccount of FlowAccountList" [ngValue]="FlowAccount">
-                                        <div class="clearfix">
-                                                <div class="row">
-                                                    <div class="col-xs-10 text-left padding-zero">
-                                                        <div class="ts2 gras ellipsed">
-                                                           {{FlowAccount.numCpt}}</div>
-                                                        <div class="ts2 ellipsed"><br>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-2 padding-zero">
-                                                        <div class="text-right" style="padding-top:7px;">
-                                                            <i class="fa fa-chevron-right ico-size-min ico-color pointer"></i>
-                                                            </div>
-                                                    </div>
-                                                </div>
-                                               
-                                            </div>
-                                </option>
-                                   
-                                   
-                                </select>
+
+            <br>
+            <div>
+
+                <label for="account-select">{{"Comptes espèces" |translate}}:</label>
+                <select id="account-select" required class="form-control" [(ngModel)]="selectedFlowAcc"
+                    (change)="selectedFlowAccount()">
+                    <option class="placeholder" selected disabled value="">{{"Choisir un compte" |translate}}</option>
+                    <option *ngFor="let FlowAccount of FlowAccountList" [ngValue]="FlowAccount">
+                        <div class="clearfix">
+                            <div class="row">
+                                <div class="col-xs-10 text-left padding-zero">
+                                    <div class="ts2 gras ellipsed">
+                                        {{FlowAccount.numCpt}}</div>
+                                    <div class="ts2 ellipsed"><br>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 padding-zero">
+                                    <div class="text-right" style="padding-top:7px;">
+                                        <i class="fa fa-chevron-right ico-size-min ico-color pointer"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <br>
-                            <div  >
-                                <label for="account-select">{{"Comptes titres" |translate}}:</label>
-                                <select id="account-select" required class="form-control" [(ngModel)]="selectedLevel1" (change)="selectedShareAcc()">
-                                    <option class="placeholder" selected disabled value="">{{"Choisir un compte" |translate}}</option>
-                                    <option *ngFor="let ShareAccount of ShareAccountList" [ngValue]="ShareAccount">
-                                            <div class="clearfix">
-                                                    <div class="row">
-                                                        <div class="col-xs-10 text-left padding-zero">
-                                                            <div class="ts2 gras ellipsed">
-                                                               {{ShareAccount.shareAccNumber}}</div>
-                                                            <div class="ts2 ellipsed"><br>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xs-2 padding-zero">
-                                                            <div class="text-right" style="padding-top:7px;">
-                                                                <i class="fa fa-chevron-right ico-size-min ico-color pointer"></i>
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                   
-                                                </div>
-                                    </option>
-                                   
-                                   
-                                </select>
-                            </div><br>
-                            
-<div *ngIf="_showPortefeuilles" >
-    <div  *ngFor="let ShareWallet of ShareWalletList" >
-        <div (click)="onSelectWallet( ShareWallet)"  
-        >
-    <a class="btn btn-default btn-all"   style="background-color: #D8D8D8;"  >
-                                   <div class="clearfix">
-                                                   <div class="row">
-                                                       <div class="col-xs-10 text-left padding-zero">
-                                                           <div class="ts2 gras ellipsed">
-                                                         {{ShareWallet.code}}-{{ShareWallet.libelle}}</div>
-                                                           <div class="ts2 ellipsed">{{"Quantité" |translate}}: {{ShareWallet.quantity}}
-                                                              <br>
-                                                           </div>
-                                                       </div>
-                                                       <div class="col-xs-2 padding-zero">
-                                                           <div class="text-right" style="padding-top:7px;">
-                                                               </div>
-                                                       </div>
-                                                   </div>
-                                                   <div _ngcontent-gcw-c1="" class="text-right" style="padding-top:7px;"><i _ngcontent-gcw-c1="" class="fa fa-chevron-down ico-size-min ico-color pointer"></i></div>
-                                                   <div class="text-right ts1 padding-zero">
-                                                       <span class="gras"> 
-                                                            +/− {{"Latente" |translate}}:{{ShareWallet.latency}}</span>
-                                                   </div>
-                                                  
-                                               </div></a>
-                                            </div>
-                                        
-                                            <div class="detailCarte" *ngIf="selectedWalletValue == ShareWallet && _showDetailsPF==true" >
-                                                <div>
-                                                    <h4 class="modal-title text-center tc2" id="modalDCLabel">{{"Détail" |translate}}</h4>
-                                                </div>
-                                            
-                                                <hr class="hr-mob-top gradient-horizontal-primary">
-                                                <table class="table table-striped" id="tableMvts">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td class="ts3">
-                                                                <div class="pull-left">{{"Valeur" |translate}} :</div>
-                                                                <div class="pull-right gras mnt-neg">{{selectedWalletValue.code}}- {{selectedWalletValue.libelle}}</div>
-                                                            </td>
-                                                        </tr>
-                                                       
-                                                     
-                                                        <tr>
-                                                            <td class="ts3">
-                                                                <div class="pull-left">{{"Quantité" |translate}}:</div>
-                                                                <div class="pull-right gras ">{{selectedWalletValue.quantity}}
-                                                                  
-                                                                </div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="ts3">
-                                                                <div class="pull-left">{{"Qté bloquée" |translate}}:</div>
-                                                                <div class="pull-right gras mnt-neg ">{{selectedWalletValue.blockedQty}}</div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="ts3">
-                                                                <div class="pull-left">{{"Cours cloture" |translate}}: </div>
-                                                                <div class="pull-right gras ">{{selectedWalletValue.finalExchangeRate|currency:'TND':'symbol':'4.3-3':'fr'}}</div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="ts3">
-                                                                <div class="pull-left">{{"Valeur cours" |translate}}: </div>
-                                                                <div class="pull-right gras mnt-neg ">{{selectedWalletValue.exchangeRate|currency:'TND':'symbol':'4.3-3':'fr'}}</div>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td class="ts3">
-                                                                <div class="pull-left">{{"Valeur prmp" |translate}}:</div>
-                                                                <div class="pull-right gras ">{{selectedWalletValue.prmpvalue|currency:'TND':'symbol':'4.3-3':'fr'}}</div>
-                                                            </td>
-                                                        </tr>
-                                                         <tr>
-                                                            <td class="ts3">
-                                                                <div class="pull-left">{{"Prmp" |translate}}:</div>
-                                                                <div class="pull-right gras mnt-neg">{{selectedWalletValue.prmp|currency:'TND':'symbol':'4.3-3':'fr'}}</div>
-                                                            </td>
-                                                        </tr>
-                                                         <tr>
-                                                            <td class="ts3">
-                                                                <div class="pull-left">+/− {{"Latente" |translate}}:</div>
-                                                                <div class="pull-right gras">{{selectedWalletValue.latency}}</div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            
-                                                <div class="modal-footer">
-                                              
-                                                </div>
-                                            </div>
-                                            
-                                            </div>  <br>  
-                                            
+
+                        </div>
+                    </option>
+
+
+                </select>
+            </div>
+            <br>
+            <div *ngIf="ShareAccountList.length!=0">
+                <label for="account-select">{{"Comptes titres" |translate}}:</label>
+                <select id="account-select" required class="form-control" [(ngModel)]="selectedShareAc"
+                    (change)="selectedShareAcc()">
+                    <option class="placeholder" selected disabled value="">{{"Choisir un compte" |translate}}</option>
+                    <option *ngFor="let ShareAccount of ShareAccountList" [ngValue]="ShareAccount">
+                        <div class="clearfix">
+                            <div class="row">
+                                <div class="col-xs-10 text-left padding-zero">
+                                    <div class="ts2 gras ellipsed">
+                                        {{ShareAccount.shareAccNumber}}</div>
+                                    <div class="ts2 ellipsed"><br>
+                                    </div>
+                                </div>
+                                <div class="col-xs-2 padding-zero">
+                                    <div class="text-right" style="padding-top:7px;">
+                                        <i class="fa fa-chevron-right ico-size-min ico-color pointer"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </option>
+
+
+                </select>
+            </div><br>
+            <p  style="font-weight:bold ;" *ngIf="ShareAccountList.length==0 && selectedFlowAcc">
+                {{pasComp}}
+            </p>
+
+            <div *ngIf="_showPortefeuilles">
+                <div *ngFor="let ShareWallet of ShareWalletList">
+                    <div (click)="onSelectWallet( ShareWallet)">
+                        <a class="btn btn-default btn-all" style="background-color: #D8D8D8;">
+                            <div class="clearfix">
+                                <div class="row">
+                                    <div class="col-xs-10 text-left padding-zero">
+                                        <div class="ts2 gras ellipsed">
+                                            {{ShareWallet.code}}-{{ShareWallet.libelle}}</div>
+                                        <div class="ts2 ellipsed">{{"Quantité" |translate}}: {{ShareWallet.quantity}}
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-2 padding-zero">
+                                        <div class="text-right" style="padding-top:7px;">
                                         </div>
                                     </div>
                                 </div>
-                                <div _ngcontent-gcw-c1="" class="text-right" style="padding-top:7px;"><i _ngcontent-gcw-c1="" class="fa fa-chevron-down ico-size-min ico-color pointer"></i></div>
+                                <div _ngcontent-gcw-c1="" class="text-right" style="padding-top:7px;"><i
+                                        _ngcontent-gcw-c1=""
+                                        class="fa fa-chevron-down ico-size-min ico-color pointer"></i></div>
                                 <div class="text-right ts1 padding-zero">
-                                    <span class="gras"> 
-                                                        ±Latente:{{shareWallet.latency}}</span>
+                                    <span class="gras">
+                                        +/− {{"Latente" |translate}}:{{ShareWallet.latency}}</span>
                                 </div>
 
                             </div>
                         </a>
                     </div>
 
-                    <div class="detailCarte" *ngIf="selectedWalletValue == shareWallet && _show2==true" [@EnterLeave]="'flyIn'">
+                    <div class="detailCarte" *ngIf="selectedWalletValue == ShareWallet && _showDetailsPF==true">
                         <div>
-                            <h4 class="modal-title text-center tc2" id="modalDCLabel">{{"Détailles" |translate}}</h4>
+                            <h4 class="modal-title text-center tc2" id="modalDCLabel">{{"Détail" |translate}}</h4>
                         </div>
 
                         <hr class="hr-mob-top gradient-horizontal-primary">
@@ -182,61 +106,74 @@
                             <tbody>
                                 <tr>
                                     <td class="ts3">
-                                        <div class="pull-left">valeur :{{"Code" |translate}}-{{"libelle" |translate}}:</div>
-                                        <div class="pull-right gras mnt-neg">{{selectedWalletValue.code}} {{selectedWalletValue.libelle}}</div>
+                                        <div class="pull-left">{{"Valeur" |translate}} :</div>
+                                        <div class="pull-right gras mnt-neg">{{selectedWalletValue.code}}-
+                                            {{selectedWalletValue.libelle}}</div>
                                     </td>
                                 </tr>
+
 
                                 <tr>
                                     <td class="ts3">
                                         <div class="pull-left">{{"Quantité" |translate}}:</div>
-                                        <div class="pull-right gras ">{{selectedWalletValue.quantity}}</div>
+                                        <div class="pull-right gras ">{{selectedWalletValue.quantity}}
+
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="ts3">
-                                        <div class="pull-left">{{"Qty bloquée" |translate}}:</div>
+                                        <div class="pull-left">{{"Qté bloquée" |translate}}:</div>
                                         <div class="pull-right gras mnt-neg ">{{selectedWalletValue.blockedQty}}</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="ts3">
-                                        <div class="pull-left">{{"Taux de Change" |translate}}: </div>
-                                        <div class="pull-right gras ">{{selectedWalletValue.exchangeRate}}</div>
+                                        <div class="pull-left">{{"Cours cloture" |translate}}: </div>
+                                        <div class="pull-right gras ">
+                                            {{selectedWalletValue.finalExchangeRate|currency:'TND':'symbol':'.3-3':'fr'}}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="ts3">
+                                        <div class="pull-left">{{"Valeur cours" |translate}}: </div>
+                                        <div class="pull-right gras mnt-neg ">
+                                            {{selectedWalletValue.exchangeRate|currency:'TND':'symbol':'.3-3':'fr'}}
+                                        </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="ts3">
                                         <div class="pull-left">{{"Valeur prmp" |translate}}:</div>
-                                        <div class="pull-right gras mnt-neg">{{selectedWalletValue.prmpvalue}}</div>
+                                        <div class="pull-right gras ">
+                                            {{selectedWalletValue.prmpvalue|currency:'TND':'symbol':'.3-3':'fr'}}</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="ts3">
                                         <div class="pull-left">{{"Prmp" |translate}}:</div>
-                                        <div class="pull-right gras ">{{selectedWalletValue.prmp}}</div>
+                                        <div class="pull-right gras mnt-neg">
+                                            {{selectedWalletValue.prmp|currency:'TND':'symbol':'.3-3':'fr'}}</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class="ts3">
-                                        <div class="pull-left">{{"±Latente" |translate}}:</div>
+                                        <div class="pull-left">+/− {{"Latente" |translate}}:</div>
                                         <div class="pull-right gras">{{selectedWalletValue.latency}}</div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
 
-                        <div class="modal-footer">
 
-                            <button type="button" class="btn btn-default btn-lg btnvalider " data-dismiss="modal" (click)="Dismiss()">{{"Exit" |translate}}
-                            </button>
-                        </div>
                     </div>
 
-                </div>
-                <br>
+                </div> <br>
 
             </div>
+
+
 
             <app-load-page *ngIf="load"></app-load-page>
 
